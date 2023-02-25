@@ -14,7 +14,7 @@ public class AdminIndexServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		req.getRequestDispatcher("/WEB-INF/Views/Admin/AdminIndex.jsp").forward(req, resp);
+		req.getRequestDispatcher("/Admin/AdminIndex.jsp").forward(req, resp);
 	}
 	
 	
