@@ -1,20 +1,15 @@
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
-         
-	<display-name>Login Page</display-name>
-	<welcome-file-list>
-		<welcome-file>adminDashboard</welcome-file>
-				<welcome-file>index.jsp</welcome-file>
-		
-	</welcome-file-list>
-	<servlet>
-		<servlet-name>AdminIndexServlet</servlet-name>
-		<servlet-class>Controllers.AdminIndexServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>Login Page</display-name>
+  <welcome-file-list>
+    <welcome-file>adminDashboard</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>AdminIndexServlet</servlet-name>
+    <servlet-class>Controllers.AdminIndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
     <servlet-name>AdminIndexServlet</servlet-name>
     <url-pattern>/AdminDashboard</url-pattern>
   </servlet-mapping>
@@ -27,5 +22,35 @@
   <servlet-mapping>
     <servlet-name>AddDoctorServlet</servlet-name>
     <url-pattern>/AddDoctorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PatientRegister</display-name>
+    <servlet-name>PatientRegister</servlet-name>
+    <servlet-class>Controllers.PatientRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientRegister</servlet-name>
+    <url-pattern>/PatientRegister</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>test</display-name>
+    <servlet-name>test</servlet-name>
+    <servlet-class>notInGit.test</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoctorRegister</display-name>
+    <servlet-name>DoctorRegister</servlet-name>
+    <servlet-class>Controllers.DoctorRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoctorRegister</servlet-name>
+    <url-pattern>/DoctorRegister</url-pattern>
   </servlet-mapping>
 </web-app>
