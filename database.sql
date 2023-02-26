@@ -62,18 +62,18 @@ CREATE TABLE `appointments` (
 
 CREATE TABLE `doctor` (
   `id` int(10) NOT NULL,
-  `First_Name` varchar(30) NOT NULL,
-  `Last_Name` varchar(30) NOT NULL,
-  `BirthDay` date NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Number_Phone` varchar(30) NOT NULL,
-  `Sex` varchar(30) NOT NULL,
-  `Address` varchar(50) NOT NULL,
-  `Speciality` varchar(30) NOT NULL,
-  `Work_Days` varchar(30) NOT NULL,
-  `Work_Hours` varchar(30) NOT NULL,
-  `Username` varchar(30) NOT NULL,
-  `Password` varchar(30) NOT NULL
+  `First_Name` varchar(30) ,
+  `Last_Name` varchar(30) ,
+  `BirthDay` date ,
+  `Email` varchar(50),
+  `Number_Phone` varchar(30) ,
+  `Sex` varchar(30) ,
+  `Address` varchar(50),
+  `Speciality` varchar(30),
+  `Work_Days` varchar(30) ,
+  `Work_Hours` varchar(30) ,
+  `Username` varchar(30) ,
+  `Password` varchar(30) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -84,15 +84,15 @@ CREATE TABLE `doctor` (
 
 CREATE TABLE `patient` (
   `id` int(10) NOT NULL,
-  `First_Name` varchar(30) NOT NULL,
-  `Last_Name` varchar(30) NOT NULL,
-  `BirthDay` date NOT NULL,
+  `First_Name` varchar(30) ,
+  `Last_Name` varchar(30),
+  `BirthDay` date ,
   `Email` varchar(50) NOT NULL,
   `Number_Phone` varchar(30) NOT NULL,
-  `Sex` varchar(30) NOT NULL,
-  `Social_Account` varchar(30) NOT NULL,
-  `Address` varchar(50) NOT NULL,
-  `Username` varchar(30) NOT NULL,
+  `Sex` varchar(30) ,
+  `Social_Account` varchar(30) ,
+  `Address` varchar(50) ,
+  `Username` varchar(30) ,
   `Password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
