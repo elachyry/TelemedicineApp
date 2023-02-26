@@ -175,7 +175,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin">
+              <a class="nav-link" href="adminDashboard">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -203,7 +203,7 @@
               <div class="collapse" id="ui-doctors">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">All Doctors</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Add</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="addDoctor">Add</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Trash</a></li>
                 </ul>
               </div>

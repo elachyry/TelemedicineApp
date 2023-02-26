@@ -4250,14 +4250,14 @@ textarea.form-control-lg {
   border-color: #1977cc; }
   .btn-primary:hover {
     color: #000;
-    background-color: #c183ff;
-    border-color: #bd7cff; }
+    background-color: #549cd4;
+    border-color: #549cd4; }
   .btn-check:focus + .btn-primary, .btn-primary:focus {
     color: #000;
-    background-color: #c183ff;
-    border-color: #bd7cff;
-    -webkit-box-shadow: 0 0 0 0.25rem rgba(155, 93, 217, 0.5);
-    box-shadow: 0 0 0 0.25rem rgba(155, 93, 217, 0.5); }
+    background-color: #549cd4;
+    border-color: #549cd4;
+    -webkit-box-shadow: 0 0 0 0.25rem rgba(84, 156, 212, 0.5);
+    box-shadow: 0 0 0 0.25rem rgba(84, 156, 212, 0.5); }
   .btn-check:checked + .btn-primary,
   .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active,
   .show > .btn-primary.dropdown-toggle {
