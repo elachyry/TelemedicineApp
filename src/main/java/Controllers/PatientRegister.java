@@ -45,7 +45,7 @@ public class PatientRegister extends HttpServlet {
 			  
 			  if (rowsCount > 0) {
 				  request.setAttribute("status", "success");
-			  } else {
+			  } else { 
 				  request.setAttribute("status", "failed");
 			  }
 			  
