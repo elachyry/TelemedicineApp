@@ -8,14 +8,14 @@ public class DataBaseConnection {
 
     public static Connection con = null;
 
-    static {
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gestion_taxis", "root", "");
-        } catch (SQLException ex) {
-        }
-    }
 
-    public static Connection GetConnection() {
+    public static Connection getConnection() throws ClassNotFoundException {
+    	try {
+    		Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/telemedicine", "root", "");
+        } catch (SQLException ex) {
+        	ex.printStackTrace();
+        }
         return con;
     }
 
