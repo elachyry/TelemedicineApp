@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Patient Sign up</title>
+     <link href="../assets/img/flavicon.png" rel="icon">
+    
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/Login/fonts/material-icon/css/material-design-iconic-font.min.css">

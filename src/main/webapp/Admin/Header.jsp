@@ -188,7 +188,7 @@
               </a>
               <div class="collapse" id="ui-appointments">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">All Appointments</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="appointment">All Appointments</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Add</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Trash</a></li>
                 </ul>

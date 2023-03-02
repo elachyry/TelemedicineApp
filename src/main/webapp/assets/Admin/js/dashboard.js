@@ -1,6 +1,38 @@
+
+
+
 (function($) {
   'use strict';
   $(function() {
+	
+	function showError(errorElement, ErrorMessage) {
+	document.querySelector("." + errorElement).classList.add("display-error");
+	document.querySelector("." + errorElement).innerHTML = errErrorMessage;
+	console.log("test");
+}
+
+function clearError(){
+	let errors = document.querySelectorAll(".error");
+	for(let error of errors){
+		error.classList.remove("display-error");
+	}
+}
+
+
+let form = document.forms["form-sample"];
+
+form.onsubmit = function() {
+	
+	console.log("test1");
+	
+	if(form.firstName.value === ""){
+		showError("firstName-error", "The first Name is required!");
+		return false;
+	}
+	clearError();
+	
+	event.preventDefault();
+}
 
     Chart.defaults.global.legend.labels.usePointStyle = true;
     
