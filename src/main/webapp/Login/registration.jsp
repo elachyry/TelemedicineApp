@@ -5,6 +5,8 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Registration</title>
+     <link href="../assets/img/flavicon.png" rel="icon">
+    
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/Login/css/style.css'>
