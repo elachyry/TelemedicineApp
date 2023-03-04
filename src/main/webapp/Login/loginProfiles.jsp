@@ -15,9 +15,10 @@
 
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <img src="../assets/Login/images/logo.png" alt="logo" style="height: 80px;">
+    <a href="../index.jsp" aria-label="MediVisit">
+        <img src="../assets/Login/images/logo.png" alt="logo" style="height: 80px;"></a>
         <div class="signin-btn m-2 col-1 text-md-center">
-            <a href="login.jsp" class="signin-btn btn btn-primary w-100 ">Sign In</a></div>
+            <a href="PatientRegister.jsp" class="signin-btn btn btn-primary w-100 ">Sign Up</a></div>
     </nav>
 
 
@@ -31,7 +32,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center">I am Patient</h4>
                 <p class="card-text text-center">Register as a patient, and start enjoying our platform</p>
-                <a href="PatientRegister.jsp" class="btn btn-primary w-100">Sign Up</a>
+                <a href="#" class="btn btn-primary w-100">Sign In</a>
             </div>
         </div>
         <br>
@@ -42,7 +43,7 @@
             <div class="card-body ">
                 <h4 class="card-title text-center">I am Healthcare Professional</h4>
                 <p class="card-text text-center">Request information about our digital health platform.</p>
-                <a href="DoctorRegister.jsp" class="btn btn-primary w-100 mt-1">Sign Up</a>
+                <a href="#" class="btn btn-primary w-100 mt-1">Sign In</a>
             </div>
         </div>
     </div>

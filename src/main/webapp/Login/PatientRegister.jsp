@@ -34,21 +34,21 @@
                         <form method="post" action="<%= request.getContextPath() %>/PatientRegister" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input type="text" name="name" id="name" placeholder="Your Name" />
+									class="zmdi zmdi-account material-icons-name"></i></label> <input type="text" name="name" id="name" placeholder="Your Name" required/>
                             </div>
                             <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label> <input type="email" name="email" id="email" placeholder="Your Email" />
+                                <label for="email"><i class="zmdi zmdi-email"></i></label> <input type="email" name="email" id="email" placeholder="Your Email" required/>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label> <input type="password" name="pass" id="pass" placeholder="Password" />
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label> <input type="password" name="pass" id="pass" placeholder="Password" required/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required/>
                             </div>
                             <div class="form-group">
                                 <label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="text" name="contact" id="contact" placeholder="Contact no" />
+                                <input type="text" name="contact" id="contact" placeholder="Contact no" required/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" /> <label for="agree-term" class="label-agree-term"><span><span></span></span>I
@@ -56,15 +56,17 @@
 										of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
-                            </div>
+                           		 
+                                <input type="submit" name="signup" id="signup" class="form-submit" onmouseover="checkPasswords()" value="Register" />
+                            	<p id="passwordnote" style="color:red;"></p>
+                           </div>
                         </form>
                     </div>
                     <div class="signup-image">
                         <figure>
                             <img src="<%= request.getContextPath() %>/assets/Login/images/1.png" alt="sing up image">
                         </figure>
-                        <a href="login.jsp" class="signup-image-link">I am already
+                        <a href="<%= request.getContextPath() %>/Login/loginProfiles.jsp" class="signup-image-link">I am already
 							member</a>
                     </div>
                 </div>
@@ -82,6 +84,26 @@
     	if(status=="success"){
     		swal("Congrats","Account Created Successfully","success");
     	}
+    	
+    	passwordnote = document.getElementById("passwordnote");
+    	function checkPasswords() {
+    		   // Get the password and confirm password elements
+        	var password = document.getElementById("pass");
+            var confirmPassword = document.getElementById("re_pass");
+
+            // Get the submit button element
+            var submitButton = document.getElementById("signup");
+
+
+            // Check if the password and confirm password values are equal
+            if (password.value !== confirmPassword.value) {
+                submitButton.disabled = true;
+                passwordnote.innerHTML = "Passwords are different";
+            } else {
+                submitButton.disabled = false;
+                passwordnote.innerHTML = "";
+            }
+        }
     </script>
 
 
