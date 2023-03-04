@@ -5,33 +5,44 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+import Models.DataBaseConnection;
 import java.sql.*;
+
+
 
 
 public class PatientRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("HHHH");
+	}
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
 		RequestDispatcher dispatcher = null;
 		
 		String username = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("pass");
 		String contact = request.getParameter("contact");
+		
+		System.out.println(username);
+		Connection connection = null;
 				
 		
 		try {
-			  Class.forName("com.mysql.cj.jdbc.Driver");
-			  String url = "jdbc:mysql://localhost/telemedicine?useSSL=false";
-			  String user = "root";
-			  String ConnPass = "";
-			  Connection connection = DriverManager.getConnection(url, user, ConnPass);
-			  
+				connection = DataBaseConnection.getConnection();
+			  if(connection!=null) {
 			  System.out.println("Database is Connected !");
+			  }else {
+				  System.out.println("ERROR!");
+			  }
+			  
 			  PreparedStatement statement = connection.prepareStatement("INSERT INTO patient (Email,Number_Phone,Username,Password) "
 			  		+ "VALUES (?,?,?,?)");
 			  statement.setString(1,email);
@@ -53,10 +64,10 @@ public class PatientRegister extends HttpServlet {
 			  
 			  
 			  connection.close();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException ee) {
+			ee.printStackTrace();
 			} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 		 		
 	}

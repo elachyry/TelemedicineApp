@@ -52,7 +52,7 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-			<a href="Login/login.jsp" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Login</a>
+			<a href="Login/loginProfiles.jsp" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Login</a>
 
         </div>
     </header><!-- End Header -->

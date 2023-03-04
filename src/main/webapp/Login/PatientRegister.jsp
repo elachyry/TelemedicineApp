@@ -66,7 +66,7 @@
                         <figure>
                             <img src="<%= request.getContextPath() %>/assets/Login/images/1.png" alt="sing up image">
                         </figure>
-                        <a href="<%= request.getContextPath() %>/Login/login.jsp" class="signup-image-link">I am already
+                        <a href="<%= request.getContextPath() %>/Login/loginProfiles.jsp" class="signup-image-link">I am already
 							member</a>
                     </div>
                 </div>
