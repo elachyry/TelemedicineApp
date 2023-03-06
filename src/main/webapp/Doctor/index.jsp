@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../assets/img/flavicon.png" rel="icon">
+    <link href="<%= request.getContextPath() %>/assets/img/flavicon.png" rel="icon">
 
 
     <!-- Google Web Fonts -->
@@ -22,14 +22,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="../assets/Doctor/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="<%= request.getContextPath() %>/assets/Doctor/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../assets/Doctor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/assets/Doctor/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="../assets/Doctor/css/style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/assets/Doctor/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -55,7 +55,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Fatima FRIST</h6>
+                        <h6 class="mb-0"><%= session.getAttribute("fullname") %></h6>
                         <span>DOCTOR</span>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <!-- <small>15 minutes ago</small> -->
@@ -173,7 +173,7 @@
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <img src="../assets/Doctor/img/monthlyincome.jfif" alt="" style="height: 55px;;">
+                            <img src="<%= request.getContextPath() %>/assets/Doctor/img/monthlyincome.jfif" alt="" style="height: 55px;;">
                             <div class="ms-3">
                                 <p class="mb-2">Monthly Income</p>
                                 <h6 class="mb-0" name="monthlyincome">$1234</h6>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <img src="../assets/Doctor/img/appointment.jfif" alt="" style="height: 55px">
+                            <img src="<%= request.getContextPath() %>/assets/Doctor/img/appointment.jfif" alt="" style="height: 55px">
                             <div class="ms-3">
                                 <p class="mb-2">Appointments</p>
                                 <h6 class="mb-0" name="appointments">1234</h6>
@@ -191,7 +191,7 @@
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <img src="../assets/Doctor/img/patient.jfif" alt="" style="height: 55px;">
+                            <img src="<%= request.getContextPath() %>/assets/Doctor/img/patient.jfif" alt="" style="height: 55px;">
                             <div class="ms-3">                    
                                 <p class="mb-2">Patients</p>
                                 <h6 class="mb-0" name="nbpatients">$1234</h6>
@@ -200,7 +200,7 @@
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <img src="../assets/Doctor/img/daily.jfif" alt="" style="height: 55px;">
+                            <img src="<%= request.getContextPath() %>/assets/Doctor/img/daily.jfif" alt="" style="height: 55px;">
                             <div class="ms-3">                    
                                 <p class="mb-2">Daily Income</p>
                                 <h6 class="mb-0" name="dailyincome">13</h6>
@@ -404,16 +404,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/Doctor/lib/chart/chart.min.js"></script>
-    <script src="../assets/Doctor/lib/easing/easing.min.js"></script>
-    <script src="../assets/Doctor/lib/waypoints/waypoints.min.js"></script>
-    <script src="../assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="../assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="../assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="../assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/chart/chart.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/easing/easing.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../assets/Doctor/js/main.js"></script>
+    <script src="<%= request.getContextPath() %>/assets/Doctor/js/main.js"></script>
 </body>
 
 </html>
