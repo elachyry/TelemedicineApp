@@ -32,7 +32,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center">I am Patient</h4>
                 <p class="card-text text-center">Register as a patient, and start enjoying our platform</p>
-                <a href="#" class="btn btn-primary w-100">Sign In</a>
+                <a href="PatientLogin.jsp" class="btn btn-primary w-100">Sign In</a>
             </div>
         </div>
         <br>
@@ -43,7 +43,7 @@
             <div class="card-body ">
                 <h4 class="card-title text-center">I am Healthcare Professional</h4>
                 <p class="card-text text-center">Request information about our digital health platform.</p>
-                <a href="#" class="btn btn-primary w-100 mt-1">Sign In</a>
+                <a href="DoctorLogin.jsp" class="btn btn-primary w-100 mt-1">Sign In</a>
             </div>
         </div>
     </div>
