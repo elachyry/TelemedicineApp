@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2023 at 06:15 PM
+-- Generation Time: Mar 08, 2023 at 12:51 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -62,19 +62,29 @@ CREATE TABLE `appointments` (
 
 CREATE TABLE `doctor` (
   `id` int(10) NOT NULL,
-  `First_Name` varchar(30) ,
-  `Last_Name` varchar(30) ,
-  `BirthDay` date ,
-  `Email` varchar(50),
-  `Number_Phone` varchar(30) ,
-  `Sex` varchar(30) ,
-  `Address` varchar(50),
-  `Speciality` varchar(30),
-  `Work_Days` varchar(30) ,
-  `Work_Hours` varchar(30) ,
-  `Username` varchar(30) ,
-  `Password` varchar(30) 
+  `Image_Path` varchar(255) DEFAULT NULL,
+  `First_Name` varchar(30) DEFAULT NULL,
+  `Last_Name` varchar(30) DEFAULT NULL,
+  `BirthDay` date DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `Number_Phone` varchar(30) DEFAULT NULL,
+  `Sex` varchar(30) DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `Speciality` varchar(255) DEFAULT NULL,
+  `Work_Days` varchar(255) DEFAULT NULL,
+  `Work_Hours` varchar(255) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
+  `Password` varchar(100) DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Address`, `Speciality`, `Work_Days`, `Work_Hours`, `Username`, `Password`, `deleted_at`) VALUES
+(8, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-13', 'achyri2ed000@gmail.com', '0680346100', 'Female', 'sadassadsa', 'Urology', 'Monday-Wednesday-Thursday-Friday-Saturday-', '9-11-12-13-16-', 'adam71517', 'mG6s0WIvK8', NULL),
+(10, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-15', 'achyri2000@gmail.com', '0680346100', 'Male', 'sadassadsa', 'Allergy and immunology', 'Monday-Tuesday-', '9-10-', 'adam75658', 'dlA2RmNIazN2dg==', NULL);
 
 -- --------------------------------------------------------
 
@@ -84,15 +94,15 @@ CREATE TABLE `doctor` (
 
 CREATE TABLE `patient` (
   `id` int(10) NOT NULL,
-  `First_Name` varchar(30) ,
-  `Last_Name` varchar(30),
-  `BirthDay` date ,
+  `First_Name` varchar(30) DEFAULT NULL,
+  `Last_Name` varchar(30) DEFAULT NULL,
+  `BirthDay` date DEFAULT NULL,
   `Email` varchar(50) NOT NULL,
   `Number_Phone` varchar(30) NOT NULL,
-  `Sex` varchar(30) ,
-  `Social_Account` varchar(30) ,
-  `Address` varchar(50) ,
-  `Username` varchar(30) ,
+  `Sex` varchar(30) DEFAULT NULL,
+  `Social_Account` varchar(30) DEFAULT NULL,
+  `Address` varchar(50) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -144,7 +154,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `patient`
