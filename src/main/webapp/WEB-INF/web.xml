@@ -4,27 +4,11 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <error-page>
-    <location>/Admin/Error404.jsp</location>
-  </error-page>
-    <servlet-name>AdminIndexServlet</servlet-name>
-    <servlet-class>Controllers.AdminIndexServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminIndexServlet</servlet-name>
-    <url-pattern>/AdminDashboard</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AddDoctorServlet</display-name>
-    <servlet-name>AddDoctorServlet</servlet-name>
-    <servlet-class>Controllers.AddDoctorServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddDoctorServlet</servlet-name>
-    <url-pattern>/AddDoctorServlet</url-pattern>
-  </servlet-mapping>
+	<!-- <error-page> -->
+	<!-- <location>/Admin/Error404.jsp</location> -->
+	<!-- </error-page> -->
+ 
+  
   <servlet>
     <description></description>
     <display-name>PatientRegister</display-name>
@@ -75,6 +59,37 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  
+ <servlet>
+    <description></description>
+    <display-name>AddDoctorServlet</display-name>
+    <servlet-name>AddDoctorServlet</servlet-name>
+    <servlet-class>Controllers.AddDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDoctorServlet</servlet-name>
+    <url-pattern>/AddDoctorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminDashboardServlet</display-name>
+    <servlet-name>AdminDashboardServlet</servlet-name>
+    <servlet-class>Controllers.AdminDashboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDashboardServlet</servlet-name>
+    <url-pattern>/AdminDashboardServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginServlet</display-name>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>Controllers.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/AdminLoginServlet</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>AllDoctorsServlet</display-name>
@@ -85,8 +100,46 @@
     <servlet-name>AllDoctorsServlet</servlet-name>
     <url-pattern>/AllDoctorsServlet</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <servlet>
+    <description></description>
+    <display-name>ShowAllInfos</display-name>
+    <servlet-name>ShowAllInfos</servlet-name>
+    <servlet-class>Controllers.ShowAllInfos</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ShowAllInfosServlet</display-name>
+    <servlet-name>ShowAllInfosServlet</servlet-name>
+    <servlet-class>Controllers.ShowAllInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllInfosServlet</servlet-name>
+    <url-pattern>/ShowAllInfosServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SoftDeleteServlet</display-name>
+    <servlet-name>SoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.SoftDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SoftDeleteServlet</servlet-name>
+    <url-pattern>/SoftDeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoctorTrash</display-name>
+    <servlet-name>DoctorTrash</servlet-name>
+    <servlet-class>Controllers.DoctorTrash</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoctorTrash</servlet-name>
+    <url-pattern>/DoctorTrash</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>TrashDoctorServlet</display-name>
     <servlet-name>TrashDoctorServlet</servlet-name>
@@ -96,8 +149,57 @@
     <servlet-name>TrashDoctorServlet</servlet-name>
     <url-pattern>/TrashDoctorServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RestoreDoctorServlet</display-name>
+    <servlet-name>RestoreDoctorServlet</servlet-name>
+    <servlet-class>Controllers.RestoreDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestoreDoctorServlet</servlet-name>
+    <url-pattern>/RestoreDoctorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoctorHardDeleteServlet</display-name>
+    <servlet-name>DoctorHardDeleteServlet</servlet-name>
+    <servlet-class>Controllers.DoctorHardDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoctorHardDeleteServlet</servlet-name>
+    <url-pattern>/DoctorHardDeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditDoctorServlet</display-name>
+    <servlet-name>EditDoctorServlet</servlet-name>
+    <servlet-class>Controllers.EditDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditDoctorServlet</servlet-name>
+    <url-pattern>/EditDoctorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>resetPasswordDoctorServlet</display-name>
+    <servlet-name>resetPasswordDoctorServlet</servlet-name>
+    <servlet-class>Controllers.resetPasswordDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resetPasswordDoctorServlet</servlet-name>
+    <url-pattern>/resetPasswordDoctorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportDoctorsServlet</display-name>
+    <servlet-name>ExportDoctorsServlet</servlet-name>
+    <servlet-class>Controllers.ExportDoctorsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportDoctorsServlet</servlet-name>
+    <url-pattern>/ExportDoctorsServlet</url-pattern>
+  </servlet-mapping> 
+   
   
-  <session-config>
-    <session-timeout>30</session-timeout>
-  </session-config>
+
 </web-app>
