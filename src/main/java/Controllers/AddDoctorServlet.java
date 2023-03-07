@@ -96,9 +96,9 @@ public class AddDoctorServlet extends HttpServlet {
 					specialty, workingDays, workingHours);
 
 			if (DoctorDao.addDoctor(doctor) == 1) {
-				response.sendRedirect("/telemedicneApp/addDoctor?status=success");
+				response.sendRedirect("/telemedicine/addDoctor?status=success");
 			} else {
-				response.sendRedirect("/telemedicneApp/addDoctor?status=failed");
+				response.sendRedirect("/telemedicine/addDoctor?status=failed");
 			}
 		}
 
