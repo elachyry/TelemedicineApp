@@ -64,12 +64,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>profilDoctor</display-name>
-    <servlet-name>profilDoctor</servlet-name>
-    <servlet-class>Controllers.ProfilDoctor</servlet-class>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>Controllers.Logout</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>profilDoctor</servlet-name>
-    <url-pattern>/profilDoctor</url-pattern>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -72,7 +72,7 @@
 				<div class="d-flex align-items-center ms-4 mb-4">
 					<div class="position-relative">
 						<img class="rounded-circle"
-							src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg"
+							src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
 							alt="" style="width: 40px; height: 40px;">
 						<div
 							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
@@ -88,12 +88,12 @@
 					<a href="<%= request.getContextPath() %>/Doctor/index.jsp"
 						class="nav-item nav-link "><i
 						class="fa fa-tachometer-alt me-2"></i>Dashboard</a> <a
-						href="appointment.jsp" class="nav-item nav-link "><i
-						class="fa fa-medkit  me-2"></i>Appointments</a> <a href="patients.jsp"
+						href="<%= request.getContextPath() %>/Doctor/appointment.jsp" class="nav-item nav-link "><i
+						class="fa fa-medkit  me-2"></i>Appointments</a> <a href="<%= request.getContextPath() %>/Doctor/patients.jsp"
 						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
-						aria-hidden="true"></i>Patients</a> <a href="messages.jsp"
+						aria-hidden="true"></i>Patients</a> <a href="<%= request.getContextPath() %>/Doctor/messages.jsp"
 						class="nav-item nav-link"><i class="fa fa-envelope me-2"
-						aria-hidden="true"></i>Messages</a> <a href="profil.jsp"
+						aria-hidden="true"></i>Messages</a> <a href="<%= request.getContextPath() %>/Doctor/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
 
@@ -120,90 +120,19 @@
 				</a>
 
 				<div class="navbar-nav align-items-center ms-auto">
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"> <i class="fa fa-envelope me-lg-2"></i>
-							<span class="d-none d-lg-inline-flex">Message</span>
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="#" class="dropdown-item">
-								<div class="d-flex align-items-center">
-									<img class="rounded-circle"
-										src="<%= request.getContextPath() %>/assets/Doctor/img/user.jpg"
-										alt="" style="width: 40px; height: 40px;">
-									<div class="ms-2">
-										<h6 class="fw-normal mb-0">Jhon send you a message</h6>
-										<small>15 minutes ago</small>
-									</div>
-								</div>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item">
-								<div class="d-flex align-items-center">
-									<img class="rounded-circle"
-										src="<%= request.getContextPath() %>/assets/Doctor/img/user.jpg"
-										alt="" style="width: 40px; height: 40px;">
-									<div class="ms-2">
-										<h6 class="fw-normal mb-0">Jhon send you a message</h6>
-										<small>15 minutes ago</small>
-									</div>
-								</div>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item">
-								<div class="d-flex align-items-center">
-									<img class="rounded-circle"
-										src="<%= request.getContextPath() %>/assets/Doctor/img/user.jpg"
-										alt="" style="width: 40px; height: 40px;">
-									<div class="ms-2">
-										<h6 class="fw-normal mb-0">Jhon send you a message</h6>
-										<small>15 minutes ago</small>
-									</div>
-								</div>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item text-center">See all message</a>
-						</div>
-					</div>
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"> <i class="fa fa-bell me-lg-2"></i>
-							<span class="d-none d-lg-inline-flex">Appointments</span>
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="#" class="dropdown-item">
-								<h6 class="fw-normal mb-0">Profile updated</h6> <small>15
-									minutes ago</small>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item">
-								<h6 class="fw-normal mb-0">New user added</h6> <small>15
-									minutes ago</small>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item">
-								<h6 class="fw-normal mb-0">Password changed</h6> <small>15
-									minutes ago</small>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item text-center">See all
-								notifications</a>
-						</div>
-					</div>
+					
+					
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
 							class="rounded-circle me-lg-2"
-							src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg"
+							src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
 							alt="" style="width: 40px; height: 40px;"> <span
 							class="d-none d-lg-inline-flex"><%= session.getAttribute("fullname") %></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="#" class="dropdown-item">My Profile</a> <a href="#"
-								class="dropdown-item">Settings</a> <a href="#"
+							<a href="<%= request.getContextPath() %>/Doctor/profil.jsp" class="dropdown-item">My Profile</a>  <a href="<%= request.getContextPath() %>/logout"
 								class="dropdown-item">Log Out</a>
 						</div>
 					</div>
@@ -220,7 +149,7 @@
 						<div class="card mb-4">
 							<div class="card-body text-center">
 								<img
-									src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg"
+									src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
 									alt="avatar" class="rounded-circle img-fluid"
 									style="width: 150px;">
 								<h5 class="my-3" name="dctname"><%= session.getAttribute("fullname") %></h5>
@@ -485,10 +414,10 @@
 											<hr>
 											<div class="row">
 												<div class="col-sm-3">
-													<p class="mb-0">Password</p>
+													<p class="mb-0">Old Password</p>
 												</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp" style=" text-align: center;" name="password" value="">				
+													<input type="password" class="form-control-plaintext inp" style=" text-align: center;" name="password" value="<%= session.getAttribute("Password") %>">				
 												</div>
 											</div>
 											<hr>
@@ -497,7 +426,7 @@
 													<p class="mb-0">New Password</p>
 												</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp" style=" text-align: center;" name="passwordNew" value="">				
+													<input type="password" class="form-control-plaintext inp" style=" text-align: center;" name="passwordNew" value="">				
 												</div>
 											</div>
 										</div>
@@ -506,10 +435,9 @@
 
 
 								<div class="d-flex justify-content-center mb-2">
-									<button type="button" class="btn btn-primary" name="Edit">Edit
-										Profil</button>
+									<button type="button" class="btn btn-primary" name="Edit">Update profil</button>
 									<button type="button" class="btn btn-outline-primary ms-1"
-										name="Logout">Logout</button>
+										name="Logout"> <a href="<%= request.getContextPath() %>/logout">Logout</a> </button>
 								</div>
 						</div>
 						</form>
