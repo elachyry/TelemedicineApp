@@ -72,4 +72,14 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllDoctorsServlet</display-name>
+    <servlet-name>AllDoctorsServlet</servlet-name>
+    <servlet-class>Controllers.AllDoctorsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllDoctorsServlet</servlet-name>
+    <url-pattern>/AllDoctorsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
