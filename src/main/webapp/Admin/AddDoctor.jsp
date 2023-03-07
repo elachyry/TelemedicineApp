@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +39,7 @@
 						<h3 class="page-title">Add Doctor</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Doctors</a></li>
+								<li class="breadcrumb-item"><a href="AllDoctors">All Doctors</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Add
 									Doctor</li>
 							</ol>
@@ -52,14 +50,25 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<form class="form-sample" action="" method="post" autocomplete="off">
+									<form class="form-sample" action="" method="post" autocomplete="off" enctype='multipart/form-data'>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Image</label>
+													<div class="col-sm-9">
+														<input type="file" class="form-control" name="image" required/>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">First Name</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="firstName" required/>
-														<p class="error email-error"></p>
 													</div>
 												</div>
 											</div>
@@ -67,7 +76,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Last Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="lastName" />
+														<input type="text" class="form-control" name="lastName" required/>
 													</div>
 												</div>
 											</div>
@@ -100,7 +109,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Email</label>
 													<div class="col-sm-9">
-														<input type="email" class="form-control" name="email" />
+														<input type="email" class="form-control" name="email" required/>
 													</div>
 												</div>
 											</div>
@@ -108,7 +117,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Phone Number</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="phoneNumber" />
+														<input type="text" class="form-control" name="phoneNumber" required/>
 													</div>
 												</div>
 											</div>
@@ -118,7 +127,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Address</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="address" />
+														<input type="text" class="form-control" name="address" required/>
 													</div>
 												</div>
 											</div>
@@ -418,6 +427,8 @@
 			text : "You have added a doctor successfully!",
 			icon : "success",
 			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -429,6 +440,8 @@
 			text : "An error occurred, Please try again!",
 			icon : "error",
 			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -440,6 +453,8 @@
 			text : "This Email is already exist!",
 			icon : "error",
 			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -451,6 +466,21 @@
 			text : "This Phone Number is already exist!",
 			icon : "error",
 			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/addDoctor");
+		});
+	</script>
+	<%
+	}else if(status.equals("successExport")){
+	%>
+	<script>
+		swal({
+			title : "Success!",
+			text : "You have exported all doctors successfully!",
+			icon : "success",
+			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
