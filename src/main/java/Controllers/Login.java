@@ -35,10 +35,18 @@ public class Login extends HttpServlet {
 					  ResultSet rs = statement.executeQuery();
 					  if(rs.next()) {
 						  session.setAttribute("fullname", rs.getString("First_Name")+' '+rs.getString("Last_Name"));
-						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("Doctor/index.jsp");
+						  session.setAttribute("username", username);
+						  session.setAttribute("username", username);
+						  session.setAttribute("FisrtName", rs.getString("First_Name"));
+						  session.setAttribute("LastName", rs.getString("Last_Name"));
+						  session.setAttribute("Email", rs.getString("Email"));
+						  session.setAttribute("Phone", rs.getString("Number_Phone"));
+						  session.setAttribute("Speciality", rs.getString("Speciality"));
+						  session.setAttribute("Adress", rs.getString("Address"));
+						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Doctor/profil.jsp");
 					  }else {
 						  request.setAttribute("status", "failed");
-						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("Login/DoctorLogin.jsp");
+						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Login/DoctorLogin.jsp");
 					  }
 					  }
 					  dispatcher.forward(request, response);

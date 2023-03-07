@@ -10,9 +10,14 @@
 		<java.version>19</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
-
 	<dependencies>
-
+		<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>8.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -20,23 +25,15 @@
 			<version>8.0</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version>
 		</dependency>
-		
-		
-
 	</dependencies>
-
 	<build>
-
 		<pluginManagement>
-
 			<plugins>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
@@ -60,10 +57,7 @@
 						<path>/</path>
 					</configuration>
 				</plugin>
-
 			</plugins>
-
 		</pluginManagement>
-
 	</build>
 </project>

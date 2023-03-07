@@ -62,4 +62,14 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>profilDoctor</display-name>
+    <servlet-name>profilDoctor</servlet-name>
+    <servlet-class>Controllers.ProfilDoctor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>profilDoctor</servlet-name>
+    <url-pattern>/profilDoctor</url-pattern>
+  </servlet-mapping>
 </web-app>
