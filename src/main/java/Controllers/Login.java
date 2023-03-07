@@ -2,7 +2,6 @@ package Controllers;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +13,17 @@ import Models.DataBaseConnection;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		if (session != null && session.getAttribute("fullname") != null) {
+			getServletContext().getRequestDispatcher("/Doctor/index.jsp").forward(req, resp);
+		} else {
+			getServletContext().getRequestDispatcher("/Login/DoctorLogin.jsp").forward(req, resp);
+
+		}
+	}
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String profil = request.getParameter("profil");
@@ -43,7 +53,10 @@ public class Login extends HttpServlet {
 						  session.setAttribute("Phone", rs.getString("Number_Phone"));
 						  session.setAttribute("Speciality", rs.getString("Speciality"));
 						  session.setAttribute("Adress", rs.getString("Address"));
-						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Doctor/profil.jsp");
+						  session.setAttribute("Image", rs.getString("Image"));
+						  session.setAttribute("Password", rs.getString("Password"));
+
+						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Doctor/index.jsp");
 					  }else {
 						  request.setAttribute("status", "failed");
 						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Login/DoctorLogin.jsp");
