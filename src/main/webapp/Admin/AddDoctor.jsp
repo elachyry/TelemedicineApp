@@ -428,7 +428,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addDoctor");
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -441,7 +441,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addDoctor");
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -454,7 +454,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addDoctor");
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -467,7 +467,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addDoctor");
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
@@ -480,7 +480,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addDoctor");
+			window.location.replace("/telemedicine/addDoctor");
 		});
 	</script>
 	<%
