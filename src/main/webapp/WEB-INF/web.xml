@@ -85,6 +85,18 @@
     <servlet-name>AllDoctorsServlet</servlet-name>
     <url-pattern>/AllDoctorsServlet</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>TrashDoctorServlet</display-name>
+    <servlet-name>TrashDoctorServlet</servlet-name>
+    <servlet-class>Controllers.TrashDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrashDoctorServlet</servlet-name>
+    <url-pattern>/TrashDoctorServlet</url-pattern>
+  </servlet-mapping>
+  
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
