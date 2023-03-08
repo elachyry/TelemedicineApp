@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import Models.DataBaseConnection;
+import Models.Tools;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
@@ -39,10 +40,10 @@ public class UpdateDoctor extends HttpServlet {
 			String workingHours[] = req.getParameterValues("workingHours");
 			
 			
-			String password = req.getParameter("passwordNew");
+			String password = Tools.encryptPassword(req.getParameter("passwordNew"));
 			
 			if(password.isEmpty()) {
-				password = req.getParameter("password");
+				password = Tools.encryptPassword(req.getParameter("password"));
 			}
 			
 			String days = "";
@@ -85,7 +86,7 @@ public class UpdateDoctor extends HttpServlet {
 					  session.setAttribute("Email", email);
 					  session.setAttribute("Phone", phoneNumber);
 					  session.setAttribute("Adress", address);
-					  session.setAttribute("Password", password);
+					  session.setAttribute("Password", Tools.decryptPassword(password));
 					  session.setAttribute("WorkingDays", days);
 					  session.setAttribute("WorkingHours", hours);
 
