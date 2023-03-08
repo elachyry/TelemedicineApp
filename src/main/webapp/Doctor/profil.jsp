@@ -10,7 +10,7 @@
 
 <!-- Favicon -->
 <link
-	href="<%= request.getContextPath() %>/assets/Doctor/img/flavicon.png"
+	href="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
 	rel="icon">
 
 <!-- Google Web Fonts -->
@@ -30,23 +30,25 @@
 
 <!-- Libraries Stylesheet -->
 <link
-	href="<%= request.getContextPath() %>/assets/Doctor/lib/owlcarousel/../assets/Doctor/owl.carousel.min.css"
+	href="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/../assets/Doctor/owl.carousel.min.css"
 	rel="stylesheet">
 <link
-	href="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	href="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
 	rel="stylesheet" />
 
 <!-- Customized Bootstrap Stylesheet -->
 <link
-	href="<%= request.getContextPath() %>/assets/Doctor/css/bootstrap.min.css"
+	href="<%=request.getContextPath()%>/assets/Doctor/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Template Stylesheet -->
-<link href="<%= request.getContextPath() %>/assets/Doctor/css/style.css"
+<link href="<%=request.getContextPath()%>/assets/Doctor/css/style.css"
 	rel="stylesheet">
 </head>
 
 <body>
+	<input type="hidden" id="status" value="<%= request.getAttribute("status") %>" />
+
 	<div class="container-xxl position-relative bg-white d-flex p-0">
 		<!-- Spinner Start -->
 		<div id="spinner"
@@ -65,35 +67,38 @@
 
 				<a href="index.jsp" class="navbar-brand mx-4 mb-3">
 					<h3 class="text-primary">
-						<img src="<%= request.getContextPath() %>/assets/Doctor/img/3.png"
+						<img src="<%=request.getContextPath()%>/assets/Doctor/img/3.png"
 							alt="" style="height: 60px;">MEDIVISIT
 					</h3>
 				</a>
 				<div class="d-flex align-items-center ms-4 mb-4">
 					<div class="position-relative">
 						<img class="rounded-circle"
-							src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
+							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;">
 						<div
 							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
 						</div>
 					</div>
 					<div class="ms-3">
-						<h6 class="mb-0"><%= session.getAttribute("fullname") %></h6>
+						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
 						<span>DOCTOR</span>
 					</div>
 				</div>
 
 				<div class="navbar-nav w-100">
-					<a href="<%= request.getContextPath() %>/Doctor/index.jsp"
+					<a href="<%=request.getContextPath()%>/Doctor/index.jsp"
 						class="nav-item nav-link "><i
 						class="fa fa-tachometer-alt me-2"></i>Dashboard</a> <a
-						href="<%= request.getContextPath() %>/Doctor/appointment.jsp" class="nav-item nav-link "><i
-						class="fa fa-medkit  me-2"></i>Appointments</a> <a href="<%= request.getContextPath() %>/Doctor/patients.jsp"
+						href="<%=request.getContextPath()%>/Doctor/appointment.jsp"
+						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
+					<a href="<%=request.getContextPath()%>/Doctor/patients.jsp"
 						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
-						aria-hidden="true"></i>Patients</a> <a href="<%= request.getContextPath() %>/Doctor/messages.jsp"
+						aria-hidden="true"></i>Patients</a> <a
+						href="<%=request.getContextPath()%>/Doctor/messages.jsp"
 						class="nav-item nav-link"><i class="fa fa-envelope me-2"
-						aria-hidden="true"></i>Messages</a> <a href="<%= request.getContextPath() %>/Doctor/profil.jsp"
+						aria-hidden="true"></i>Messages</a> <a
+						href="<%=request.getContextPath()%>/Doctor/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
 
@@ -112,7 +117,7 @@
 				<a href="index.jsp" class="navbar-brand d-flex d-lg-none me-4">
 					<h2 class="text-primary mb-0">
 						<img
-							src="<%= request.getContextPath() %>/assets/Doctor/img/flavicon.png"
+							src="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
 							alt="" style="height: 30px;">
 					</h2>
 				</a> <a href="#" class="sidebar-toggler flex-shrink-0"> <i
@@ -120,19 +125,21 @@
 				</a>
 
 				<div class="navbar-nav align-items-center ms-auto">
-					
-					
+
+
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
 							class="rounded-circle me-lg-2"
-							src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
+							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;"> <span
-							class="d-none d-lg-inline-flex"><%= session.getAttribute("fullname") %></span>
+							class="d-none d-lg-inline-flex"><%=session.getAttribute("fullname")%></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="<%= request.getContextPath() %>/Doctor/profil.jsp" class="dropdown-item">My Profile</a>  <a href="<%= request.getContextPath() %>/logout"
+							<a href="<%=request.getContextPath()%>/Doctor/profil.jsp"
+								class="dropdown-item">My Profile</a> <a
+								href="<%=request.getContextPath()%>/logout"
 								class="dropdown-item">Log Out</a>
 						</div>
 					</div>
@@ -149,15 +156,15 @@
 						<div class="card mb-4">
 							<div class="card-body text-center">
 								<img
-									src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
+									src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
 									alt="avatar" class="rounded-circle img-fluid"
 									style="width: 150px;">
-								<h5 class="my-3" name="dctname"><%= session.getAttribute("fullname") %></h5>
+								<h5 class="my-3" name="dctname"><%=session.getAttribute("fullname")%></h5>
 								<p class="text-muted mb-1">Doctor</p>
-								<p class="text-muted mb-4" name="specialty"><%= session.getAttribute("Speciality") %></p>
+								<p class="text-muted mb-4" name="specialty"><%=session.getAttribute("Speciality")%></p>
 
 							</div>
-							<form action="" method="post">
+							<form action="<%=request.getContextPath()%>/updateDoctor" method="post">
 								<div class="col-lg-8" style="margin-left: 190px;">
 									<div class="card mb-4" style="border: 100px;">
 										<div class="card-body text-center">
@@ -166,7 +173,9 @@
 													<p class="mb-0">Full Name</p>
 												</div>
 												<div class="col-sm-9">
-												<input type="text" class="form-control-plaintext inp" style=" text-align: center;" name="FullName" value="<%= session.getAttribute("fullname") %>">
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="FullName"
+														value="<%=session.getAttribute("fullname")%>">
 												</div>
 											</div>
 											<hr>
@@ -175,7 +184,9 @@
 													<p class="mb-0">Email</p>
 												</div>
 												<div class="col-sm-9">
-												<input type="text" class="form-control-plaintext inp" style=" text-align: center;" name="email" value="<%= session.getAttribute("Email") %>">				
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="email"
+														value="<%=session.getAttribute("Email")%>">
 												</div>
 											</div>
 											<hr>
@@ -184,7 +195,9 @@
 													<p class="mb-0">Phone</p>
 												</div>
 												<div class="col-sm-9">
-												<input type="text" class="form-control-plaintext inp" style=" text-align: center;" name="phone" value="<%= session.getAttribute("Phone") %>">				
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="phone"
+														value="<%=session.getAttribute("Phone")%>">
 												</div>
 											</div>
 											<hr>
@@ -193,10 +206,46 @@
 													<p class="mb-0">Address</p>
 												</div>
 												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp" style=" text-align: center;" name="address" value="<%= session.getAttribute("Adress") %>">				
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="address"
+														value="<%=session.getAttribute("Adress")%>">
 												</div>
 											</div>
 											<hr>
+											<%
+											
+											String workD = (String)session.getAttribute("WorkingDays");
+											
+											Boolean Monday = false;
+											Boolean Tuesday = false;
+											Boolean Wednesday = false;
+											Boolean Thursday = false;
+											Boolean Friday = false;
+											Boolean Saturday = false;
+											String[] arrOfStr = workD.split("-");
+											for (String s : arrOfStr) {
+												System.out.println(s);
+												if (s.equals("Monday")) {
+													Monday = true;
+												}
+												if (s.equals("Tuesday")) {
+													Tuesday = true;
+												}
+												if (s.equals("Wednesday")) {
+													Wednesday = true;
+												}
+												if (s.equals("Thursday")) {
+													Thursday = true;
+												}
+												if (s.equals("Friday")) {
+													Friday = true;
+												}
+												if (s.equals("Saturday")) {
+													Saturday = true;
+												}
+
+											}
+											%>
 											<div class="row">
 												<div class="col-sm-3">
 													<p class="mb-0">Working Days</p>
@@ -209,7 +258,8 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Monday"> Monday
+																		name="workingDays" value="Monday"
+																		<%=(Monday == true ? "checked" : "")%>> Monday
 																	</label>
 																</div>
 															</div>
@@ -220,7 +270,9 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Tuesday"> Tuesday
+																		name="workingDays" value="Tuesday"
+																		<%=(Tuesday == true ? "checked" : "")%>>
+																		Tuesday
 																	</label>
 																</div>
 															</div>
@@ -232,7 +284,8 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Wednesday">
+																		name="workingDays" value="Wednesday"
+																		<%=(Wednesday == true ? "checked" : "")%>>
 																		Wednesday
 																	</label>
 																</div>
@@ -245,7 +298,9 @@
 																	style="margin-left: 7px;">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Thursday"> Thursday
+																		name="workingDays" value="Thursday"
+																		<%=(Thursday == true ? "checked" : "")%>>
+																		Thursday
 																	</label>
 																</div>
 															</div>
@@ -256,7 +311,8 @@
 																	style="margin-left: -18px;">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Friday"> Friday
+																		name="workingDays" value="Friday"
+																		<%=(Friday == true ? "checked" : "")%>> Friday
 																	</label>
 																</div>
 															</div>
@@ -267,7 +323,9 @@
 																	style="margin-left: -18px;">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingdays" value="Saturday"> Saturday
+																		name="workingdays" value="Saturday"
+																		<%=(Saturday == true ? "checked" : "")%>>
+																		Saturday
 																	</label>
 																</div>
 															</div>
@@ -277,6 +335,64 @@
 												</div>
 											</div>
 											<hr>
+											<%
+											
+											String workH = (String)session.getAttribute("WorkingHours");
+											
+										Boolean val8 = false;
+										Boolean val9 = false;
+										Boolean val10 = false;
+										Boolean val11 = false;
+										Boolean val12 = false;
+										Boolean val13 = false;
+										Boolean val14 = false;
+										Boolean val15 = false;
+										Boolean val16 = false;
+										Boolean val17 = false;
+										Boolean val18 = false;
+										Boolean val19 = false;
+										String[] arrOfStr2 = workH.split("-");
+										for (String s : arrOfStr2) {
+											System.out.println(s);
+											if (s.equals("8")) {
+												val8 = true;
+											}
+											if (s.equals("9")) {
+												val9 = true;
+											}
+											if (s.equals("10")) {
+												val10 = true;
+											}
+											if (s.equals("11")) {
+												val11 = true;
+											}
+											if (s.equals("12")) {
+												val12 = true;
+											}
+											if (s.equals("13")) {
+												val13 = true;
+											}
+											if (s.equals("14")) {
+												val14 = true;
+											}
+											if (s.equals("15")) {
+												val15 = true;
+											}
+											if (s.equals("16")) {
+												val16 = true;
+											}
+											if (s.equals("17")) {
+												val17 = true;
+											}
+											if (s.equals("18")) {
+												val18 = true;
+											}
+											if (s.equals("19")) {
+												val19 = true;
+											}
+
+										}
+										%>
 											<div class="row">
 												<div class="col-sm-3">
 													<p class="mb-0">Working Hours</p>
@@ -288,7 +404,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="8"> 8
+																		name="workingHours" value="8" <%=(val8 == true ? "checked" : "")%>> 8
 																	</label>
 																</div>
 															</div>
@@ -300,7 +416,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="9"> 9
+																		name="workingHours" value="9" <%=(val9 == true ? "checked" : "")%>> 9
 																	</label>
 																</div>
 															</div>
@@ -312,7 +428,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="10"> 10
+																		name="workingHours" value="10" <%=(val10 == true ? "checked" : "")%>> 10
 																	</label>
 																</div>
 															</div>
@@ -322,7 +438,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="11"> 11
+																		name="workingHours" value="11" <%=(val11 == true ? "checked" : "")%>> 11
 																	</label>
 																</div>
 															</div>
@@ -332,7 +448,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="12"> 12
+																		name="workingHours" value="12" <%=(val12 == true ? "checked" : "")%>> 12
 																	</label>
 																</div>
 															</div>
@@ -342,7 +458,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="13"> 13
+																		name="workingHours" value="13" <%=(val13 == true ? "checked" : "")%>> 13
 																	</label>
 																</div>
 															</div>
@@ -352,7 +468,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="14"> 14
+																		name="workingHours" value="14"  <%=(val14 == true ? "checked" : "")%>> 14
 																	</label>
 																</div>
 															</div>
@@ -362,7 +478,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="15"> 15
+																		name="workingHours" value="15" <%=(val15 == true ? "checked" : "")%>> 15
 																	</label>
 																</div>
 															</div>
@@ -372,7 +488,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="16"> 16
+																		name="workingHours" value="16" <%=(val16 == true ? "checked" : "")%>> 16
 																	</label>
 																</div>
 															</div>
@@ -382,7 +498,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="17"> 17
+																		name="workingHours" value="17" <%=(val17 == true ? "checked" : "")%>> 17
 																	</label>
 																</div>
 															</div>
@@ -392,7 +508,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="18"> 18
+																		name="workingHours" value="18" <%=(val18 == true ? "checked" : "")%>> 18
 																	</label>
 																</div>
 															</div>
@@ -402,7 +518,7 @@
 																<div class="form-check form-check-info">
 																	<label class="form-check-label"> <input
 																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="19"> 19
+																		name="workingHours" value="19" <%=(val19 == true ? "checked" : "")%>> 19
 																	</label>
 																</div>
 															</div>
@@ -417,7 +533,9 @@
 													<p class="mb-0">Old Password</p>
 												</div>
 												<div class="col-sm-9">
-													<input type="password" class="form-control-plaintext inp" style=" text-align: center;" name="password" value="<%= session.getAttribute("Password") %>">				
+													<input type="password" class="form-control-plaintext inp"
+														style="text-align: center;" name="password"
+														value="<%=session.getAttribute("Password")%>">
 												</div>
 											</div>
 											<hr>
@@ -426,7 +544,8 @@
 													<p class="mb-0">New Password</p>
 												</div>
 												<div class="col-sm-9">
-													<input type="password" class="form-control-plaintext inp" style=" text-align: center;" name="passwordNew" value="">				
+													<input type="password" class="form-control-plaintext inp"
+														style="text-align: center;" name="passwordNew" value="">
 												</div>
 											</div>
 										</div>
@@ -435,9 +554,12 @@
 
 
 								<div class="d-flex justify-content-center mb-2">
-									<button type="button" class="btn btn-primary" name="Edit">Update profil</button>
+									<input type="submit" class="btn btn-primary" name="Submit" value="Update Profil"/>
+									
 									<button type="button" class="btn btn-outline-primary ms-1"
-										name="Logout"> <a href="<%= request.getContextPath() %>/logout">Logout</a> </button>
+										name="Logout">
+										<a href="<%=request.getContextPath()%>/logout">Logout</a>
+									</button>
 								</div>
 						</div>
 						</form>
@@ -475,15 +597,15 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/chart/chart.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/chart/chart.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/easing/easing.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/easing/easing.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
 	<script
 		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
 	<script
@@ -491,6 +613,13 @@
 
 	<!-- Template Javascript -->
 	<script src="<%= request.getContextPath() %>/assets/Doctor/js/main.js"></script>
+	<script type="text/javascript">
+    	var status = document.getElementById("status").value;
+    	if(status=="success"){
+    		swal("Congrats","Your profil is updated successfully","success");
+    	}
+        }
+    </script>
 </body>
 
 </html>
