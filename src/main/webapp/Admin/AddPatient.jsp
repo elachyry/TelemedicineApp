@@ -200,7 +200,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addPatient");
+			window.location.replace("/telemedicine/addPatient");
 		});
 	</script>
 	<%
@@ -213,7 +213,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addPatient");
+			window.location.replace("/telemedicine/addPatient");
 		});
 	</script>
 	<%
@@ -226,7 +226,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addPatient");
+			window.location.replace("/telemedicine/addPatient");
 		});
 	</script>
 	<%
@@ -239,7 +239,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addPatient");
+			window.location.replace("/telemedicine/addPatient");
 		});
 	</script>
 	<%
@@ -252,7 +252,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/addPatient");
+			window.location.replace("/telemedicine/addPatient");
 		});
 	</script>
 	<%

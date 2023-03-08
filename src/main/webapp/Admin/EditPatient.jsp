@@ -240,7 +240,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/editPatient");
+			window.location.replace("/telemedicine/editPatient");
 		});
 	</script>
 	<%
@@ -253,7 +253,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/editPatient");
+			window.location.replace("/telemedicine/editPatient");
 		});
 	</script>
 	<%
@@ -266,7 +266,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/editPatient");
+			window.location.replace("/telemedicine/editPatient");
 		});
 	</script>
 	<%
@@ -279,7 +279,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/editPatient");
+			window.location.replace("/telemedicine/editPatient");
 		});
 	</script>
 	<%
