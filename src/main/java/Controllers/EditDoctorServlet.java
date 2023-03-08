@@ -4,15 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
+import jakarta.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.MultipartConfig;
 import DAO.DoctorDao;
 import Models.Doctor;
 import Models.Tools;
@@ -20,7 +15,7 @@ import Models.Tools;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 10MB
 		maxRequestSize = 1024 * 1024 * 50)
-@WebServlet(urlPatterns = "/editDoctor")
+
 public class EditDoctorServlet extends HttpServlet {
 	public static final String UPLOAD_DIR = "images";
 	public String dbFileName = "";

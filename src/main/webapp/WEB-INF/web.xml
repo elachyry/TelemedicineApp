@@ -68,7 +68,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AddDoctorServlet</servlet-name>
-    <url-pattern>/AddDoctorServlet</url-pattern>
+    <url-pattern>/addDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -78,7 +78,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminDashboardServlet</servlet-name>
-    <url-pattern>/AdminDashboardServlet</url-pattern>
+    <url-pattern>/adminDashboard</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -88,7 +88,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminLoginServlet</servlet-name>
-    <url-pattern>/AdminLoginServlet</url-pattern>
+    <url-pattern>/AdminLogin</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -98,7 +98,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AllDoctorsServlet</servlet-name>
-    <url-pattern>/AllDoctorsServlet</url-pattern>
+    <url-pattern>/AllDoctors</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>
@@ -117,7 +117,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowAllInfosServlet</servlet-name>
-    <url-pattern>/ShowAllInfosServlet</url-pattern>
+    <url-pattern>/DoctorInfos</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -127,7 +127,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SoftDeleteServlet</servlet-name>
-    <url-pattern>/SoftDeleteServlet</url-pattern>
+    <url-pattern>/DoctorSoftDelete</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -147,7 +147,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>TrashDoctorServlet</servlet-name>
-    <url-pattern>/TrashDoctorServlet</url-pattern>
+    <url-pattern>/TrachDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -157,7 +157,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>RestoreDoctorServlet</servlet-name>
-    <url-pattern>/RestoreDoctorServlet</url-pattern>
+    <url-pattern>/RestorDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -167,7 +167,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DoctorHardDeleteServlet</servlet-name>
-    <url-pattern>/DoctorHardDeleteServlet</url-pattern>
+    <url-pattern>/DoctorHardDelete</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -177,7 +177,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EditDoctorServlet</servlet-name>
-    <url-pattern>/EditDoctorServlet</url-pattern>
+    <url-pattern>/editDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -187,7 +187,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>resetPasswordDoctorServlet</servlet-name>
-    <url-pattern>/resetPasswordDoctorServlet</url-pattern>
+    <url-pattern>/resetPasswordDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -197,7 +197,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ExportDoctorsServlet</servlet-name>
-    <url-pattern>/ExportDoctorsServlet</url-pattern>
+    <url-pattern>/ExportDoctors</url-pattern>
   </servlet-mapping> 
    
   
