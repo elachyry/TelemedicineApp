@@ -121,12 +121,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SoftDeleteServlet</display-name>
-    <servlet-name>SoftDeleteServlet</servlet-name>
-    <servlet-class>Controllers.SoftDeleteServlet</servlet-class>
+    <display-name>DoctorSoftDeleteServlet</display-name>
+    <servlet-name>DoctorSoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.DoctorSoftDeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SoftDeleteServlet</servlet-name>
+    <servlet-name>DoctorSoftDeleteServlet</servlet-name>
     <url-pattern>/DoctorSoftDelete</url-pattern>
   </servlet-mapping>
   <servlet>
