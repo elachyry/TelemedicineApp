@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 
 import Models.DataBaseConnection;
+import Models.Tools;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,7 +42,7 @@ public class Login extends HttpServlet {
 			  	if(profil.equals("doctor")) {
 			  		  statement = connection.prepareStatement("SELECT * FROM `doctor` WHERE Username = ? AND Password = ?");
 					  statement.setString(1,username);
-					  statement.setString(2,password );
+					  statement.setString(2,Tools.encryptPassword(password) );
 					  ResultSet rs = statement.executeQuery();
 					  if(rs.next()) {
 						  session.setAttribute("Id", rs.getInt("id"));
@@ -53,8 +54,8 @@ public class Login extends HttpServlet {
 						  session.setAttribute("Phone", rs.getString("Number_Phone"));
 						  session.setAttribute("Speciality", rs.getString("Speciality"));
 						  session.setAttribute("Adress", rs.getString("Address"));
-						  session.setAttribute("Image", rs.getString("Image"));
-						  session.setAttribute("Password", rs.getString("Password"));
+						  session.setAttribute("Image", rs.getString("Image_Path"));
+						  session.setAttribute("Password", Tools.decryptPassword(rs.getString("Password")));
 						  session.setAttribute("WorkingDays", rs.getString("Work_Days"));
 						  session.setAttribute("WorkingHours", rs.getString("Work_Hours"));
 						  
