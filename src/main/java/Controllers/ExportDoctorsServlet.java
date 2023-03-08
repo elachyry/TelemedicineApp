@@ -13,9 +13,9 @@ public class ExportDoctorsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		try {
 //			if(DoctorDao.export(response, "NULL")) {
-//				response.sendRedirect("/telemedicneApp/AllDoctors?status=successExport");
+//				response.sendRedirect("/telemedicine/AllDoctors?status=successExport");
 //			}else {
-//				response.sendRedirect("/telemedicneApp/AllDoctors?status=failed");
+//				response.sendRedirect("/telemedicine/AllDoctors?status=failed");
 //			}
 //		} catch (ClassNotFoundException e) {
 //			e.printStackTrace();
