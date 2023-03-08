@@ -184,7 +184,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/TrachDoctor");
+			window.location.replace("/telemedicine/TrachDoctor");
 		});
 	</script>
 	<%
@@ -197,7 +197,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/TrachDoctor");
+			window.location.replace("/telemedicine/TrachDoctor");
 		});
 	</script>
 	<%
@@ -210,7 +210,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/TrachDoctor");
+			window.location.replace("/telemedicine/TrachDoctor");
 		});
 	</script>
 	<%

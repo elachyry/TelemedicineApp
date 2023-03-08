@@ -11,9 +11,9 @@ public class DoctorHardDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		if(DoctorDao.hardDelete(id)) {
-			response.sendRedirect("/telemedicneApp/TrachDoctor?status=failed");
+			response.sendRedirect("/telemedicine/TrachDoctor?status=failed");
 		}else {
-			response.sendRedirect("/telemedicneApp/TrachDoctor?status=success");
+			response.sendRedirect("/telemedicine/TrachDoctor?status=success");
 		}
 		
 	}

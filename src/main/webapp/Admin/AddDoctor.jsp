@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>MediVist</title>
+<title>MediVist - Add Doctor</title>
 <!-- plugins:css -->
 <link rel="stylesheet"
 	href="assets/Admin/vendors/mdi/css/materialdesignicons.min.css">
@@ -99,7 +99,7 @@
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															placeholder="dd/mm/yyyy" name="BirthDay" />
+															placeholder="dd/mm/yyyy" name="BirthDay" required/>
 													</div>
 												</div>
 											</div>
@@ -424,7 +424,7 @@
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have added a doctor successfully!",
+			text : "You have added the doctor successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {

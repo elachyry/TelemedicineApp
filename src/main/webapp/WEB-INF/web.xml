@@ -111,22 +111,22 @@
   </servlet>
   <servlet>
     <description></description>
-    <display-name>ShowAllInfosServlet</display-name>
-    <servlet-name>ShowAllInfosServlet</servlet-name>
-    <servlet-class>Controllers.ShowAllInfosServlet</servlet-class>
+    <display-name>DoctorShowAllInfosServlet</display-name>
+    <servlet-name>DoctorShowAllInfosServlet</servlet-name>
+    <servlet-class>Controllers.DoctorShowAllInfosServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowAllInfosServlet</servlet-name>
+    <servlet-name>DoctorShowAllInfosServlet</servlet-name>
     <url-pattern>/DoctorInfos</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SoftDeleteServlet</display-name>
-    <servlet-name>SoftDeleteServlet</servlet-name>
-    <servlet-class>Controllers.SoftDeleteServlet</servlet-class>
+    <display-name>DoctorSoftDeleteServlet</display-name>
+    <servlet-name>DoctorSoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.DoctorSoftDeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SoftDeleteServlet</servlet-name>
+    <servlet-name>DoctorSoftDeleteServlet</servlet-name>
     <url-pattern>/DoctorSoftDelete</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -181,12 +181,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>resetPasswordDoctorServlet</display-name>
-    <servlet-name>resetPasswordDoctorServlet</servlet-name>
-    <servlet-class>Controllers.resetPasswordDoctorServlet</servlet-class>
+    <display-name>ResetPasswordDoctorServlet</display-name>
+    <servlet-name>ResetPasswordDoctorServlet</servlet-name>
+    <servlet-class>Controllers.ResetPasswordDoctorServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>resetPasswordDoctorServlet</servlet-name>
+    <servlet-name>ResetPasswordDoctorServlet</servlet-name>
     <url-pattern>/resetPasswordDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
