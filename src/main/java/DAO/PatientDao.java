@@ -13,7 +13,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import jakarta.servlet.http.*;
 
 import Models.DataBaseConnection;
-import Models.Doctor;
 import Models.Patient;
 import Models.Tools;
 

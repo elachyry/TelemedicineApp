@@ -16,6 +16,10 @@ import Models.Tools;
 		maxRequestSize = 1024 * 1024 * 50)
 public class AddDoctorServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String UPLOAD_DIR = "images";
 	public String dbFileName = "";
 

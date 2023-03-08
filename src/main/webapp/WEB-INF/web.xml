@@ -307,7 +307,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AllAppointmentsServlet</servlet-name>
-    <url-pattern>/AllAppointmentsServlet</url-pattern>
+    <url-pattern>/AllAppointments</url-pattern>
   </servlet-mapping>
    
   
