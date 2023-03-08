@@ -44,8 +44,8 @@ public class Login extends HttpServlet {
 					  statement.setString(2,password );
 					  ResultSet rs = statement.executeQuery();
 					  if(rs.next()) {
+						  session.setAttribute("Id", rs.getInt("id"));
 						  session.setAttribute("fullname", rs.getString("First_Name")+' '+rs.getString("Last_Name"));
-						  session.setAttribute("username", username);
 						  session.setAttribute("username", username);
 						  session.setAttribute("FisrtName", rs.getString("First_Name"));
 						  session.setAttribute("LastName", rs.getString("Last_Name"));
@@ -55,6 +55,10 @@ public class Login extends HttpServlet {
 						  session.setAttribute("Adress", rs.getString("Address"));
 						  session.setAttribute("Image", rs.getString("Image"));
 						  session.setAttribute("Password", rs.getString("Password"));
+						  session.setAttribute("WorkingDays", rs.getString("Work_Days"));
+						  session.setAttribute("WorkingHours", rs.getString("Work_Hours"));
+						  
+
 
 						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Doctor/index.jsp");
 					  }else {
@@ -63,6 +67,8 @@ public class Login extends HttpServlet {
 					  }
 					  }
 					  dispatcher.forward(request, response);
+					  
+					  
 			  	
 					  connection.close();
 			  } catch (ClassNotFoundException e) {
