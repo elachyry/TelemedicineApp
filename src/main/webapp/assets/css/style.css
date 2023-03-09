@@ -1782,3 +1782,11 @@ body {
     color: #fff;
     text-decoration: none;
   }
+  
+    @media (max-width: 418px) {
+    .doctor-img{
+    width:100px;
+    }
+  }
+  
+  
