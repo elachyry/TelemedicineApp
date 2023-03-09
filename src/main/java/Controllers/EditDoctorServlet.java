@@ -99,9 +99,9 @@ public class EditDoctorServlet extends HttpServlet {
 					specialty, workingDays, workingHours);
 
 			if (DoctorDao.updateDoctor(doctor, id) == 1) {
-				response.sendRedirect("/telemedicneApp/AllDoctors?status=successUpdate");
+				response.sendRedirect("/telemedicine/AllDoctors?status=successUpdate");
 			} else {
-				response.sendRedirect("/telemedicneApp/editDoctor?status=failed");
+				response.sendRedirect("/telemedicine/editDoctor?status=failed");
 			}
 		}
 

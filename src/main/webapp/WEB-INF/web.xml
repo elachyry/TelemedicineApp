@@ -111,22 +111,22 @@
   </servlet>
   <servlet>
     <description></description>
-    <display-name>ShowAllInfosServlet</display-name>
-    <servlet-name>ShowAllInfosServlet</servlet-name>
-    <servlet-class>Controllers.ShowAllInfosServlet</servlet-class>
+    <display-name>DoctorShowAllInfosServlet</display-name>
+    <servlet-name>DoctorShowAllInfosServlet</servlet-name>
+    <servlet-class>Controllers.DoctorShowAllInfosServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowAllInfosServlet</servlet-name>
+    <servlet-name>DoctorShowAllInfosServlet</servlet-name>
     <url-pattern>/DoctorInfos</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SoftDeleteServlet</display-name>
-    <servlet-name>SoftDeleteServlet</servlet-name>
-    <servlet-class>Controllers.SoftDeleteServlet</servlet-class>
+    <display-name>DoctorSoftDeleteServlet</display-name>
+    <servlet-name>DoctorSoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.DoctorSoftDeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SoftDeleteServlet</servlet-name>
+    <servlet-name>DoctorSoftDeleteServlet</servlet-name>
     <url-pattern>/DoctorSoftDelete</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -181,12 +181,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>resetPasswordDoctorServlet</display-name>
-    <servlet-name>resetPasswordDoctorServlet</servlet-name>
-    <servlet-class>Controllers.resetPasswordDoctorServlet</servlet-class>
+    <display-name>ResetPasswordDoctorServlet</display-name>
+    <servlet-name>ResetPasswordDoctorServlet</servlet-name>
+    <servlet-class>Controllers.ResetPasswordDoctorServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>resetPasswordDoctorServlet</servlet-name>
+    <servlet-name>ResetPasswordDoctorServlet</servlet-name>
     <url-pattern>/resetPasswordDoctor</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -199,6 +199,116 @@
     <servlet-name>ExportDoctorsServlet</servlet-name>
     <url-pattern>/ExportDoctors</url-pattern>
   </servlet-mapping> 
+  <servlet>
+    <description></description>
+    <display-name>AddPatientServlet</display-name>
+    <servlet-name>AddPatientServlet</servlet-name>
+    <servlet-class>Controllers.AddPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPatientServlet</servlet-name>
+    <url-pattern>/addPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllPatientsServlet</display-name>
+    <servlet-name>AllPatientsServlet</servlet-name>
+    <servlet-class>Controllers.AllPatientsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllPatientsServlet</servlet-name>
+    <url-pattern>/AllPatients</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PatientShowAllInfosServlet</display-name>
+    <servlet-name>PatientShowAllInfosServlet</servlet-name>
+    <servlet-class>Controllers.PatientShowAllInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientShowAllInfosServlet</servlet-name>
+    <url-pattern>/PatientInfos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditPatientServlet</display-name>
+    <servlet-name>EditPatientServlet</servlet-name>
+    <servlet-class>Controllers.EditPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditPatientServlet</servlet-name>
+    <url-pattern>/editPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportPatientsServlet</display-name>
+    <servlet-name>ExportPatientsServlet</servlet-name>
+    <servlet-class>Controllers.ExportPatientsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportPatientsServlet</servlet-name>
+    <url-pattern>/ExportPatients</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetPasswordPatientServlet</display-name>
+    <servlet-name>ResetPasswordPatientServlet</servlet-name>
+    <servlet-class>Controllers.ResetPasswordPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetPasswordPatientServlet</servlet-name>
+    <url-pattern>/resetPasswordPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PatientSoftDeleteServlet</display-name>
+    <servlet-name>PatientSoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.PatientSoftDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientSoftDeleteServlet</servlet-name>
+    <url-pattern>/PatientSoftDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrashPatientServlet</display-name>
+    <servlet-name>TrashPatientServlet</servlet-name>
+    <servlet-class>Controllers.TrashPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrashPatientServlet</servlet-name>
+    <url-pattern>/TrachPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RestorePatient</display-name>
+    <servlet-name>RestorePatient</servlet-name>
+    <servlet-class>Controllers.RestorePatient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestorePatient</servlet-name>
+    <url-pattern>/RestorPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PatientHardDeleteServlet</display-name>
+    <servlet-name>PatientHardDeleteServlet</servlet-name>
+    <servlet-class>Controllers.PatientHardDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientHardDeleteServlet</servlet-name>
+    <url-pattern>/PatientHardDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllAppointmentsServlet</display-name>
+    <servlet-name>AllAppointmentsServlet</servlet-name>
+    <servlet-class>Controllers.AllAppointmentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllAppointmentsServlet</servlet-name>
+    <url-pattern>/AllAppointments</url-pattern>
+  </servlet-mapping>
    
   
 

@@ -4,18 +4,21 @@ import java.io.IOException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 
-import DAO.DoctorDao;
+import DAO.PatientDao;
 
-public class ExportDoctorsServlet extends HttpServlet {
+
+public class ExportPatientsServlet extends HttpServlet {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		try {
 //			if(DoctorDao.export(response, "NULL")) {
-//				response.sendRedirect("/telemedicine/AllDoctors?status=successExport");
+//				response.sendRedirect("/telemedicneApp/AllDoctors?status=successExport");
 //			}else {
-//				response.sendRedirect("/telemedicine/AllDoctors?status=failed");
+//				response.sendRedirect("/telemedicneApp/AllDoctors?status=failed");
 //			}
 //		} catch (ClassNotFoundException e) {
 //			e.printStackTrace();
@@ -24,7 +27,7 @@ public class ExportDoctorsServlet extends HttpServlet {
 //		}
 		
 		try {
-			DoctorDao.export(response, "NULL");
+			PatientDao.export(response, "NULL");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

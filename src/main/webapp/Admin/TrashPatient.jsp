@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@page import="DAO.DoctorDao"%>
-<%@page import="Models.Doctor"%>
+    pageEncoding="UTF-8"%>
+<%@page import="DAO.PatientDao"%>
+<%@page import="Models.Patient"%>
 <%@page import="java.sql.ResultSet"%>
 
 <!DOCTYPE html>
@@ -41,11 +40,11 @@
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="page-header">
-						<h3 class="page-title">All Doctors</h3>
+						<h3 class="page-title">Trash</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item active" aria-current="page">Show
-									All Doctors</li>
+								<li class="breadcrumb-item"><a href="AllPatients">All Patients</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Trash</li>
 							</ol>
 						</nav>
 					</div>
@@ -54,21 +53,7 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<div class="jumbotron">
-										<div class="container">
-											<div class="row">
-												<div class="col-lg-6 ">
-													<a href="addDoctor" class="btn btn-primary"><i
-														class="mdi mdi-account-plus" style="margin-right: 10px;"></i>Add
-														Doctor</a> <a href="ExportDoctors" class="btn btn-success"><i
-														class="mdi mdi-file-excel" style="margin-right: 10px;"></i>Export</a>
-												</div>
-												<div class="col-lg-2"></div>
-												
-											</div>
-										</div>
-										<hr class="my-4">
-									</div>
+
 
 									<table class="table table-striped">
 										<thead>
@@ -77,15 +62,15 @@
 												<th>Full Name</th>
 												<th>Email</th>
 												<th>Phone Number</th>
-												<th>Speciality</th>
-												<th>Work Days</th>
+												<th>Social Account</th>
+												<th>Sex</th>
 												<th></th>
 											</tr>
 
 										</thead>
 										<tbody>
 											<%
-											ResultSet rs = DoctorDao.getAllDoctors("NULL");
+											ResultSet rs = PatientDao.getAllPatients("NOT NULL");
 											if (rs != null && rs.next() == true) {
 												do {
 											%>
@@ -95,14 +80,15 @@
 												<td><%=rs.getString(3) + " " + rs.getString(4)%></td>
 												<td><%=rs.getString(6)%></td>
 												<td><%=rs.getString(7)%></td>
-												<td><%=rs.getString(10)%></td>
-												<td><%=rs.getString(11)%></td>
+												<td><%=rs.getString(9)%></td>
+												<td><%=rs.getString(8)%></td>
 												<td class="px-4 py-3" style="text-align: center">
 													<div class="flex items-center space-x-4 text-sm">
-
-														<a href="DoctorInfos?id=<%=rs.getString(1)%>"
+														
+														<a href="PatientInfos?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-															aria-label="Show"> <svg
+															aria-label="Show"> 
+															<svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
 																height="16" fill="currentColor" class="w-5 h-5"
 																viewBox="0 0 20 20">
@@ -111,31 +97,24 @@
                                         						<path
 																	d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                     						</svg>
-														</a> <a href="editDoctor?id=<%=rs.getString(1)%>"
+														</a>
+														<a href="RestorPatient?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-															aria-label="edit"> <svg
+															aria-label="restor"> 
+															<svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="black" class="w-5 h-5"
+																height="16" fill="green" class="w-5 h-5"
 																viewBox="0 0 20 20">
                                         						<path
-																	d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"> </path>
+																	d="M3.24,7.51c-0.146,0.142-0.146,0.381,0,0.523l5.199,5.193c0.234,0.238,0.633,0.064,0.633-0.262v-2.634c0.105-0.007,0.212-0.011,0.321-0.011c2.373,0,4.302,1.91,4.302,4.258c0,0.957-0.33,1.809-1.008,2.602c-0.259,0.307,0.084,0.762,0.451,0.572c2.336-1.195,3.73-3.408,3.73-5.924c0-3.741-3.103-6.783-6.916-6.783c-0.307,0-0.615,0.028-0.881,0.063V2.575c0-0.327-0.398-0.5-0.633-0.261L3.24,7.51 M4.027,7.771l4.301-4.3v2.073c0,0.232,0.21,0.409,0.441,0.366c0.298-0.056,0.746-0.123,1.184-0.123c3.402,0,6.172,2.709,6.172,6.041c0,1.695-0.718,3.24-1.979,4.352c0.193-0.51,0.293-1.045,0.293-1.602c0-2.76-2.266-5-5.046-5c-0.256,0-0.528,0.018-0.747,0.05C8.465,9.653,8.328,9.81,8.328,9.995v2.074L4.027,7.771z" />
                                     						</svg>
-														</a> <a href="resetPasswordDoctor?id=<%=rs.getString(1)%>"
+														</a>
+														<a href="PatientHardDelete?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-															aria-label="reset"> <svg
+															aria-label="Delete for ever"> 
+															<svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="green" class="bi bi-arrow-repeat"
-																viewBox="0 0 16 16">
-  																	<path
-																	d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-  																	<path fill-rule="evenodd"
-																	d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
-																				</svg>
-														</a> <a href="DoctorSoftDelete?id=<%=rs.getString(1)%>"
-															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-															aria-label="delete"> <svg
-																xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="orange" class="w-5 h-5"
+																height="16" fill="red" class="w-5 h-5"
 																viewBox="0 0 20 20">
                                         						<path
 																	d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"> </path>
@@ -161,14 +140,6 @@
 							</div>
 						</div>
 					</div>
-					<table border="0">
-						<tr>
-
-						</tr>
-						<tr>
-							<td><div id="result"></div></td>
-						</tr>
-					</table>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->
@@ -196,7 +167,7 @@
 	<!-- Custom js for this page -->
 	<script src="assets/Admin/js/dashboard.js"></script>
 	<script src="assets/Admin/js/todolist.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<%
 	String status = "";
 	if (request.getParameter("status") != null) {
@@ -204,33 +175,33 @@
 	}
 	System.out.println(request.getParameter("test"));
 	System.out.println(status);
-	if (status.equals("successSoftDelete")) {
+	if (status.equals("success")) {
 	%>
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have moved the doctor to the trash successfully!",
+			text : "You have deleted the patient successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicine/TrachPatient");
 		});
 	</script>
 	<%
-	} else if (status.equals("successUpdate")) {
+	}else if(status.equals("successRestore")){
 	%>
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have updated the doctor successfully!",
+			text : "You have restored the patient successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicine/TrachPatient");
 		});
 	</script>
 	<%
-	} else if (status.equals("failed")) {
+	}else if(status.equals("failed")){
 	%>
 	<script>
 		swal({
@@ -239,27 +210,12 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
-		});
-	</script>
-	<%
-	} else if (status.equals("successResetPassword")) {
-	%>
-	<script>
-		swal({
-			title : "Success!",
-			text : "Username and Password have been updated successfully!",
-			icon : "success",
-			button : "Okay!",
-		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicine/TrachPatient");
 		});
 	</script>
 	<%
 	}
 	%>
-
-
 
 
 	<!-- End custom js for this page -->

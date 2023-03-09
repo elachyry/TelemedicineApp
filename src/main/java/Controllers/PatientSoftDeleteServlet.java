@@ -5,21 +5,16 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 
 import DAO.DoctorDao;
+import DAO.PatientDao;
 
 
-public class DoctorSoftDeleteServlet extends HttpServlet {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class PatientSoftDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		if(DoctorDao.softDelete(id) == 1) {
-			response.sendRedirect("/telemedicine/AllDoctors?status=successSoftDelete");
+		if(PatientDao.softDelete(id) == 1) {
+			response.sendRedirect("/telemedicine/AllPatients?status=successSoftDelete");
 		}else {
-			response.sendRedirect("/telemedicine/AllDoctors?status=failed");
+			response.sendRedirect("/telemedicine/AllPatients?status=failed");
 		}
 		
 	}

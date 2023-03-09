@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@page import="DAO.AppointmentDao"%>
 <%@page import="DAO.DoctorDao"%>
-<%@page import="Models.Doctor"%>
+<%@page import="DAO.PatientDao"%>
+<%@page import="Models.Appointment"%>
 <%@page import="java.sql.ResultSet"%>
 
 <!DOCTYPE html>
@@ -41,11 +43,11 @@
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="page-header">
-						<h3 class="page-title">All Doctors</h3>
+						<h3 class="page-title">All Appointments</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item active" aria-current="page">Show
-									All Doctors</li>
+									All Appointments</li>
 							</ol>
 						</nav>
 					</div>
@@ -58,9 +60,9 @@
 										<div class="container">
 											<div class="row">
 												<div class="col-lg-6 ">
-													<a href="addDoctor" class="btn btn-primary"><i
+													<a href="addPatient" class="btn btn-primary"><i
 														class="mdi mdi-account-plus" style="margin-right: 10px;"></i>Add
-														Doctor</a> <a href="ExportDoctors" class="btn btn-success"><i
+														Appointment</a> <a href="ExportPatients" class="btn btn-success"><i
 														class="mdi mdi-file-excel" style="margin-right: 10px;"></i>Export</a>
 												</div>
 												<div class="col-lg-2"></div>
@@ -73,34 +75,39 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th></th>
-												<th>Full Name</th>
-												<th>Email</th>
-												<th>Phone Number</th>
+												<th>#</th>
+												<th>Patient</th>
+												<th>Doctor</th>
 												<th>Speciality</th>
-												<th>Work Days</th>
+												<th>Date</th>
+												<th>Status</th>
 												<th></th>
 											</tr>
 
 										</thead>
 										<tbody>
 											<%
-											ResultSet rs = DoctorDao.getAllDoctors("NULL");
+											ResultSet rs = AppointmentDao.getAllAppointments("NULL");
+											ResultSet rs2 =null;
+											ResultSet rs3 =null;
 											if (rs != null && rs.next() == true) {
 												do {
+													rs2 = PatientDao.getPatient(rs.getInt(3));
+													rs2.next();
+													rs3 = DoctorDao.getDoctor(rs.getInt(4));
+													rs3.next();
 											%>
 											<tr>
-												<td class="py-1"><img src="<%=rs.getString(2)%>"
-													alt="image" /></td>
-												<td><%=rs.getString(3) + " " + rs.getString(4)%></td>
-												<td><%=rs.getString(6)%></td>
-												<td><%=rs.getString(7)%></td>
-												<td><%=rs.getString(10)%></td>
-												<td><%=rs.getString(11)%></td>
+												<td class="py-1"><%=rs.getString(1)%></td>
+												<td><%=rs2.getString(3) + " " + rs2.getString(4)%></td>
+												<td><%=rs3.getString(3) + " " + rs3.getString(4)%></td>
+												<td><%=rs3.getString(10)%></td>
+												<td><%=rs.getString(2)%></td>
+												<td><%=rs.getString(5)%></td>
 												<td class="px-4 py-3" style="text-align: center">
 													<div class="flex items-center space-x-4 text-sm">
 
-														<a href="DoctorInfos?id=<%=rs.getString(1)%>"
+														<a href="AppointmentInfos?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 															aria-label="Show"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
@@ -111,7 +118,7 @@
                                         						<path
 																	d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                     						</svg>
-														</a> <a href="editDoctor?id=<%=rs.getString(1)%>"
+														</a> <a href="editAppointment?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 															aria-label="edit"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
@@ -120,7 +127,7 @@
                                         						<path
 																	d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"> </path>
                                     						</svg>
-														</a> <a href="resetPasswordDoctor?id=<%=rs.getString(1)%>"
+														</a> <a href="resetPasswordPatient?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 															aria-label="reset"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
@@ -131,7 +138,7 @@
   																	<path fill-rule="evenodd"
 																	d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
 																				</svg>
-														</a> <a href="DoctorSoftDelete?id=<%=rs.getString(1)%>"
+														</a> <a href="AppointmentSoftDelete?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 															aria-label="delete"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
@@ -209,11 +216,11 @@
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have moved the doctor to the trash successfully!",
+			text : "You have moved the patient to the trash successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicneApp/AllPatients");
 		});
 	</script>
 	<%
@@ -222,11 +229,11 @@
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have updated the doctor successfully!",
+			text : "You have updated the patient successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicneApp/AllPatients");
 		});
 	</script>
 	<%
@@ -239,7 +246,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicneApp/AllPatients");
 		});
 	</script>
 	<%
@@ -252,7 +259,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AllDoctors");
+			window.location.replace("/telemedicneApp/AllPatients");
 		});
 	</script>
 	<%

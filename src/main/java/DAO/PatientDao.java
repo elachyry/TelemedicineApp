@@ -1,100 +1,81 @@
 package DAO;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import jakarta.servlet.http.*;
-
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import jakarta.servlet.http.*;
+
 import Models.DataBaseConnection;
-import Models.Doctor;
+import Models.Patient;
 import Models.Tools;
 
-public class DoctorDao {
-
-	public static int addDoctor(Doctor doctor) {
+public class PatientDao {
+	
+	public static int addPatient(Patient patient) {
 		int status = 0;
 		try {
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con.prepareStatement(
-					"INSERT INTO `doctor`(`Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, "
-							+ "`Number_Phone`, `Sex`, `Address`, `Speciality`, `Work_Days`, `Work_Hours`, `Username`, `Password`) "
-							+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			String workingDays = "";
-			String workingHours = "";
-			for (String s : doctor.getWorkingDays()) {
-				workingDays += s + "-";
-			}
-			for (String s : doctor.getWorkingHours()) {
-				workingHours += s + "-";
-			}
+					"INSERT INTO `patient`(`Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, "
+							+ "`Number_Phone`, `Sex`, `Social_Account`, `Address`, `Username`, `Password`) "
+							+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			
 			String username = "";
 			String password = Tools.generatePassword(10);
 			boolean exist;
 			do {
-				username = doctor.getLastName() + Tools.generateNumber(5);
-				exist = Tools.checkField("doctor", "Username", username);
+				username = patient.getLastName() + Tools.generateNumber(5);
+				exist = Tools.checkField("patient", "Username", username);
 			} while (exist == true);
 			System.out.println(exist);
 			System.out.println(username);
-			ps.setString(1, doctor.getImagePath());
-			ps.setString(2, doctor.getFirstName());
-			ps.setString(3, doctor.getLastName());
-			ps.setString(4, doctor.getBirthDay());
-			ps.setString(5, doctor.getEmail());
-			ps.setString(6, doctor.getPhoneNumber());
-			ps.setString(7, doctor.getSex());
-			ps.setString(8, doctor.getAddress());
-			ps.setString(9, doctor.getSpecialty());
-			ps.setString(10, workingDays);
-			ps.setString(11, workingHours);
-			ps.setString(12, username);
-			ps.setString(13, Tools.encryptPassword(password));
+			ps.setString(1, patient.getImagePath());
+			ps.setString(2, patient.getFirstName());
+			ps.setString(3, patient.getLastName());
+			ps.setString(4, patient.getBirthDay());
+			ps.setString(5, patient.getEmail());
+			ps.setString(6, patient.getPhoneNumber());
+			ps.setString(7, patient.getSex());
+			ps.setString(8, patient.getSocialAccount());
+			ps.setString(9, patient.getAddress());
+			ps.setString(10, username);
+			ps.setString(11, Tools.encryptPassword(password));
 			status = ps.executeUpdate();
 			ps.close();
 			con.close();
-			Tools.sendEmail( doctor.getEmail(), doctor.getLastName(), doctor.getFirstName(), username, password, "New Account");
+			Tools.sendEmail( patient.getEmail(), patient.getLastName(), patient.getFirstName(), username, password, "New Account Patient");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return status;
 	}
-
-	public static int updateDoctor(Doctor doctor, int id) {
+	
+	public static int updatePatient(Patient patient, int id) {
 		int status = 0;
 		try {
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con.prepareStatement(
-					"UPDATE `doctor` SET `Image_Path`=?,`First_Name`=?,`Last_Name`=?,`BirthDay`=?,`Email`=?,`Number_Phone`=?,"
-					+ "`Sex`=?,`Address`=?,`Speciality`=?,`Work_Days`=?,`Work_Hours`=? WHERE id = ?");
-			String workingDays = "";
-			String workingHours = "";
-			for (String s : doctor.getWorkingDays()) {
-				workingDays += s + "-";
-			}
-			for (String s : doctor.getWorkingHours()) {
-				workingHours += s + "-";
-			}
+					"UPDATE `patient` SET `Image_Path`=?,`First_Name`=?,`Last_Name`=?,`BirthDay`=?,`Email`=?,`Number_Phone`=?,"
+					+ "`Sex`=?,`Social_Account`=?,`Address`=? WHERE id = ?");
+
 			
-			ps.setString(1, doctor.getImagePath());
-			ps.setString(2, doctor.getFirstName());
-			ps.setString(3, doctor.getLastName());
-			ps.setString(4, doctor.getBirthDay());
-			ps.setString(5, doctor.getEmail());
-			ps.setString(6, doctor.getPhoneNumber());
-			ps.setString(7, doctor.getSex());
-			ps.setString(8, doctor.getAddress());
-			ps.setString(9, doctor.getSpecialty());
-			ps.setString(10, workingDays);
-			ps.setString(11, workingHours);
-			ps.setInt(12, id);
+			ps.setString(1, patient.getImagePath());
+			ps.setString(2, patient.getFirstName());
+			ps.setString(3, patient.getLastName());
+			ps.setString(4, patient.getBirthDay());
+			ps.setString(5, patient.getEmail());
+			ps.setString(6, patient.getPhoneNumber());
+			ps.setString(7, patient.getSex());
+			ps.setString(8, patient.getSocialAccount());
+			ps.setString(9, patient.getAddress());
+			ps.setInt(10, id);
 			status = ps.executeUpdate();
 			ps.close();
 			con.close();
@@ -103,11 +84,11 @@ public class DoctorDao {
 		}
 		return status;
 	}
-
-	public static ResultSet getAllDoctors(String type) {
+	
+	public static ResultSet getAllPatients(String type) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `doctor` WHERE `deleted_at`IS " + type);
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM `patient` WHERE `deleted_at`IS " + type);
 			ResultSet resultSet = ps.executeQuery();
 			return resultSet;
 		} catch (Exception e) {
@@ -117,10 +98,10 @@ public class DoctorDao {
 
 	}
 
-	public static ResultSet getDoctor(int id) {
+	public static ResultSet getPatient(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `doctor` WHERE id = ?");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM `patient` WHERE id = ?");
 			ps.setInt(1, id);
 			ResultSet resultSet = ps.executeQuery();
 			return resultSet;
@@ -132,11 +113,11 @@ public class DoctorDao {
 
 	public static int softDelete(int id) {
 		try {
-			ResultSet rs = getDoctor(id);
+			ResultSet rs = getPatient(id);
 			rs.next();
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con
-					.prepareStatement("UPDATE `doctor` SET `deleted_at`= CURRENT_TIMESTAMP Where id = ?");
+					.prepareStatement("UPDATE `patient` SET `deleted_at`= CURRENT_TIMESTAMP Where id = ?");
 			ps.setInt(1, id);
 			Tools.sendEmail( rs.getString(6), rs.getString(4), rs.getString(3), "", "", "Delete Account");
 			return ps.executeUpdate();
@@ -149,17 +130,17 @@ public class DoctorDao {
 	
 	public static int restePassword(int id) {
 		try {
-			ResultSet rs = getDoctor(id);
+			ResultSet rs = getPatient(id);
 			rs.next();
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con
-					.prepareStatement("UPDATE `doctor` SET username = ? , `password`= ? Where id = ?");
+					.prepareStatement("UPDATE `patient` SET username = ? , `password`= ? Where id = ?");
 			String username = "";
 			String password = Tools.generatePassword(10);
 			boolean exist;
 			do {
 				username = rs.getString(4) + Tools.generateNumber(5);
-				exist = Tools.checkField("doctor", "Username", username);
+				exist = Tools.checkField("patient", "Username", username);
 			} while (exist == true);
 			ps.setString(1, username);
 			ps.setString(2, Tools.encryptPassword(password));
@@ -176,7 +157,7 @@ public class DoctorDao {
 	public static boolean hardDelete(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM `doctor` WHERE id = ?");
+			PreparedStatement ps = con.prepareStatement("DELETE FROM `patient` WHERE id = ?");
 			ps.setInt(1, id);
 			return ps.execute();
 
@@ -189,7 +170,7 @@ public class DoctorDao {
 	public static int restore(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("UPDATE `doctor` SET `deleted_at`= null Where id = ?");
+			PreparedStatement ps = con.prepareStatement("UPDATE `patient` SET `deleted_at`= null Where id = ?");
 			ps.setInt(1, id);
 			return ps.executeUpdate();
 
@@ -202,11 +183,11 @@ public class DoctorDao {
 	public static boolean export(HttpServletResponse response, String type) throws ClassNotFoundException, IOException {
         try {
         	Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `doctor` WHERE `deleted_at`IS " + type);
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM `patient` WHERE `deleted_at`IS " + type);
 			ResultSet resultSet = ps.executeQuery();
 
             XSSFWorkbook XFWB = new XSSFWorkbook();
-            XSSFSheet XFSheet = XFWB.createSheet("Doctors List");
+            XSSFSheet XFSheet = XFWB.createSheet("Patients List");
             XSSFRow HeaderRow = XFSheet.createRow(0);
             HeaderRow.createCell(0).setCellValue("Id");
             HeaderRow.createCell(1).setCellValue("First Name");
@@ -216,10 +197,8 @@ public class DoctorDao {
             HeaderRow.createCell(5).setCellValue("Phone Number");
             HeaderRow.createCell(6).setCellValue("Sex");
             HeaderRow.createCell(7).setCellValue("Address");
-            HeaderRow.createCell(8).setCellValue("Speciality");
-            HeaderRow.createCell(9).setCellValue("Working Days");
-            HeaderRow.createCell(10).setCellValue("Working Hours");
-            HeaderRow.createCell(11).setCellValue("Username");
+            HeaderRow.createCell(8).setCellValue("Social Account");
+            HeaderRow.createCell(9).setCellValue("Username");
 
 
             int RowNum = 1;
@@ -232,11 +211,10 @@ public class DoctorDao {
                 Row.createCell(4).setCellValue(resultSet.getString(6));
                 Row.createCell(5).setCellValue(resultSet.getString(7));
                 Row.createCell(6).setCellValue(resultSet.getString(8));
-                Row.createCell(7).setCellValue(resultSet.getString(9));
-                Row.createCell(8).setCellValue(resultSet.getString(10));
+                Row.createCell(7).setCellValue(resultSet.getString(10));
+                Row.createCell(8).setCellValue(resultSet.getString(9));
                 Row.createCell(9).setCellValue(resultSet.getString(11));
-                Row.createCell(10).setCellValue(resultSet.getString(12));
-                Row.createCell(11).setCellValue(resultSet.getString(13));
+
                 RowNum++;
             }
             response.setContentType( "application/vnd.ms-excel" );
@@ -252,18 +230,5 @@ public class DoctorDao {
             return false;
         }
     }
-	
-	public static ResultSet search(String value) {
-		try {
-			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `doctor` WHERE `First_Name` like ?% OR `Last_Name` like ?% OR `Speciality` like ?% ORDER BY `Last_Name`");
-			ResultSet resultSet = ps.executeQuery();
-			return resultSet;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-
-	}
 
 }

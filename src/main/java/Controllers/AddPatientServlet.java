@@ -7,25 +7,22 @@ import java.sql.SQLException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.MultipartConfig;
-import DAO.DoctorDao;
-import Models.Doctor;
+import DAO.PatientDao;
+import Models.Patient;
 import Models.Tools;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-		maxFileSize = 1024 * 1024 * 10, // 10MB
-		maxRequestSize = 1024 * 1024 * 50)
-public class AddDoctorServlet extends HttpServlet {
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50)
+public class AddPatientServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public static final String UPLOAD_DIR = "images";
 	public String dbFileName = "";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/Admin/AddDoctor.jsp").forward(request, response);
+		request.getRequestDispatcher("/Admin/AddPatient.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,9 +35,8 @@ public class AddDoctorServlet extends HttpServlet {
 			String address = request.getParameter("address");
 			String phoneNumber = request.getParameter("phoneNumber");
 			String BirthDay = request.getParameter("BirthDay");
-			String specialty = request.getParameter("specialty");
-			String workingDays[] = request.getParameterValues("workingDays");
-			String workingHours[] = request.getParameterValues("workingHours");
+			String socialAccount = request.getParameter("socialAccount");
+			
 
 			Part part = request.getPart("image");//
 			String fileName = extractFileName(part);// file name
@@ -70,13 +66,13 @@ public class AddDoctorServlet extends HttpServlet {
 			part.write(savePath + File.separator);
 
 			try {
-				System.out.println(Tools.checkField("doctor", "Email", email));
-				if (Tools.checkField("doctor", "Email", email)) {
-					response.sendRedirect("/telemedicine/addDoctor?status=emailExist");
+				System.out.println(Tools.checkField("patient", "Email", email));
+				if (Tools.checkField("patient", "Email", email)) {
+					response.sendRedirect("/telemedicine/addPatient?status=emailExist");
 					request.setAttribute("test", "test");
 					return;
-				} else if (Tools.checkField("doctor", "Number_Phone", phoneNumber)) {
-					response.sendRedirect("/telemedicine/addDoctor?status=phoneExist");
+				} else if (Tools.checkField("patient", "Number_Phone", phoneNumber)) {
+					response.sendRedirect("/telemedicine/addPatient?status=phoneExist");
 					return;
 				}
 			} catch (ClassNotFoundException e) {
@@ -90,13 +86,13 @@ public class AddDoctorServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			Doctor doctor = new Doctor(savePath, firstName, lastName, email, sex, address, phoneNumber, BirthDay,
-					specialty, workingDays, workingHours);
+			Patient patient = new Patient(savePath, firstName, lastName, email, sex, address, phoneNumber, BirthDay,
+					socialAccount);
 
-			if (DoctorDao.addDoctor(doctor) == 1) {
-				response.sendRedirect("/telemedicine/addDoctor?status=success");
+			if (PatientDao.addPatient(patient) == 1) {
+				response.sendRedirect("/telemedicneApp/addPatient?status=success");
 			} else {
-				response.sendRedirect("/telemedicine/addDoctor?status=failed");
+				response.sendRedirect("/telemedicneApp/addPatient?status=failed");
 			}
 		}
 
