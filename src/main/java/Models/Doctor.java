@@ -1,7 +1,13 @@
 package Models;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import com.mysql.cj.jdbc.Blob;
+
 public class Doctor {
 	
+	private String imagePath;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -12,14 +18,19 @@ public class Doctor {
 	private String specialty;
 	private String workingDays[];
 	private String workingHours[];
+	private ArrayList<Patient> patients = new ArrayList<Patient>();
 	
 	public Doctor() {
 		
 	}
 	
-	public Doctor(String firstName, String lastName, String email, String sex, String address, String phoneNumber,
-			String birthDay, String specialty, String[] workingDays, String[] workingHours) {
+	
+
+
+	public Doctor(String imagePath, String firstName, String lastName, String email, String sex, String address,
+			String phoneNumber, String birthDay, String specialty, String[] workingDays, String[] workingHours) {
 		super();
+		this.imagePath = imagePath;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -31,6 +42,11 @@ public class Doctor {
 		this.workingDays = workingDays;
 		this.workingHours = workingHours;
 	}
+	
+	
+
+
+
 
 	public String getFirstName() {
 		return firstName;
@@ -111,11 +127,22 @@ public class Doctor {
 	public void setWorkingHours(String[] workingHours) {
 		this.workingHours = workingHours;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+
+
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+
 	
 
 }

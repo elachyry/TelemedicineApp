@@ -2,307 +2,624 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>MEDIVISIT</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+<meta charset="utf-8">
+<title>MEDIVISIT</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-  <!-- Favicon -->
-  <link href="../assets/Doctor/img/flavicon.png" rel="icon">
+<!-- Favicon -->
+<link
+	href="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
+	rel="icon">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
 
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Icon Font Stylesheet -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet">
 
-  <!-- Libraries Stylesheet -->
-  <link href="../assets/Doctor/lib/owlcarousel/../assets/Doctor/owl.carousel.min.css" rel="stylesheet">
-  <link href="../assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+<!-- Libraries Stylesheet -->
+<link
+	href="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/../assets/Doctor/owl.carousel.min.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	rel="stylesheet" />
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="../assets/Doctor/css/bootstrap.min.css" rel="stylesheet">
+<!-- Customized Bootstrap Stylesheet -->
+<link
+	href="<%=request.getContextPath()%>/assets/Doctor/css/bootstrap.min.css"
+	rel="stylesheet">
 
-  <!-- Template Stylesheet -->
-  <link href="../assets/Doctor/css/style.css" rel="stylesheet">
+<!-- Template Stylesheet -->
+<link href="<%=request.getContextPath()%>/assets/Doctor/css/style.css"
+	rel="stylesheet">
 </head>
 
 <body>
-  <div class="container-xxl position-relative bg-white d-flex p-0">
-    <!-- Spinner Start -->
-    <div id="spinner"
-      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-    <!-- Spinner End -->
+	<input type="hidden" id="status" value="<%= request.getAttribute("status") %>" />
+
+	<div class="container-xxl position-relative bg-white d-flex p-0">
+		<!-- Spinner Start -->
+		<div id="spinner"
+			class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+			<div class="spinner-border text-primary"
+				style="width: 3rem; height: 3rem;" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div>
+		<!-- Spinner End -->
 
 
-    <!-- Sidebar Start -->
-    <div class="sidebar pe-4 pb-3">
-      <nav class="navbar bg-light navbar-light">
+		<!-- Sidebar Start -->
+		<div class="sidebar pe-4 pb-3">
+			<nav class="navbar bg-light navbar-light">
 
-        <a href="index.jsp" class="navbar-brand mx-4 mb-3">
-          <h3 class="text-primary"><img src="../assets/Doctor/img/3.png" alt="" style="height: 60px;">MEDIVISIT</h3>
-        </a>
-        <div class="d-flex align-items-center ms-4 mb-4">
-          <div class="position-relative">
-            <img class="rounded-circle" src="../assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
-            <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
-            </div>
-          </div>
-          <div class="ms-3">
-            <h6 class="mb-0">Fatima FRIST</h6>
-            <span>DOCTOR</span>
-          </div>
-        </div>
+				<a href="index.jsp" class="navbar-brand mx-4 mb-3">
+					<h3 class="text-primary">
+						<img src="<%=request.getContextPath()%>/assets/Doctor/img/3.png"
+							alt="" style="height: 60px;">MEDIVISIT
+					</h3>
+				</a>
+				<div class="d-flex align-items-center ms-4 mb-4">
+					<div class="position-relative">
+						<img class="rounded-circle"
+							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							alt="" style="width: 40px; height: 40px;">
+						<div
+							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+						</div>
+					</div>
+					<div class="ms-3">
+						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
+						<span>DOCTOR</span>
+					</div>
+				</div>
 
-        <div class="navbar-nav w-100">
-          <a href="index.html" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-
-          <a href="appointment.jsp" class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
-          <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2"
-              aria-hidden="true"></i>Patients</a>
-          <a href="messages.jsp" class="nav-item nav-link"><i class="fa fa-envelope me-2"
-              aria-hidden="true"></i>Messages</a>
-          <a href="profil.jsp" class="nav-item nav-link active"><i class="fa fa-user-md me-2"
-              aria-hidden="true"></i>Profil</a>
-
-
-        </div>
-      </nav>
-    </div>
-    <!-- Sidebar End -->
-
-
-    <!-- Content Start -->
-    <div class="content">
-      <!-- Navbar Start -->
-      <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-        <a href="index.jsp" class="navbar-brand d-flex d-lg-none me-4">
-          <h2 class="text-primary mb-0"><img src="../assets/Doctor/img/flavicon.png" alt="" style="height: 30px;"></h2>
-      </a>
-        <a href="#" class="sidebar-toggler flex-shrink-0">
-          <i class="fa fa-bars"></i>
-        </a>
-
-        <div class="navbar-nav align-items-center ms-auto">
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="fa fa-envelope me-lg-2"></i>
-              <span class="d-none d-lg-inline-flex">Message</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="../assets/Doctor/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="../assets/Doctor/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="../assets/Doctor/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item text-center">See all message</a>
-            </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="fa fa-bell me-lg-2"></i>
-              <span class="d-none d-lg-inline-flex">Appointments</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Profile updated</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">New user added</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Password changed</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item text-center">See all notifications</a>
-            </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <img class="rounded-circle me-lg-2" src="../assets/Doctor/img/testimonial-1.jpg" alt=""
-                style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex">Fatima FRIST</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">My Profile</a>
-              <a href="#" class="dropdown-item">Settings</a>
-              <a href="#" class="dropdown-item">Log Out</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <!-- Navbar End -->
+				<div class="navbar-nav w-100">
+					<a href="<%=request.getContextPath()%>/Doctor/index.jsp"
+						class="nav-item nav-link "><i
+						class="fa fa-tachometer-alt me-2"></i>Dashboard</a> <a
+						href="<%=request.getContextPath()%>/Doctor/appointment.jsp"
+						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
+					<a href="<%=request.getContextPath()%>/Doctor/patients.jsp"
+						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
+						aria-hidden="true"></i>Patients</a> <a
+						href="<%=request.getContextPath()%>/Doctor/messages.jsp"
+						class="nav-item nav-link"><i class="fa fa-envelope me-2"
+						aria-hidden="true"></i>Messages</a> <a
+						href="<%=request.getContextPath()%>/Doctor/profil.jsp"
+						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
+						aria-hidden="true"></i>Profil</a>
 
 
-      <!-- Table Start -->
-
-      <div class="container">
-        <div class="row" style="margin-top: 30px; height: auto;">
-          <div class="col-lg-12">
-            <div class="card mb-4">
-              <div class="card-body text-center">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                  class="rounded-circle img-fluid" style="width: 150px;">
-                <h5 class="my-3" name="dctname">John Smith</h5>
-                <p class="text-muted mb-1">Doctor</p>
-                <p class="text-muted mb-4" name="specialty">Cardiology</p>
-
-              </div>
-
-              <div class="col-lg-8" style="margin-left:190px;">
-                <div class="card mb-4" style="border: 100px;">
-                  <div class="card-body text-center">
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0">Full Name</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="dctname">Johnatan Smith</p>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0" >Email</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="email">example@example.com</p>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0" >Phone</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="phone">(097) 234-5678</p>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0" >Mobile</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="mobile">(098) 765-4321</p>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0">Address</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="address">Bay Area, San Francisco, CA</p>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0">Password</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="pass">**************</p>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0">New Password</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" name="newpass">**************</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary" name="Edit">Edit Profil</button>
-                <button type="button" class="btn btn-outline-primary ms-1" name="Logout">Logout</button>
-              </div>
-            </div>
+				</div>
+			</nav>
+		</div>
+		<!-- Sidebar End -->
 
 
-          </div>
+		<!-- Content Start -->
+		<div class="content">
+			<!-- Navbar Start -->
+			<nav
+				class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+				<a href="index.jsp" class="navbar-brand d-flex d-lg-none me-4">
+					<h2 class="text-primary mb-0">
+						<img
+							src="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
+							alt="" style="height: 30px;">
+					</h2>
+				</a> <a href="#" class="sidebar-toggler flex-shrink-0"> <i
+					class="fa fa-bars"></i>
+				</a>
+
+				<div class="navbar-nav align-items-center ms-auto">
 
 
-        </div>
-      </div>
-      <!-- Table End -->
+					<div class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle"
+							data-bs-toggle="dropdown"> <img
+							class="rounded-circle me-lg-2"
+							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							alt="" style="width: 40px; height: 40px;"> <span
+							class="d-none d-lg-inline-flex"><%=session.getAttribute("fullname")%></span>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+							<a href="<%=request.getContextPath()%>/Doctor/profil.jsp"
+								class="dropdown-item">My Profile</a> <a
+								href="<%=request.getContextPath()%>/logout"
+								class="dropdown-item">Log Out</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- Navbar End -->
 
 
-      <!-- Footer Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-light rounded-top p-4">
-          <div class="row">
-            <div class="col-12 col-sm-6 text-center text-sm-start">
-              &copy; <a href="#">MEDIVISIT</a>, All Right Reserved.
-            </div>
+			<!-- Table Start -->
 
-          </div>
-        </div>
-      </div>
-      <!-- Footer End -->
-    </div>
-    <!-- Content End -->
+			<div class="container">
+				<div class="row" style="margin-top: 30px; height: auto;">
+					<div class="col-lg-12">
+						<div class="card mb-4">
+							<div class="card-body text-center">
+								<img
+									src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+									alt="avatar" class="rounded-circle img-fluid"
+									style="width: 150px;">
+								<h5 class="my-3" name="dctname"><%=session.getAttribute("fullname")%></h5>
+								<p class="text-muted mb-1">Doctor</p>
+								<p class="text-muted mb-4" name="specialty"><%=session.getAttribute("Speciality")%></p>
+
+							</div>
+							<form action="<%=request.getContextPath()%>/updateDoctor" method="post">
+								<div class="col-lg-8" style="margin-left: 190px;">
+									<div class="card mb-4" style="border: 100px;">
+										<div class="card-body text-center">
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Full Name</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="FullName"
+														value="<%=session.getAttribute("fullname")%>">
+												</div>
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Email</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="email"
+														value="<%=session.getAttribute("Email")%>">
+												</div>
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Phone</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="phone"
+														value="<%=session.getAttribute("Phone")%>">
+												</div>
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Address</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="address"
+														value="<%=session.getAttribute("Adress")%>">
+												</div>
+											</div>
+											<hr>
+											<%
+											
+											String workD = (String)session.getAttribute("WorkingDays");
+											
+											Boolean Monday = false;
+											Boolean Tuesday = false;
+											Boolean Wednesday = false;
+											Boolean Thursday = false;
+											Boolean Friday = false;
+											Boolean Saturday = false;
+											String[] arrOfStr = workD.split("-");
+											for (String s : arrOfStr) {
+												System.out.println(s);
+												if (s.equals("Monday")) {
+													Monday = true;
+												}
+												if (s.equals("Tuesday")) {
+													Tuesday = true;
+												}
+												if (s.equals("Wednesday")) {
+													Wednesday = true;
+												}
+												if (s.equals("Thursday")) {
+													Thursday = true;
+												}
+												if (s.equals("Friday")) {
+													Friday = true;
+												}
+												if (s.equals("Saturday")) {
+													Saturday = true;
+												}
+
+											}
+											%>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Working Days</p>
+												</div>
+												<div class="col-sm-9">
+													<div class="row">
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingDays" value="Monday"
+																		<%=(Monday == true ? "checked" : "")%>> Monday
+																	</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingDays" value="Tuesday"
+																		<%=(Tuesday == true ? "checked" : "")%>>
+																		Tuesday
+																	</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-4">
+															<div class="form-group">
+
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingDays" value="Wednesday"
+																		<%=(Wednesday == true ? "checked" : "")%>>
+																		Wednesday
+																	</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-4">
+															<div class="form-group">
+																<div class="form-check form-check-info"
+																	style="margin-left: 7px;">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingDays" value="Thursday"
+																		<%=(Thursday == true ? "checked" : "")%>>
+																		Thursday
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="form-group">
+																<div class="form-check form-check-info"
+																	style="margin-left: -18px;">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingDays" value="Friday"
+																		<%=(Friday == true ? "checked" : "")%>> Friday
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="form-group">
+																<div class="form-check form-check-info"
+																	style="margin-left: -18px;">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingdays" value="Saturday"
+																		<%=(Saturday == true ? "checked" : "")%>>
+																		Saturday
+																	</label>
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<hr>
+											<%
+											
+											String workH = (String)session.getAttribute("WorkingHours");
+											
+										Boolean val8 = false;
+										Boolean val9 = false;
+										Boolean val10 = false;
+										Boolean val11 = false;
+										Boolean val12 = false;
+										Boolean val13 = false;
+										Boolean val14 = false;
+										Boolean val15 = false;
+										Boolean val16 = false;
+										Boolean val17 = false;
+										Boolean val18 = false;
+										Boolean val19 = false;
+										String[] arrOfStr2 = workH.split("-");
+										for (String s : arrOfStr2) {
+											System.out.println(s);
+											if (s.equals("8")) {
+												val8 = true;
+											}
+											if (s.equals("9")) {
+												val9 = true;
+											}
+											if (s.equals("10")) {
+												val10 = true;
+											}
+											if (s.equals("11")) {
+												val11 = true;
+											}
+											if (s.equals("12")) {
+												val12 = true;
+											}
+											if (s.equals("13")) {
+												val13 = true;
+											}
+											if (s.equals("14")) {
+												val14 = true;
+											}
+											if (s.equals("15")) {
+												val15 = true;
+											}
+											if (s.equals("16")) {
+												val16 = true;
+											}
+											if (s.equals("17")) {
+												val17 = true;
+											}
+											if (s.equals("18")) {
+												val18 = true;
+											}
+											if (s.equals("19")) {
+												val19 = true;
+											}
+
+										}
+										%>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Working Hours</p>
+												</div>
+												<div class="col-sm-9">
+													<div class="row">
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="8" <%=(val8 == true ? "checked" : "")%>> 8
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+
+															<div class="form-group">
+
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="9" <%=(val9 == true ? "checked" : "")%>> 9
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+
+															<div class="form-group">
+
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="10" <%=(val10 == true ? "checked" : "")%>> 10
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="11" <%=(val11 == true ? "checked" : "")%>> 11
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="12" <%=(val12 == true ? "checked" : "")%>> 12
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="13" <%=(val13 == true ? "checked" : "")%>> 13
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="14"  <%=(val14 == true ? "checked" : "")%>> 14
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="15" <%=(val15 == true ? "checked" : "")%>> 15
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="16" <%=(val16 == true ? "checked" : "")%>> 16
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="17" <%=(val17 == true ? "checked" : "")%>> 17
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="18" <%=(val18 == true ? "checked" : "")%>> 18
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<div class="form-group">
+																<div class="form-check form-check-info">
+																	<label class="form-check-label"> <input
+																		type="checkbox" class="form-check-input"
+																		name="workingHours" value="19" <%=(val19 == true ? "checked" : "")%>> 19
+																	</label>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<hr>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Old Password</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="password" class="form-control-plaintext inp"
+														style="text-align: center;" name="password"
+														value="<%=session.getAttribute("Password")%>">
+												</div>
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">New Password</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="password" class="form-control-plaintext inp"
+														style="text-align: center;" name="passwordNew" value="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-  </div>
+								<div class="d-flex justify-content-center mb-2">
+									<input type="submit" class="btn btn-primary" name="Submit" value="Update Profil"/>
+									
+									<button type="button" class="btn btn-outline-primary ms-1"
+										name="Logout">
+										<a href="<%=request.getContextPath()%>/logout">Logout</a>
+									</button>
+								</div>
+						</div>
+						</form>
+					</div>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/Doctor/lib/chart/chart.min.js"></script>
-  <script src="../assets/Doctor/lib/easing/easing.min.js"></script>
-  <script src="../assets/Doctor/lib/waypoints/waypoints.min.js"></script>
-  <script src="../assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="../assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
-  <script src="../assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
-  <script src="../assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-  <!-- Template Javascript -->
-  <script src="../assets/Doctor/js/main.js"></script>
+				</div>
+			</div>
+			<!-- Table End -->
+
+
+			<!-- Footer Start -->
+			<div class="container-fluid pt-4 px-4">
+				<div class="bg-light rounded-top p-4">
+					<div class="row">
+						<div class="col-12 col-sm-6 text-center text-sm-start">
+							&copy; <a href="#">MEDIVISIT</a>, All Right Reserved.
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- Footer End -->
+		</div>
+		<!-- Content End -->
+
+
+		<!-- Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+			class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/chart/chart.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/easing/easing.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
+	<script
+		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script
+		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Template Javascript -->
+	<script src="<%= request.getContextPath() %>/assets/Doctor/js/main.js"></script>
+	<script type="text/javascript">
+    	var status = document.getElementById("status").value;
+    	if(status=="success"){
+    		swal("Congrats","Your profil is updated successfully","success");
+    	}
+        }
+    </script>
 </body>
 
 </html>

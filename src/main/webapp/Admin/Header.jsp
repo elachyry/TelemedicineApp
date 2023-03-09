@@ -188,9 +188,9 @@
               </a>
               <div class="collapse" id="ui-appointments">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="appointment">All Appointments</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Add</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Trash</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AllAppointments">All Appointments</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="addAppointment">Add</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="TrachAppointment">Trash</a></li>
                 </ul>
               </div>
             </li>
@@ -202,9 +202,9 @@
               </a>
               <div class="collapse" id="ui-doctors">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">All Doctors</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AllDoctors">All Doctors</a></li>
                   <li class="nav-item"> <a class="nav-link" href="addDoctor">Add</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Trash</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="TrachDoctor">Trash</a></li>
                 </ul>
               </div>
             </li>
@@ -216,9 +216,9 @@
               </a>
               <div class="collapse" id="ui-patients">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">All Patients</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Add</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Trash</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AllPatients">All Patients</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="addPatient">Add</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="TrachPatient">Trash</a></li>
                 </ul>
               </div>
             </li>
