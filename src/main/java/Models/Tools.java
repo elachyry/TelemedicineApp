@@ -117,7 +117,7 @@ public class Tools {
             properties.put("mail.smtp.port", "587");
 
             final String myEmail = "medivisit.app@gmail.com";
-            final String myPassword = "moebohtqtxutppgr";
+            final String myPassword = "osegqsfgudphncta";
 
 
             Session session = Session.getInstance(properties, new Authenticator() {
