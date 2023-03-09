@@ -10,6 +10,7 @@
 		<java.version>19</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
 		<dependency>
@@ -53,9 +54,13 @@
 			<version>4.1.2</version>
 		</dependency>
 	</dependencies>
+
 	<build>
+
 		<pluginManagement>
+
 			<plugins>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
@@ -79,7 +84,10 @@
 						<path>/</path>
 					</configuration>
 				</plugin>
+
 			</plugins>
+
 		</pluginManagement>
+
 	</build>
 </project>

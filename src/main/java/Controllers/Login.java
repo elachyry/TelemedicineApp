@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		Connection connection = null;
 		PreparedStatement statement = null;
-		HttpSession session =(HttpSession) request.getSession();
+		
 		RequestDispatcher dispatcher = null;
 		
 			try {
@@ -45,6 +45,7 @@ public class Login extends HttpServlet {
 					  statement.setString(2,Tools.encryptPassword(password) );
 					  ResultSet rs = statement.executeQuery();
 					  if(rs.next()) {
+						  HttpSession session =(HttpSession) request.getSession();
 						  session.setAttribute("Id", rs.getInt("id"));
 						  session.setAttribute("fullname", rs.getString("First_Name")+' '+rs.getString("Last_Name"));
 						  session.setAttribute("username", username);
@@ -66,6 +67,27 @@ public class Login extends HttpServlet {
 						  request.setAttribute("status", "failed");
 						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Login/DoctorLogin.jsp");
 					  }
+					  }else if(profil.equals("patient")) {
+						  statement = connection.prepareStatement("SELECT * FROM `patient` WHERE Username = ? AND Password = ?");
+						  statement.setString(1,username);
+						  statement.setString(2,Tools.encryptPassword(password)  );
+						  ResultSet rs = statement.executeQuery();
+						  if(rs.next()) {
+							  HttpSession session =(HttpSession) request.getSession();
+							  session.setAttribute("Id", rs.getInt("id"));
+							  session.setAttribute("fullname", rs.getString("First_Name")+' '+rs.getString("Last_Name"));
+							  session.setAttribute("username", username);
+							  session.setAttribute("FisrtName", rs.getString("First_Name"));
+							  session.setAttribute("LastName", rs.getString("Last_Name"));
+							  session.setAttribute("Email", rs.getString("Email"));
+							  session.setAttribute("Phone", rs.getString("Number_Phone"));
+							  session.setAttribute("BirthDay", rs.getString("BirthDay"));
+							  session.setAttribute("Adress", rs.getString("Address"));
+							  session.setAttribute("Sex", rs.getString("Sex"));
+							  session.setAttribute("Password", Tools.decryptPassword(rs.getString("Password")));
+							  session.setAttribute("Social_Account", rs.getString("Social_Account"));
+						  }
+						  
 					  }
 					  dispatcher.forward(request, response);
 					  
