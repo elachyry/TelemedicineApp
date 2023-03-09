@@ -4,11 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-	<!-- <error-page> -->
-	<!-- <location>/Admin/Error404.jsp</location> -->
-	<!-- </error-page> -->
- 
-  
   <servlet>
     <description></description>
     <display-name>PatientRegister</display-name>
@@ -59,8 +54,7 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  
- <servlet>
+  <servlet>
     <description></description>
     <display-name>AddDoctorServlet</display-name>
     <servlet-name>AddDoctorServlet</servlet-name>
@@ -198,7 +192,7 @@
   <servlet-mapping>
     <servlet-name>ExportDoctorsServlet</servlet-name>
     <url-pattern>/ExportDoctors</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>AddPatientServlet</display-name>
@@ -309,9 +303,6 @@
     <servlet-name>AllAppointmentsServlet</servlet-name>
     <url-pattern>/AllAppointments</url-pattern>
   </servlet-mapping>
-   
-  
-
   <servlet>
     <description></description>
     <display-name>UpdateDoctor</display-name>
@@ -321,5 +312,15 @@
   <servlet-mapping>
     <servlet-name>UpdateDoctor</servlet-name>
     <url-pattern>/updateDoctor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePatient</display-name>
+    <servlet-name>UpdatePatient</servlet-name>
+    <servlet-class>Controllers.UpdatePatient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePatient</servlet-name>
+    <url-pattern>/updatepatient</url-pattern>
   </servlet-mapping>
 </web-app>

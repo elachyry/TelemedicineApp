@@ -24,14 +24,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<%= request.getContextPath() %>/assets/Doctor/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="<%= request.getContextPath() %>/assets/Patient/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/assets/Patient/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<%= request.getContextPath() %>/assets/Doctor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/assets/Patient/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<%= request.getContextPath() %>/assets/Doctor/css/style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/assets/Patient/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,8 +47,32 @@
 
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
-        <!--  get navbar -->
-        <jsp:include page="navBar.jsp" />
+        <!--  get navbar --><nav class="navbar bg-light navbar-light">
+                <a href="index.jsp" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary">MEDIVISIT</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0"><%= session.getAttribute("fullname") %></h6>
+                        <span>DOCTOR</span>
+                    </div>
+                </div>
+                
+                <div class="navbar-nav w-100">
+                    <a href="index.jsp" class="nav-item nav-link active"><i class="fa fa-house me-2"></i>Home</a>
+                   
+                    <a href="appointment.jsp" class="nav-item nav-link"><i class="fa fa-medkit  me-2"></i>Appointments</a>
+                    <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
+                    <a href="messages.jsp" class="nav-item nav-link"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Messages</a>
+                    <a href="<%= request.getContextPath() %>/Patient/profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
+
+                    
+                </div>
+            </nav>
         </div>
         <!-- Sidebar End -->
 
@@ -75,7 +99,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="<%= request.getContextPath() %>/assets/Patient/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <!-- <small>15 minutes ago</small> -->
@@ -85,7 +109,7 @@
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../assets/Doctor/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="../assets/Patient/img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <!-- <small>15 minutes ago</small> -->
@@ -95,7 +119,7 @@
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../assets/Doctor/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="../assets/Patient/img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <!-- <small>15 minutes ago</small> -->
@@ -109,7 +133,7 @@
                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="../assets/Patient/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex">Fatima FRIST</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">

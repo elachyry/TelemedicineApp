@@ -40,8 +40,9 @@
 
 					<div class="signin-form">
 						<h2 class="form-title">Sign In</h2>
-						<form method="post" action="login" class="register-form"
+						<form method="post" action="<%= request.getContextPath() %>/login" class="register-form"
 							id="login-form">
+							<input type="hidden" name="profil" value="patient" >
 							<div class="form-group">
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input

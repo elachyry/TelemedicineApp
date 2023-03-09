@@ -75,7 +75,7 @@
 				</a>
 				<div class="d-flex align-items-center ms-4 mb-4">
 					<div class="position-relative">
-						<img class="rounded-circle"
+						 <img class="rounded-circle"
 							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;">
 						<div
@@ -156,18 +156,22 @@
 				<div class="row" style="margin-top: 30px; height: auto;">
 					<div class="col-lg-12">
 						<div class="card mb-4">
-							<div class="card-body text-center">
-								<img
-									src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							
+							<form action="<%=request.getContextPath()%>/updatepatient" method="post" enctype = "multipart/form-data">
+								<div class="card-body text-center">
+							<label for="file">
+							<img   
+									src="<%=request.getContextPath()%>//assets/Patient/user_images/user.png"
 									alt="avatar" class="rounded-circle img-fluid"
 									style="width: 150px;">
+							  <input type="file" id="file" style="display: none" name="image" accept="image/gif,image/jpeg,image/jpg,image/png" multiple="" data-original-title="upload photos">
+							</label>
+							
 								<h5 class="my-3" name="dctname"><%=session.getAttribute("fullname")%></h5>
-								<p class="text-muted mb-1">Doctor</p>
-								<p class="text-muted mb-4" name="specialty"><%=session.getAttribute("Speciality")%></p>
+								<p class="text-muted mb-1">Patient</p>
 
 							</div>
-							<form action="<%=request.getContextPath()%>/updateDoctor" method="post">
-								<div class="col-lg-8" style="margin-left: 190px;">
+							<div class="col-lg-8" style="margin-left: 190px;">
 									<div class="card mb-4" style="border: 100px;">
 										<div class="card-body text-center">
 											<div class="row">
@@ -214,232 +218,18 @@
 												</div>
 											</div>
 											<hr>
-											
 											<div class="row">
 												<div class="col-sm-3">
-													<p class="mb-0">Working Days</p>
+													<p class="mb-0">BirthDay</p>
 												</div>
 												<div class="col-sm-9">
-													<div class="row">
-
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Monday"
-																		> Monday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Tuesday"
-																	>
-																		Tuesday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="form-group">
-
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Wednesday"
-																		>
-																		Wednesday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info"
-																	style="margin-left: 7px;">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Thursday"
-																		>
-																		Thursday
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info"
-																	style="margin-left: -18px;">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Friday"
-																		> Friday
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info"
-																	style="margin-left: -18px;">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingdays" value="Saturday"
-																		>
-																		Saturday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-													</div>
+													<input type="date" class="form-control-plaintext inp"
+														style="text-align: center;" name="birthday"
+														value="<%=session.getAttribute("BirthDay")%>">
 												</div>
 											</div>
 											<hr>
 											
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Working Hours</p>
-												</div>
-												<div class="col-sm-9">
-													<div class="row">
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="8" > 8
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-
-															<div class="form-group">
-
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="9" > 9
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-
-															<div class="form-group">
-
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="10" > 10
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="11" > 11
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="12" > 12
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="13" > 13
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="14"  > 14
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="15" > 15
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="16" > 16
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="17" > 17
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="18" > 18
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="19" > 19
-																	</label>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<hr>
 											<div class="row">
 												<div class="col-sm-3">
 													<p class="mb-0">Old Password</p>
@@ -504,6 +294,7 @@
 			class="bi bi-arrow-up"></i></a>
 	</div>
 
+					
 	<!-- JavaScript Libraries -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
@@ -530,7 +321,8 @@
     	if(status=="success"){
     		swal("Congrats","Your profil is updated successfully","success");
     	}
-        }
+        
+        
     </script>
 </body>
 

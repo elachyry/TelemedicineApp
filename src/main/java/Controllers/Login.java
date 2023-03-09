@@ -39,6 +39,7 @@ public class Login extends HttpServlet {
 				connection = DataBaseConnection.getConnection();
 			  System.out.println("Database is Connected !");
 			  
+			  
 			  	if(profil.equals("doctor")) {
 			  		  statement = connection.prepareStatement("SELECT * FROM `doctor` WHERE Username = ? AND Password = ?");
 					  statement.setString(1,username);
@@ -70,7 +71,7 @@ public class Login extends HttpServlet {
 					  }else if(profil.equals("patient")) {
 						  statement = connection.prepareStatement("SELECT * FROM `patient` WHERE Username = ? AND Password = ?");
 						  statement.setString(1,username);
-						  statement.setString(2,Tools.encryptPassword(password)  );
+						  statement.setString(2,password);
 						  ResultSet rs = statement.executeQuery();
 						  if(rs.next()) {
 							  HttpSession session =(HttpSession) request.getSession();
@@ -79,17 +80,25 @@ public class Login extends HttpServlet {
 							  session.setAttribute("username", username);
 							  session.setAttribute("FisrtName", rs.getString("First_Name"));
 							  session.setAttribute("LastName", rs.getString("Last_Name"));
+							  session.setAttribute("Image", rs.getString("Image_Path"));
 							  session.setAttribute("Email", rs.getString("Email"));
 							  session.setAttribute("Phone", rs.getString("Number_Phone"));
 							  session.setAttribute("BirthDay", rs.getString("BirthDay"));
 							  session.setAttribute("Adress", rs.getString("Address"));
 							  session.setAttribute("Sex", rs.getString("Sex"));
-							  session.setAttribute("Password", Tools.decryptPassword(rs.getString("Password")));
+							  session.setAttribute("Password", rs.getString("Password"));
 							  session.setAttribute("Social_Account", rs.getString("Social_Account"));
+							  
+							  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Patient/index.jsp");
 						  }
 						  
 					  }
-					  dispatcher.forward(request, response);
+			  			if(dispatcher == null) {
+			  				System.out.println("tzzzz");
+			  			}else {
+			  				dispatcher.forward(request, response);
+			  			}
+					  
 					  
 					  
 			  	
