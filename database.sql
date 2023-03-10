@@ -6,7 +6,7 @@
 -- Generation Time: Mar 10, 2023 at 12:11 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
->>>>>>> master
+=======
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -91,6 +91,15 @@ CREATE TABLE `doctor` (
   `Password` varchar(100) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+=======
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Address`, `Speciality`, `Work_Days`, `Work_Hours`, `Username`, `Password`, `deleted_at`) VALUES
+(8, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-13', 'achyri2ed000@gmail.com', '0680346100', 'Female', 'sadassadsa', 'Urology', 'Monday-Wednesday-Thursday-Friday-Saturday-', '9-11-12-13-16-', 'adam71517', 'mG6s0WIvK8', NULL),
+(10, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-15', 'achyri2000@gmail.com', '0680346100', 'Male', 'sadassadsa', 'Allergy and immunology', 'Monday-Tuesday-', '9-10-', 'adam77072', 'c1c0R1Jrb2ZsWA==', NULL);
 >>>>>>> master
 
 -- --------------------------------------------------------
@@ -114,6 +123,14 @@ CREATE TABLE `patient` (
   `Password` varchar(30) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+=======
+
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Social_Account`, `Address`, `Username`, `Password`, `deleted_at`) VALUES
+(2, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'Mohammed', 'Elachyry', '2023-03-09', 'mohammedelachyry@gmailcom', '0661705486', 'Male', '01478932158', 'hay nahda', 'Elachyry48726', 'dkc1RHp5aExwag==', NULL);
 >>>>>>> master
 
 --

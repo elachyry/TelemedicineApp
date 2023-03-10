@@ -314,28 +314,14 @@
     <url-pattern>/updateDoctor</url-pattern>
   </servlet-mapping>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <servlet>
     <description></description>
-    <display-name>UpdatePatient</display-name>
-    <servlet-name>UpdatePatient</servlet-name>
-    <servlet-class>Controllers.UpdatePatient</servlet-class>
+    <display-name>AddAppointmentSevlet</display-name>
+    <servlet-name>AddAppointmentSevlet</servlet-name>
+    <servlet-class>Controllers.AddAppointmentSevlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdatePatient</servlet-name>
-    <url-pattern>/updatepatient</url-pattern>
+    <servlet-name>AddAppointmentSevlet</servlet-name>
+    <url-pattern>/AddAppointment</url-pattern>
   </servlet-mapping>
 </web-app>
