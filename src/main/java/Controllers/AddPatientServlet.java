@@ -90,9 +90,9 @@ public class AddPatientServlet extends HttpServlet {
 					socialAccount);
 
 			if (PatientDao.addPatient(patient) == 1) {
-				response.sendRedirect("/telemedicneApp/addPatient?status=success");
+				response.sendRedirect("/telemedicine/addPatient?status=success");
 			} else {
-				response.sendRedirect("/telemedicneApp/addPatient?status=failed");
+				response.sendRedirect("/telemedicine/addPatient?status=failed");
 			}
 		}
 

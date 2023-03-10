@@ -22,14 +22,17 @@ public class AppointmentDao {
 		try {
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con.prepareStatement(
-					"INSERT INTO `appointments`(`Date`, `Patient_id`, `Doctor_id`, `Status`) "
-							+ "VALUES (?,?,?,?)");
+					"INSERT INTO `appointments`(`Date`, `Time`, `Patient_id`, `Doctor_id`, `Status`, `amount`, `Link`) "
+							+ "VALUES (?,?,?,?,?,?,?)");
 			
 			
-			ps.setDate(1, appointment.getDate());
-			ps.setInt(2, appointment.getPatientId());
-			ps.setInt(3, appointment.getDoctorId());
-			ps.setString(4, appointment.getStatus());
+			ps.setString(1, appointment.getDate());
+			ps.setString(2, appointment.getTime());
+			ps.setInt(3, appointment.getPatientId());
+			ps.setInt(4, appointment.getDoctorId());
+			ps.setString(5, appointment.getStatus());
+			ps.setDouble(6, appointment.getAmount());
+			ps.setString(7, appointment.getLink());
 			
 			status = ps.executeUpdate();
 			ps.close();
@@ -46,12 +49,15 @@ public class AppointmentDao {
 		try {
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con.prepareStatement(
-					"UPDATE `appointments` SET `Date`=?,`Status`=?,` WHERE id = ?");
+					"UPDATE `appointments` SET `Date`=?, `Time`=?,`Status`=?, `amount`=?, `Link`=? WHERE id = ?");
 
 			
-			ps.setDate(1, appointment.getDate());
-			ps.setString(2, appointment.getStatus());
-			ps.setInt(3, id);
+			ps.setString(1, appointment.getDate());
+			ps.setString(2, appointment.getTime());
+			ps.setString(3, appointment.getStatus());
+			ps.setDouble(4, appointment.getAmount());
+			ps.setString(5, appointment.getLink());
+			ps.setInt(6, id);
 			status = ps.executeUpdate();
 			ps.close();
 			con.close();
@@ -74,7 +80,7 @@ public class AppointmentDao {
 
 	}
 
-	public static ResultSet getPatient(int id) {
+	public static ResultSet getAppointment(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM `appointments` WHERE id = ?");
@@ -89,7 +95,7 @@ public class AppointmentDao {
 
 	public static int softDelete(int id) {
 		try {
-			ResultSet rs = getPatient(id);
+			ResultSet rs = getAppointment(id);
 			rs.next();
 			Connection con = DataBaseConnection.getConnection();
 			PreparedStatement ps = con

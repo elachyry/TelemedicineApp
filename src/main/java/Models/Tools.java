@@ -144,6 +144,10 @@ public class Tools {
                 message.setSubject("Welcom to Medivist");
                 message.setText("Hello Dr." + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou have been added to become a member of the medical staff" + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "\nUsername: " + username + "\n" + "Password: " + password + "\n" + "Noticed: You can change your username and password from your account.");
             }
+            if ("New Account Patient".equals(emailType)) {
+                message.setSubject("Welcom to Medivist");
+                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou account has been created. " + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "\nUsername: " + username + "\n" + "Password: " + password + "\n" + "Noticed: You can change your username and password from your account.");
+            }
             if ("Update Account".equals(emailType)) {
                 message.setSubject("Your username and password has been reset.");
                 message.setText("Hello " + prenom + " " + nom + ", \n\n" + "We reset your login information for you.\n\nYour login information:" + "\nEmail: " + recipient + "\n" + "\nUsername: " + username + "\n" + "Mot de passe: " + password + "\n" + "Noticed: You can change your username and password from your account.");

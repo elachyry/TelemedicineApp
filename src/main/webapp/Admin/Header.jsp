@@ -189,7 +189,7 @@
               <div class="collapse" id="ui-appointments">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="AllAppointments">All Appointments</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="addAppointment">Add</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AddAppointment">Add</a></li>
                   <li class="nav-item"> <a class="nav-link" href="TrachAppointment">Trash</a></li>
                 </ul>
               </div>
