@@ -1,3 +1,4 @@
+<%@page import="Controllers.UpdatePatient"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 
 <!-- Favicon -->
 <link
-	href="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
+	href="<%=request.getContextPath()%>/assets/Patient/img/flavicon.png"
 	rel="icon">
 
 <!-- Google Web Fonts -->
@@ -32,19 +33,19 @@
 
 <!-- Libraries Stylesheet -->
 <link
-	href="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/../assets/Doctor/owl.carousel.min.css"
+	href="<%=request.getContextPath()%>/assets/Patient/lib/owlcarousel/../assets/Patient/owl.carousel.min.css"
 	rel="stylesheet">
 <link
-	href="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	href="<%=request.getContextPath()%>/assets/Patient/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
 	rel="stylesheet" />
 
 <!-- Customized Bootstrap Stylesheet -->
 <link
-	href="<%=request.getContextPath()%>/assets/Doctor/css/bootstrap.min.css"
+	href="<%=request.getContextPath()%>/assets/Patient/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Template Stylesheet -->
-<link href="<%=request.getContextPath()%>/assets/Doctor/css/style.css"
+<link href="<%=request.getContextPath()%>/assets/Patient/css/style.css"
 	rel="stylesheet">
 </head>
 
@@ -69,14 +70,14 @@
 
 				<a href="index.jsp" class="navbar-brand mx-4 mb-3">
 					<h3 class="text-primary">
-						<img src="<%=request.getContextPath()%>/assets/Doctor/img/3.png"
+						<img src="<%=request.getContextPath()%>/assets/Patient/img/3.png"
 							alt="" style="height: 60px;">MEDIVISIT
 					</h3>
 				</a>
 				<div class="d-flex align-items-center ms-4 mb-4">
 					<div class="position-relative">
 						 <img class="rounded-circle"
-							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;">
 						<div
 							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
@@ -84,23 +85,23 @@
 					</div>
 					<div class="ms-3">
 						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
-						<span>DOCTOR</span>
+						<span>PATIENT</span>
 					</div>
 				</div>
 
 				<div class="navbar-nav w-100">
-					<a href="<%=request.getContextPath()%>/Doctor/index.jsp"
+					<a href="<%=request.getContextPath()%>/Patient/index.jsp"
 						class="nav-item nav-link "><i
 						class="fa fa-tachometer-alt me-2"></i>Dashboard</a> <a
-						href="<%=request.getContextPath()%>/Doctor/appointment.jsp"
+						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
 						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
-					<a href="<%=request.getContextPath()%>/Doctor/patients.jsp"
+					<a href="<%=request.getContextPath()%>/Patientr/patients.jsp"
 						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
 						aria-hidden="true"></i>Patients</a> <a
-						href="<%=request.getContextPath()%>/Doctor/messages.jsp"
+						href="<%=request.getContextPath()%>/Patient/messages.jsp"
 						class="nav-item nav-link"><i class="fa fa-envelope me-2"
 						aria-hidden="true"></i>Messages</a> <a
-						href="<%=request.getContextPath()%>/Doctor/profil.jsp"
+						href="<%=request.getContextPath()%>/Patient/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
 
@@ -119,7 +120,7 @@
 				<a href="index.jsp" class="navbar-brand d-flex d-lg-none me-4">
 					<h2 class="text-primary mb-0">
 						<img
-							src="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
+							src="<%=request.getContextPath()%>/assets/Patient/img/flavicon.png"
 							alt="" style="height: 30px;">
 					</h2>
 				</a> <a href="#" class="sidebar-toggler flex-shrink-0"> <i
@@ -133,13 +134,13 @@
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
 							class="rounded-circle me-lg-2"
-							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;"> <span
 							class="d-none d-lg-inline-flex"><%=session.getAttribute("fullname")%></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="<%=request.getContextPath()%>/Doctor/profil.jsp"
+							<a href="<%=request.getContextPath()%>/Patient/profil.jsp"
 								class="dropdown-item">My Profile</a> <a
 								href="<%=request.getContextPath()%>/logout"
 								class="dropdown-item">Log Out</a>
@@ -160,10 +161,16 @@
 							<form action="<%=request.getContextPath()%>/updatepatient" method="post" enctype = "multipart/form-data">
 								<div class="card-body text-center">
 							<label for="file">
-							<img   
-									src="<%=request.getContextPath()%>//assets/Patient/user_images/user.png"
+							<% if(session.getAttribute("Image")==null){ %>
+							<img src="<%=request.getContextPath()%>/assets/Patient/user_images/user.png"
 									alt="avatar" class="rounded-circle img-fluid"
 									style="width: 150px;">
+									<% }else{ 
+									%>
+									<img src="<%=request.getContextPath()%>\<%=session.getAttribute("Image") %>"
+									alt="avatar" class="rounded-circle img-fluid"
+									style="width: 150px;"><% }%>
+									
 							  <input type="file" id="file" style="display: none" name="image" accept="image/gif,image/jpeg,image/jpg,image/png" multiple="" data-original-title="upload photos">
 							</label>
 							
@@ -204,6 +211,17 @@
 													<input type="text" class="form-control-plaintext inp"
 														style="text-align: center;" name="phone"
 														value="<%=session.getAttribute("Phone")%>">
+												</div>
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-sm-3">
+													<p class="mb-0">Social Number</p>
+												</div>
+												<div class="col-sm-9">
+													<input type="text" class="form-control-plaintext inp"
+														style="text-align: center;" name="Social_Account"
+														value="<%=session.getAttribute("Social_Account")%>">
 												</div>
 											</div>
 											<hr>
@@ -300,22 +318,22 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/chart/chart.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Patient/lib/chart/chart.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/easing/easing.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Patient/lib/easing/easing.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Patient/lib/waypoints/waypoints.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Patient/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
+		src="<%=request.getContextPath()%>/assets/Patient/lib/tempusdominus/js/moment.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
+		src="<%= request.getContextPath() %>/assets/Patient/lib/tempusdominus/js/moment-timezone.min.js"></script>
 	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+		src="<%= request.getContextPath() %>/assets/Patient/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 	<!-- Template Javascript -->
-	<script src="<%= request.getContextPath() %>/assets/Doctor/js/main.js"></script>
+	<script src="<%= request.getContextPath() %>/assets/Patient/js/main.js"></script>
 	<script type="text/javascript">
     	var status = document.getElementById("status").value;
     	if(status=="success"){
