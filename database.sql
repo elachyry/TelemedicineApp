@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 02:59 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Mar 10, 2023 at 12:11 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `telemedicine`
 --
-CREATE DATABASE IF NOT EXISTS `telemedicine` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `telemedicine`;
 
 -- --------------------------------------------------------
 
@@ -38,7 +37,7 @@ CREATE TABLE `admin` (
   `Phone_Number` varchar(30) NOT NULL,
   `Username` int(30) NOT NULL,
   `Password` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -49,18 +48,22 @@ CREATE TABLE `admin` (
 CREATE TABLE `appointments` (
   `id` int(10) NOT NULL,
   `Date` varchar(10) NOT NULL,
+  `Time` varchar(30) NOT NULL,
   `Patient_id` int(10) NOT NULL,
   `Doctor_id` int(10) NOT NULL,
   `Status` varchar(10) NOT NULL,
+  `amount` double NOT NULL,
+  `action` varchar(30) NOT NULL,
+  `Link` varchar(30) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `Date`, `Patient_id`, `Doctor_id`, `Status`, `deleted_at`) VALUES
-(1, '2022-03-22', 2, 8, 'Pending', NULL);
+INSERT INTO `appointments` (`id`, `Date`, `Time`, `Patient_id`, `Doctor_id`, `Status`, `amount`, `action`, `Link`, `deleted_at`) VALUES
+(1, '2022-03-22', '', 2, 8, 'Pending', 0, '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,7 @@ CREATE TABLE `doctor` (
   `Username` varchar(30) DEFAULT NULL,
   `Password` varchar(100) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor`
@@ -114,7 +117,7 @@ CREATE TABLE `patient` (
   `Username` varchar(30) DEFAULT NULL,
   `Password` varchar(30) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient`
