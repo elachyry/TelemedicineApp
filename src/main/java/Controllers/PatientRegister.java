@@ -18,10 +18,6 @@ import java.sql.*;
 
 public class PatientRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("HHHH");
-	}
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = null;
@@ -31,7 +27,6 @@ public class PatientRegister extends HttpServlet {
 		String password = request.getParameter("pass");
 		String contact = request.getParameter("contact");
 		
-		System.out.println(username);
 		Connection connection = null;
 				
 		

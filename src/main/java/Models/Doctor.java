@@ -7,6 +7,7 @@ import com.mysql.cj.jdbc.Blob;
 
 public class Doctor {
 	
+	private int id;
 	private String imagePath;
 	private String firstName;
 	private String lastName;
@@ -27,9 +28,10 @@ public class Doctor {
 	
 
 
-	public Doctor(String imagePath, String firstName, String lastName, String email, String sex, String address,
+	public Doctor(int id,String imagePath, String firstName, String lastName, String email, String sex, String address,
 			String phoneNumber, String birthDay, String specialty, String[] workingDays, String[] workingHours) {
 		super();
+		this.id = id;
 		this.imagePath = imagePath;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -44,7 +46,13 @@ public class Doctor {
 	}
 	
 	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
 
 
