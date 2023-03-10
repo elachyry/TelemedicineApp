@@ -1,3 +1,7 @@
+<%@page import="org.apache.poi.util.SystemOutLogger"%>
+<%@page import="Models.Doctor"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Models.HelperClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,6 +36,11 @@
 
     <!-- Template Stylesheet -->
     <link href="<%= request.getContextPath() %>/assets/Patient/css/style.css" rel="stylesheet">
+    
+    
+    <script src="https://kit.fontawesome.com/badbb472a2.js" crossorigin="anonymous"></script>
+    
+    
 </head>
 
 <body>
@@ -53,19 +62,22 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="<%= request.getContextPath() %>/assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0"><%= session.getAttribute("fullname") %></h6>
-                        <span>DOCTOR</span>
-                    </div>
+						 <img class="rounded-circle"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
+							alt="" style="width: 40px; height: 40px;">
+						<div
+							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+						</div>
+					</div>
+					<div class="ms-3">
+						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
+						<span>PATIENT</span>
+					</div>
                 </div>
                 
                 <div class="navbar-nav w-100">
-                    <a href="index.jsp" class="nav-item nav-link active"><i class="fa fa-house me-2"></i>Home</a>
-                   
-                    <a href="appointment.jsp" class="nav-item nav-link"><i class="fa fa-medkit  me-2"></i>Appointments</a>
+                    <a href="index.jsp" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Home</a>
+                    <a href="consultations.jsp" class="nav-item nav-link"><i class="fa fa-commenting" aria-hidden="true"></i>Consultations</a>
                     <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
                     <a href="messages.jsp" class="nav-item nav-link"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Messages</a>
                     <a href="<%= request.getContextPath() %>/Patient/profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
@@ -131,17 +143,22 @@
                         </div>
                     </div>
                   
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../assets/Patient/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Fatima FRIST</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
+                   <div class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle"
+							data-bs-toggle="dropdown"> <img
+							class="rounded-circle me-lg-2"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
+							alt="" style="width: 40px; height: 40px;"> <span
+							class="d-none d-lg-inline-flex"><%=session.getAttribute("fullname")%></span>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+							<a href="<%=request.getContextPath()%>/Patient/profil.jsp"
+								class="dropdown-item">My Profile</a> <a
+								href="<%=request.getContextPath()%>/logout"
+								class="dropdown-item">Log Out</a>
+						</div>
+					</div>
                 </div>
             </nav>
             <!-- Navbar End -->
@@ -152,57 +169,32 @@
             <!-- Appointments Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row">
+                
+                <% 
+        			HelperClass help = new HelperClass();
+            	ArrayList<Doctor> list ;
+            	
+        			list = help.getDoctors();
+        		
+        			for(int i=0;i<list.size();i++){
+        				
+                %>
+                
+                
                     <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
                         <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
 				            <img src="../assets/Doctor/img/testimonial-1.jpg" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px;">
-							<div class="text-center">Naima eljid</div>
+							<div class="text-center"><%=list.get(i).getFirstName()%> <%=list.get(i).getLastName()%></div>
 				            <div class="card-body">
-				                <h5 class="card-title">Psychologist</h5>
-				                <p class="card-text">49 Boulevard de Port-Royal</p>
-				                <p class="">75013 Paris</p>
+				                <h5 class="card-title text-center"><%=list.get(i).getSpecialty()%></h5>
+				                <p class="card-text"><%=list.get(i).getAddress()%></p>
 				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
 				            </div>
 			        	</div>
                     </div>
+                    <%}list.clear();  %>
                     
-                    <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
-                        <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
-				            <img src="../assets/Doctor/img/testimonial-1.jpg" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px;">
-							<div class="text-center">Naima eljid</div>
-				            <div class="card-body">
-				                <h5 class="card-title">Psychologist</h5>
-				                <p class="card-text">49 Boulevard de Port-Royal</p>
-				                <p class="">75013 Paris</p>
-				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
-				            </div>
-			        	</div>
-                    </div>
                     
-                     <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
-                        <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
-				            <img src="../assets/Doctor/img/testimonial-1.jpg" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px;">
-							<div class="text-center">Naima eljid</div>
-				            <div class="card-body">
-				                <h5 class="card-title">Psychologist</h5>
-				                <p class="card-text">49 Boulevard de Port-Royal</p>
-				                <p class="">75013 Paris</p>
-				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
-				            </div>
-			        	</div>
-                    </div>
-                    
-                     <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
-                        <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
-				            <img src="../assets/Doctor/img/testimonial-1.jpg" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px;">
-							<div class="text-center">Naima eljid</div>
-				            <div class="card-body">
-				                <h5 class="card-title">Psychologist</h5>
-				                <p class="card-text">49 Boulevard de Port-Royal</p>
-				                <p class="">75013 Paris</p>
-				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
-				            </div>
-			        	</div>
-                    </div>
                     
 
                 </div>

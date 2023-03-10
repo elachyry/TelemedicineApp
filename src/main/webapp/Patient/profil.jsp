@@ -67,11 +67,12 @@
 		<!-- Sidebar Start -->
 		<div class="sidebar pe-4 pb-3">
 			<nav class="navbar bg-light navbar-light">
-
-				<a href="index.jsp" class="navbar-brand mx-4 mb-3">
+					
+				<a href="index.jsp" class="navbar-brand mx-4 mb-3 d-flex flex-wrap">
+				
 					<h3 class="text-primary">
-						<img src="<%=request.getContextPath()%>/assets/Patient/img/3.png"
-							alt="" style="height: 60px;">MEDIVISIT
+						
+							MEDIVISIT
 					</h3>
 				</a>
 				<div class="d-flex align-items-center ms-4 mb-4">
