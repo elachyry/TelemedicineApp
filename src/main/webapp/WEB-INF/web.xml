@@ -333,4 +333,14 @@
     <servlet-name>GetPatientInfosServlet</servlet-name>
     <url-pattern>/GetPatientInfos</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDoctorInfosServlet</display-name>
+    <servlet-name>GetDoctorInfosServlet</servlet-name>
+    <servlet-class>Controllers.GetDoctorInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDoctorInfosServlet</servlet-name>
+    <url-pattern>/GetDoctorInfos</url-pattern>
+  </servlet-mapping>
 </web-app>

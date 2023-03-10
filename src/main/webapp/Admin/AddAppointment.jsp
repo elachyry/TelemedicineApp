@@ -246,8 +246,8 @@
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															placeholder="dd/mm/yyyy" name="BirthDay" id="BirthDay2"
-															required"  disabled />
+															placeholder="dd/mm/yyyy" name="BirthDay2" id="BirthDay2"
+															required disabled />
 													</div>
 												</div>
 											</div>
@@ -286,7 +286,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Specialty</label>
 													<div class="col-md-9">
-														<select class="form-control" name="specialty" id="specialty" disabled>
+														<select class="form-control" name="specialty"
+															id="specialty" disabled>
 															<option value="Allergy and immunology">Allergy
 																and immunology</option>
 															<option value="Anesthesiology">Anesthesiology</option>
@@ -323,6 +324,36 @@
 											</div>
 										</div>
 
+										<hr>
+
+										<center>
+											<h3>Appointment Section</h3>
+										</center>
+										<br> <br>
+										<div class="row">
+										<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Date</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control"
+															placeholder="dd/mm/yyyy" name="date" id="date"
+															required  />
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Time</label>
+													<div class="col-sm-9">
+														<input type="time" class="form-control"
+															name="BirthDay2" id="time"
+															required  />
+													</div>
+												</div>
+											</div>
+											
+										</div>
 
 										<div class="form-check mx-sm-2">
 											<label class="form-check-label"> <input type="hidden"
@@ -331,7 +362,7 @@
 										</div>
 										<center>
 											<input type="submit" class="btn btn-primary mb-4"
-												name="submit" value="Add Patient" />
+												name="submit" value="Add Appointment" />
 										</center>
 									</form>
 								</div>
@@ -457,7 +488,6 @@
 				success : function(response) {
 					if (response != null) {
 
-						console.log(response['First_Name']);
 						$('#firstName').val(response['firstName']);
 						$('#lastName').val(response['lastName']);
 						$('#BirthDay').val(response['BirthDay']);
@@ -473,7 +503,7 @@
 				}
 			});
 		});
-		
+
 		$('#Doctor').change(function() {
 			var id = $(this).val();
 			console.log(id);
@@ -485,7 +515,6 @@
 				success : function(response) {
 					if (response != null) {
 
-						console.log(response['First_Name']);
 						$('#firstName2').val(response['firstName']);
 						$('#lastName2').val(response['lastName']);
 						$('#BirthDay2').val(response['BirthDay']);
@@ -501,6 +530,8 @@
 				}
 			});
 		});
+		var today = new Date().toISOString().split('T')[0];
+		document.getElementsByName("date")[0].setAttribute('min', today);
 	</script>
 
 
