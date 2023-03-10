@@ -93,9 +93,9 @@
 											ResultSet rs3 =null;
 											if (rs != null && rs.next() == true) {
 												do {
-													rs2 = PatientDao.getPatient(rs.getInt(3));
+													rs2 = PatientDao.getPatient(rs.getInt(4));
 													rs2.next();
-													rs3 = DoctorDao.getDoctor(rs.getInt(4));
+													rs3 = DoctorDao.getDoctor(rs.getInt(5));
 													rs3.next();
 											%>
 											<tr>
@@ -103,8 +103,9 @@
 												<td><%=rs2.getString(3) + " " + rs2.getString(4)%></td>
 												<td><%=rs3.getString(3) + " " + rs3.getString(4)%></td>
 												<td><%=rs3.getString(10)%></td>
-												<td><%=rs.getString(2)%></td>
-												<td><%=rs.getString(5)%></td>
+												<td><%=rs.getString(2) + " " + rs.getString(3)%></td>
+												<td><%=rs.getString(8)%></td>
+												<td><%=rs.getString(6)%></td>
 												<td class="px-4 py-3" style="text-align: center">
 													<div class="flex items-center space-x-4 text-sm">
 

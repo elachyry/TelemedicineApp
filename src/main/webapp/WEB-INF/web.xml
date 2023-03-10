@@ -323,4 +323,14 @@
     <servlet-name>AddAppointmentSevlet</servlet-name>
     <url-pattern>/AddAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetPatientInfosServlet</display-name>
+    <servlet-name>GetPatientInfosServlet</servlet-name>
+    <servlet-class>Controllers.GetPatientInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPatientInfosServlet</servlet-name>
+    <url-pattern>/GetPatientInfos</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@page import="DAO.AppointmentDao"%>
+<%@page import="DAO.DoctorDao"%>
+<%@page import="DAO.PatientDao"%>
+<%@page import="Models.Appointment"%>
+<%@page import="java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +28,12 @@
 <link rel="stylesheet" href="assets/Admin/css/style.css">
 <!-- End layout styles -->
 <link rel="shortcut icon" href="assets/Admin/images/favicon.ico" />
+<script src="assets/Admin/js/jquery-3.6.4.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-scroller">
@@ -53,28 +65,30 @@
 								<div class="card-body">
 									<form class="form-sample" action="" method="post"
 										autocomplete="off" enctype='multipart/form-data'>
+										<center>
+											<h3>Patient Section</h3>
+										</center>
+										<br> <br>
 										<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-12">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Patient</label>
 													<div class="col-sm-9">
-														<select class="form-control" name="sex">
-															<option value="Male">Male</option>
+														<select class="form-control" name="Patient" id="Patient">
+															<option selected disabled value="">Select...</option>
+															<%
+															ResultSet rs = PatientDao.getAllPatients("NULL");
+															while (rs.next()) {
+															%>
+															<option value="<%=rs.getInt(1)%>"><%=rs.getString(3) + " " + rs.getString(4) + " ( SA: " + rs.getString(9) + " )"%></option>
+															<%
+															}
+															%>
 														</select>
 													</div>
 												</div>
 											</div>
 
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Doctor</label>
-													<div class="col-sm-9">
-														<select class="form-control" name="sex">
-															<option value="Male">Male</option>
-														</select>
-													</div>
-												</div>
-											</div>
 
 										</div>
 
@@ -84,7 +98,7 @@
 													<label class="col-sm-3 col-form-label">First Name</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="firstName"
-															required />
+															id="firstName" disabled required />
 													</div>
 												</div>
 											</div>
@@ -93,7 +107,7 @@
 													<label class="col-sm-3 col-form-label">Last Name</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="lastName"
-															required />
+															id="lastName" disabled required />
 													</div>
 												</div>
 											</div>
@@ -103,7 +117,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Gender</label>
 													<div class="col-md-9">
-														<select class="form-control" name="sex">
+														<select class="form-control" name="sex" id="sex" disabled>
 															<option value="Male">Male</option>
 															<option value="Female">Female</option>
 														</select>
@@ -116,7 +130,8 @@
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															placeholder="dd/mm/yyyy" name="BirthDay" required"/>
+															placeholder="dd/mm/yyyy" name="BirthDay" id="BirthDay"
+															required"  disabled />
 													</div>
 												</div>
 											</div>
@@ -127,7 +142,7 @@
 													<label class="col-sm-3 col-form-label">Email</label>
 													<div class="col-sm-9">
 														<input type="email" class="form-control" name="email"
-															required />
+															id="email" disabled required />
 													</div>
 												</div>
 											</div>
@@ -136,7 +151,7 @@
 													<label class="col-sm-3 col-form-label">Phone Number</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="phoneNumber"
-															required />
+															id="phoneNumber" disabled required />
 													</div>
 												</div>
 											</div>
@@ -147,7 +162,7 @@
 													<label class="col-sm-3 col-form-label">Address</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="address"
-															required />
+															id="address" disabled required />
 													</div>
 												</div>
 											</div>
@@ -156,8 +171,153 @@
 													<label class="col-sm-3 col-form-label">Social
 														Account</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control"
-															name="socialAccount" required />
+														<input type="text" class="form-control" id="socialAccount"
+															disabled name="socialAccount" required />
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<hr>
+
+										<center>
+											<h3>Doctor Section</h3>
+										</center>
+										<br> <br>
+
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Doctor</label>
+													<div class="col-sm-9">
+														<select class="form-control" name="Doctor" id="Doctor">
+															<option selected disabled value="">Select...</option>
+															<%
+															ResultSet rs2 = DoctorDao.getAllDoctors("NULL");
+															while (rs2.next()) {
+															%>
+															<option value="<%=rs2.getInt(1)%>"><%=rs2.getString(3) + " " + rs2.getString(4) + " ( Spes: " + rs2.getString(10) + " )"%></option>
+															<%
+															}
+															%>
+														</select>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">First Name</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="firstName"
+															id="firstName2" disabled required />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Last Name</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="lastName"
+															id="lastName2" disabled required />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Gender</label>
+													<div class="col-md-9">
+														<select class="form-control" name="sex" id="sex2" disabled>
+															<option value="Male">Male</option>
+															<option value="Female">Female</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Date of
+														Birth</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control"
+															placeholder="dd/mm/yyyy" name="BirthDay" id="BirthDay2"
+															required"  disabled />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Email</label>
+													<div class="col-sm-9">
+														<input type="email" class="form-control" name="email"
+															id="email2" disabled required />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Phone Number</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="phoneNumber"
+															id="phoneNumber2" disabled required />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Address</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="address"
+															id="address2" disabled required />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Specialty</label>
+													<div class="col-md-9">
+														<select class="form-control" name="specialty" id="specialty" disabled>
+															<option value="Allergy and immunology">Allergy
+																and immunology</option>
+															<option value="Anesthesiology">Anesthesiology</option>
+															<option value="Dermatology">Dermatology</option>
+															<option value="Diagnostic radiology">Diagnostic
+																radiology</option>
+															<option value="Emergency medicine">Emergency
+																medicine</option>
+															<option value="Family medicine">Family medicine</option>
+															<option value="Internal medicine">Internal
+																medicine</option>
+															<option value="Medical genetics">Medical
+																genetics</option>
+															<option value="Neurology">Neurology</option>
+															<option value="Nuclear medicine">Nuclear
+																medicine</option>
+															<option value="Obstetrics and gynecology">Obstetrics
+																and gynecology</option>
+															<option value="Ophthalmology">Ophthalmology</option>
+															<option value="Pathology">Pathology</option>
+															<option value="Pediatrics">Pediatrics</option>
+															<option value="hysical medicine and rehabilitation">Physical
+																medicine and rehabilitation</option>
+															<option value="Preventive medicine">Preventive
+																medicine</option>
+															<option value="Psychiatry">Psychiatry</option>
+															<option value="Radiation oncology">Radiation
+																oncology</option>
+															<option value="Surgery">Surgery</option>
+															<option value="Urology">Urology</option>
+														</select>
 													</div>
 												</div>
 											</div>
@@ -171,8 +331,7 @@
 										</div>
 										<center>
 											<input type="submit" class="btn btn-primary mb-4"
-												name="submit" value="Add Patient">
-											</button>
+												name="submit" value="Add Patient" />
 										</center>
 									</form>
 								</div>
@@ -207,6 +366,7 @@
 	<script src="assets/Admin/js/dashboard.js"></script>
 	<script src="assets/Admin/js/todolist.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<%
 	String status = "";
 	if (request.getParameter("status") != null) {
@@ -281,6 +441,68 @@
 	<%
 	}
 	%>
+
+
+
+
+	<script>
+		$('#Patient').change(function() {
+			var id = $(this).val();
+			console.log(id);
+			var url = 'GetPatientInfos?id=' + id;
+			$.ajax({
+				url : url,
+				type : 'get',
+				dataType : 'json',
+				success : function(response) {
+					if (response != null) {
+
+						console.log(response['First_Name']);
+						$('#firstName').val(response['firstName']);
+						$('#lastName').val(response['lastName']);
+						$('#BirthDay').val(response['BirthDay']);
+						$('#email').val(response['email']);
+						$('#phoneNumber').val(response['phoneNumber']);
+						$('#address').val(response['address']);
+						$('#socialAccount').val(response['socialAccount']);
+						$('#sex').val(response['sex']);
+					} else {
+						console.log("null");
+
+					}
+				}
+			});
+		});
+		
+		$('#Doctor').change(function() {
+			var id = $(this).val();
+			console.log(id);
+			var url = 'GetDoctorInfos?id=' + id;
+			$.ajax({
+				url : url,
+				type : 'get',
+				dataType : 'json',
+				success : function(response) {
+					if (response != null) {
+
+						console.log(response['First_Name']);
+						$('#firstName2').val(response['firstName']);
+						$('#lastName2').val(response['lastName']);
+						$('#BirthDay2').val(response['BirthDay']);
+						$('#email2').val(response['email']);
+						$('#phoneNumber2').val(response['phoneNumber']);
+						$('#address2').val(response['address']);
+						$('#Specialty').val(response['Specialty']);
+						$('#sex2').val(response['sex']);
+					} else {
+						console.log("null");
+
+					}
+				}
+			});
+		});
+	</script>
+
 
 	<!-- End custom js for this page -->
 </body>
