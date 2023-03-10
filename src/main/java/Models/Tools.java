@@ -117,7 +117,7 @@ public class Tools {
             properties.put("mail.smtp.port", "587");
 
             final String myEmail = "medivisit.app@gmail.com";
-            final String myPassword = "moebohtqtxutppgr";
+            final String myPassword = "osegqsfgudphncta";
 
 
             Session session = Session.getInstance(properties, new Authenticator() {
@@ -149,7 +149,7 @@ public class Tools {
                 message.setText("Hello " + prenom + " " + nom + ", \n\n" + "We reset your login information for you.\n\nYour login information:" + "\nEmail: " + recipient + "\n" + "\nUsername: " + username + "\n" + "Mot de passe: " + password + "\n" + "Noticed: You can change your username and password from your account.");
             }
             if ("Delete Account".equals(emailType)) {
-                message.setSubject("Your account have been deleted!");
+                message.setSubject("Your account has been deleted!");
                 message.setText("Hello " + prenom + " " + nom + ", \n\n" + "Unfortunately your account has been deleted, you will no longer be able to log in to your account.\n" + "If you believe an error has been made, please contact us.");
             }
 
