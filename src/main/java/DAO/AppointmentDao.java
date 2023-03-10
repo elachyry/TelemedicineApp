@@ -26,7 +26,7 @@ public class AppointmentDao {
 							+ "VALUES (?,?,?,?,?,?,?)");
 			
 			
-			ps.setDate(1, appointment.getDate());
+			ps.setString(1, appointment.getDate());
 			ps.setString(2, appointment.getTime());
 			ps.setInt(3, appointment.getPatientId());
 			ps.setInt(4, appointment.getDoctorId());
@@ -52,7 +52,7 @@ public class AppointmentDao {
 					"UPDATE `appointments` SET `Date`=?, `Time`=?,`Status`=?, `amount`=?, `Link`=? WHERE id = ?");
 
 			
-			ps.setDate(1, appointment.getDate());
+			ps.setString(1, appointment.getDate());
 			ps.setString(2, appointment.getTime());
 			ps.setString(3, appointment.getStatus());
 			ps.setDouble(4, appointment.getAmount());

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Appointment {
 	
-	private Date date;
+	private String date;
 	private String time;
 	private int doctorId;
 	private int patientId;
@@ -14,7 +14,7 @@ public class Appointment {
 	
 
 
-	public Appointment(Date date, String time, int doctorId, int patientId, String status, double amount,
+	public Appointment(String date, String time, int doctorId, int patientId, String status, double amount,
 			String link) {
 		super();
 		this.date = date;
@@ -26,11 +26,11 @@ public class Appointment {
 		this.link = link;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

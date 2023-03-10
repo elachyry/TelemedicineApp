@@ -64,7 +64,7 @@
 							<div class="card">
 								<div class="card-body">
 									<form class="form-sample" action="" method="post"
-										autocomplete="off" enctype='multipart/form-data'>
+										autocomplete="off" >
 										<center>
 											<h3>Patient Section</h3>
 										</center>
@@ -97,7 +97,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">First Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="firstName"
+														<input type="text" class="form-control" 
 															id="firstName" disabled required />
 													</div>
 												</div>
@@ -106,7 +106,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Last Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="lastName"
+														<input type="text" class="form-control" 
 															id="lastName" disabled required />
 													</div>
 												</div>
@@ -117,7 +117,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Gender</label>
 													<div class="col-md-9">
-														<select class="form-control" name="sex" id="sex" disabled>
+														<select class="form-control"  id="sex" disabled>
 															<option value="Male">Male</option>
 															<option value="Female">Female</option>
 														</select>
@@ -130,7 +130,7 @@
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															placeholder="dd/mm/yyyy" name="BirthDay" id="BirthDay"
+															placeholder="dd/mm/yyyy"  id="BirthDay"
 															required"  disabled />
 													</div>
 												</div>
@@ -141,7 +141,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Email</label>
 													<div class="col-sm-9">
-														<input type="email" class="form-control" name="email"
+														<input type="email" class="form-control" 
 															id="email" disabled required />
 													</div>
 												</div>
@@ -150,7 +150,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Phone Number</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="phoneNumber"
+														<input type="text" class="form-control" 
 															id="phoneNumber" disabled required />
 													</div>
 												</div>
@@ -161,7 +161,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Address</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="address"
+														<input type="text" class="form-control"
 															id="address" disabled required />
 													</div>
 												</div>
@@ -213,7 +213,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">First Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="firstName"
+														<input type="text" class="form-control" 
 															id="firstName2" disabled required />
 													</div>
 												</div>
@@ -222,7 +222,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Last Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="lastName"
+														<input type="text" class="form-control" 
 															id="lastName2" disabled required />
 													</div>
 												</div>
@@ -233,7 +233,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Gender</label>
 													<div class="col-md-9">
-														<select class="form-control" name="sex" id="sex2" disabled>
+														<select class="form-control"  id="sex2" disabled>
 															<option value="Male">Male</option>
 															<option value="Female">Female</option>
 														</select>
@@ -246,7 +246,7 @@
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															placeholder="dd/mm/yyyy" name="BirthDay2" id="BirthDay2"
+															placeholder="dd/mm/yyyy"  id="BirthDay2"
 															required disabled />
 													</div>
 												</div>
@@ -257,7 +257,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Email</label>
 													<div class="col-sm-9">
-														<input type="email" class="form-control" name="email"
+														<input type="email" class="form-control" 
 															id="email2" disabled required />
 													</div>
 												</div>
@@ -266,7 +266,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Phone Number</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="phoneNumber"
+														<input type="text" class="form-control" 
 															id="phoneNumber2" disabled required />
 													</div>
 												</div>
@@ -277,7 +277,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Address</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="address"
+														<input type="text" class="form-control" 
 															id="address2" disabled required />
 													</div>
 												</div>
@@ -286,7 +286,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Specialty</label>
 													<div class="col-md-9">
-														<select class="form-control" name="specialty"
+														<select class="form-control" 
 															id="specialty" disabled>
 															<option value="Allergy and immunology">Allergy
 																and immunology</option>
@@ -347,7 +347,31 @@
 													<label class="col-sm-3 col-form-label">Time</label>
 													<div class="col-sm-9">
 														<input type="time" class="form-control"
-															name="BirthDay2" id="time"
+															name="time" id="time"
+															required  />
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										
+										<div class="row">
+										<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Amount</label>
+													<div class="col-sm-9">
+														<input type="number" class="form-control" name="amount"
+															required />
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Meeting Link</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															name="link" 
 															required  />
 													</div>
 												</div>
@@ -414,7 +438,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/addPatient");
+			window.location.replace("/telemedicine/AddAppointment");
 		});
 	</script>
 	<%
@@ -427,7 +451,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/addPatient");
+			window.location.replace("/telemedicine/AddAppointment");
 		});
 	</script>
 	<%
@@ -440,7 +464,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/addPatient");
+			window.location.replace("/telemedicine/AddAppointment");
 		});
 	</script>
 	<%
@@ -453,7 +477,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/addPatient");
+			window.location.replace("/telemedicine/AddAppointment");
 		});
 	</script>
 	<%
@@ -466,7 +490,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/addPatient");
+			window.location.replace("/telemedicine/AddAppointment");
 		});
 	</script>
 	<%

@@ -30,6 +30,7 @@ public class AddDoctorServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("test = " + request.getParameter("submit"));
 		if (request.getParameter("submit") != null) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
