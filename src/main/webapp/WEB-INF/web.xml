@@ -313,7 +313,6 @@
     <servlet-name>UpdateDoctor</servlet-name>
     <url-pattern>/updateDoctor</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <display-name>AddAppointmentSevlet</display-name>
