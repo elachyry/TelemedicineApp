@@ -10,12 +10,11 @@ public class Appointment {
 	private int patientId;
 	private String status;
 	private double amount;
-	private String action;
 	private String link;
 	
 
 
-	public Appointment(Date date, String time, int doctorId, int patientId, String status, double amount, String action,
+	public Appointment(Date date, String time, int doctorId, int patientId, String status, double amount,
 			String link) {
 		super();
 		this.date = date;
@@ -24,7 +23,6 @@ public class Appointment {
 		this.patientId = patientId;
 		this.status = status;
 		this.amount = amount;
-		this.action = action;
 		this.link = link;
 	}
 
@@ -76,13 +74,7 @@ public class Appointment {
 		this.amount = amount;
 	}
 
-	public String getAction() {
-		return action;
-	}
 
-	public void setAction(String action) {
-		this.action = action;
-	}
 
 	public String getLink() {
 		return link;

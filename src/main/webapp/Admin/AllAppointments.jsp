@@ -80,6 +80,7 @@
 												<th>Doctor</th>
 												<th>Speciality</th>
 												<th>Date</th>
+												<th>Link</th>
 												<th>Status</th>
 												<th></th>
 											</tr>
