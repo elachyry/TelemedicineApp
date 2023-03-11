@@ -73,6 +73,7 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
+												<th>#</th>
 												<th></th>
 												<th>Full Name</th>
 												<th>Email</th>
@@ -90,6 +91,7 @@
 												do {
 											%>
 											<tr>
+											<td><%=rs.getString(1)%></td>
 												<td class="py-1"><img src="<%=rs.getString(2)%>"
 													alt="image" /></td>
 												<td><%=rs.getString(3) + " " + rs.getString(4)%></td>
@@ -149,7 +151,7 @@
 											} else {
 											%>
 											<tr>
-												<td colspan="7"><center>No data to show!</center></td>
+												<td colspan="8"><center>No data to show!</center></td>
 											</tr>
 											<%
 											}

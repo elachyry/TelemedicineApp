@@ -16,6 +16,7 @@ import jakarta.servlet.http.*;
 
 import Models.Appointment;
 import Models.DataBaseConnection;
+import Models.Tools;
 
 public class AppointmentDao {
 	
@@ -39,7 +40,7 @@ public class AppointmentDao {
 			status = ps.executeUpdate();
 			ps.close();
 			con.close();
-			//Tools.sendEmail( patient.getEmail(), patient.getLastName(), patient.getFirstName(), username, password, "New Account Patient");
+			Tools.sendEmail( appointment.getDate(), appointment.getPatientId() + "", appointment.getDoctorId()+ "", appointment.getTime(), appointment.getLink(), "New Appointment");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
