@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 12:11 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Mar 11, 2023 at 01:41 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `telemedicine`
 --
+CREATE DATABASE IF NOT EXISTS `telemedicine` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `telemedicine`;
 
 -- --------------------------------------------------------
 
@@ -37,7 +38,7 @@ CREATE TABLE `admin` (
   `Phone_Number` varchar(30) NOT NULL,
   `Username` int(30) NOT NULL,
   `Password` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -53,17 +54,16 @@ CREATE TABLE `appointments` (
   `Doctor_id` int(10) NOT NULL,
   `Status` varchar(10) NOT NULL,
   `amount` double NOT NULL,
-  `action` varchar(30) NOT NULL,
-  `Link` varchar(30) NOT NULL,
+  `Link` varchar(255) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `Date`, `Time`, `Patient_id`, `Doctor_id`, `Status`, `amount`, `action`, `Link`, `deleted_at`) VALUES
-(1, '2022-03-22', '', 2, 8, 'Pending', 0, '', '', NULL);
+INSERT INTO `appointments` (`id`, `Date`, `Time`, `Patient_id`, `Doctor_id`, `Status`, `amount`, `Link`, `deleted_at`) VALUES
+(2, '2023-03-22', '15:29', 4, 11, 'cancelled', 500, 'https://meet.google.com/irp-espf-pve', NULL);
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `doctor` (
   `Username` varchar(30) DEFAULT NULL,
   `Password` varchar(100) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `doctor`
@@ -95,7 +95,8 @@ CREATE TABLE `doctor` (
 
 INSERT INTO `doctor` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Address`, `Speciality`, `Work_Days`, `Work_Hours`, `Username`, `Password`, `deleted_at`) VALUES
 (8, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-13', 'achyri2ed000@gmail.com', '0680346100', 'Female', 'sadassadsa', 'Urology', 'Monday-Wednesday-Thursday-Friday-Saturday-', '9-11-12-13-16-', 'adam71517', 'mG6s0WIvK8', NULL),
-(10, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-15', 'achyri2000@gmail.com', '0680346100', 'Male', 'sadassadsa', 'Allergy and immunology', 'Monday-Tuesday-', '9-10-', 'adam77072', 'c1c0R1Jrb2ZsWA==', NULL);
+(10, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-15', 'achyri2000@gmail.com', '0680346100', 'Male', 'sadassadsa', 'Allergy and immunology', 'Monday-Tuesday-', '9-10-', 'adam77072', 'c1c0R1Jrb2ZsWA==', NULL),
+(11, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\doctors-2.jpg', 'Ahmed', 'Chair', '2023-03-08', 'ahmed@gmail.com', '066174586', 'Male', 'HAY EL WAHDA 3', 'Ophthalmology', 'Monday-Tuesday-', '10-', 'Chair37163', 'dk4ybTVaZ3dIMw==', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,14 +118,16 @@ CREATE TABLE `patient` (
   `Username` varchar(30) DEFAULT NULL,
   `Password` varchar(30) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `patient`
 --
 
 INSERT INTO `patient` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Social_Account`, `Address`, `Username`, `Password`, `deleted_at`) VALUES
-(2, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'Mohammed', 'Elachyry', '2023-03-09', 'mohammedelachyry@gmailcom', '0661705486', 'Male', '01478932158', 'hay nahda', 'Elachyry48726', 'dkc1RHp5aExwag==', NULL);
+(2, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'Mohammed', 'Elachyry', '2023-03-09', 'mohammedelachyry@gmailcom', '0661705486', 'Male', '01478932158', 'hay nahda', 'Elachyry48726', 'dkc1RHp5aExwag==', NULL),
+(3, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\Capture.PNG', 'MOHAMMED', 'ELACHYRY', '2023-03-16', 'mohammedelachyry@gmail.com', '+212658346100', 'Male', '202020202', 'HAY SALAM ABD LAKARIM LAKHADTABI NR134', 'ELACHYRY74981', 'dkg3aXQ1Qk1JeA==', NULL),
+(4, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\Capture.PNG', 'MOHAMMED', 'ELACHYRY', '2023-03-21', 'mohammedelkachyry@gmail.com', '+2126580346100', 'Female', '2020201', 'HAY SALAM ABD LAKARIM LAKHADTABI NR134', 'ELACHYRY12079', 'c0MzcmpId0JDZg==', NULL);
 
 --
 -- Indexes for dumped tables
@@ -170,19 +173,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
