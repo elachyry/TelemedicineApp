@@ -402,4 +402,34 @@
     <servlet-name>CancelAppointmentServlet</servlet-name>
     <url-pattern>/CancelAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportAppointmentsServlet</display-name>
+    <servlet-name>ExportAppointmentsServlet</servlet-name>
+    <servlet-class>Controllers.ExportAppointmentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportAppointmentsServlet</servlet-name>
+    <url-pattern>/ExportAppointments</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentShowAllInfosServlet</display-name>
+    <servlet-name>AppointmentShowAllInfosServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentShowAllInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentShowAllInfosServlet</servlet-name>
+    <url-pattern>/AppointmentShowAllInfos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditAppointmentServlet</display-name>
+    <servlet-name>EditAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.EditAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditAppointmentServlet</servlet-name>
+    <url-pattern>/EditAppointment</url-pattern>
+  </servlet-mapping>
 </web-app>

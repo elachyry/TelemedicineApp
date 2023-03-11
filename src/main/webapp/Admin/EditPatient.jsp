@@ -46,7 +46,7 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="AllPatients">All Patients</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Add
+								<li class="breadcrumb-item active" aria-current="page">Edit
 									Patient</li>
 							</ol>
 						</nav>

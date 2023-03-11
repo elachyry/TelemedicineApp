@@ -60,9 +60,9 @@
 										<div class="container">
 											<div class="row">
 												<div class="col-lg-6 ">
-													<a href="addPatient" class="btn btn-primary"><i
+													<a href="AddAppointment" class="btn btn-primary"><i
 														class="mdi mdi-account-plus" style="margin-right: 10px;"></i>Add
-														Appointment</a> <a href="ExportPatients" class="btn btn-success"><i
+														Appointment</a> <a href="ExportAppointments" class="btn btn-success"><i
 														class="mdi mdi-file-excel" style="margin-right: 10px;"></i>Export</a>
 												</div>
 												<div class="col-lg-2"></div>
@@ -109,7 +109,7 @@
 												<td class="px-4 py-3" style="text-align: center">
 													<div class="flex items-center space-x-4 text-sm">
 
-														<a href="AppointmentInfos?id=<%=rs.getString(1)%>"
+														<a href="AppointmentShowAllInfos?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 															aria-label="Show"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
@@ -120,7 +120,7 @@
                                         						<path
 																	d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                     						</svg>
-														</a> <a href="editAppointment?id=<%=rs.getString(1)%>"
+														</a> <a href="EditAppointment?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 															aria-label="edit"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
