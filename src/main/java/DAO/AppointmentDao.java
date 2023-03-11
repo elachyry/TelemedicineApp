@@ -177,11 +177,14 @@ public class AppointmentDao {
             HeaderRow.createCell(8).setCellValue("Amount");
             HeaderRow.createCell(9).setCellValue("Link");
             
-            ResultSet rs = PatientDao.getPatient(resultSet.getInt(4));
-            ResultSet rs2 = PatientDao.getPatient(resultSet.getInt(5));
+
 
             int RowNum = 1;
             while (resultSet.next()) {
+                ResultSet rs = PatientDao.getPatient(resultSet.getInt(4));
+                ResultSet rs2 = DoctorDao.getDoctor(resultSet.getInt(5));
+                rs.next();
+                rs2.next();
                 XSSFRow Row = XFSheet.createRow(RowNum);
                 Row.createCell(0).setCellValue(resultSet.getInt(1));
                 Row.createCell(1).setCellValue(resultSet.getInt(4));

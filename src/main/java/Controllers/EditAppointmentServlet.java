@@ -31,7 +31,7 @@ public class EditAppointmentServlet extends HttpServlet {
 			Appointment appointment = new Appointment(date, time, doctorId, patientId, status, amount, link);
 			
 			if (AppointmentDao.updateAppointment(appointment, id) == 1) {
-				response.sendRedirect("/telemedicine/AllAppointments?status=success");
+				response.sendRedirect("/telemedicine/AllAppointments?status=successUpdate");
 			} else {
 				response.sendRedirect("/telemedicine/EditAppointment?status=failed");
 			}

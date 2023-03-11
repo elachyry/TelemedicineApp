@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
-import javax.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.MultipartConfig;
 
 
 import DAO.PatientDao;
@@ -32,6 +32,8 @@ public class EditPatientServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("submit = " + request.getParameter("submit"));
+
 		if (request.getParameter("submit") != null) {
 			int id = Integer.parseInt(request.getParameter("id"));
 			String path = request.getParameter("path");
@@ -100,9 +102,9 @@ public class EditPatientServlet extends HttpServlet {
 			Patient patient = new Patient(savePath, firstName, lastName, email, sex, address, phoneNumber, BirthDay, socialAccount);
 
 			if (PatientDao.updatePatient(patient, id) == 1) {
-				response.sendRedirect("/telemedicneApp/AllPatients?status=successUpdate");
+				response.sendRedirect("/telemedicine/AllPatients?status=successUpdate");
 			} else {
-				response.sendRedirect("/telemedicneApp/editPatient?status=failed");
+				response.sendRedirect("/telemedicine/editPatient?status=failed");
 			}
 		}
 

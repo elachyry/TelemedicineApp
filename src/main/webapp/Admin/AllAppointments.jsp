@@ -216,7 +216,7 @@
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have moved the patient to the trash successfully!",
+			text : "You have moved the Appointment to the trash successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
@@ -229,7 +229,7 @@
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have updated the patient successfully!",
+			text : "You have updated the Appointment successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
