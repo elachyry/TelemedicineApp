@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import jakarta.servlet.http.*;
-
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import jakarta.servlet.http.*;
+
+
 
 import Models.Appointment;
 import Models.DataBaseConnection;
@@ -162,33 +164,35 @@ public class AppointmentDao {
 			ResultSet resultSet = ps.executeQuery();
 
             XSSFWorkbook XFWB = new XSSFWorkbook();
-            XSSFSheet XFSheet = XFWB.createSheet("Patients List");
+            XSSFSheet XFSheet = XFWB.createSheet("Appointments List");
             XSSFRow HeaderRow = XFSheet.createRow(0);
             HeaderRow.createCell(0).setCellValue("Id");
-            HeaderRow.createCell(1).setCellValue("First Name");
-            HeaderRow.createCell(2).setCellValue("First Name");
-            HeaderRow.createCell(3).setCellValue("Date of Birth");
-            HeaderRow.createCell(4).setCellValue("Email");
-            HeaderRow.createCell(5).setCellValue("Phone Number");
-            HeaderRow.createCell(6).setCellValue("Sex");
-            HeaderRow.createCell(7).setCellValue("Address");
-            HeaderRow.createCell(8).setCellValue("Social Account");
-            HeaderRow.createCell(9).setCellValue("Username");
-
+            HeaderRow.createCell(1).setCellValue("Patient Id");
+            HeaderRow.createCell(2).setCellValue("FullName");
+            HeaderRow.createCell(3).setCellValue("Doctor Id");
+            HeaderRow.createCell(4).setCellValue("FullName");
+            HeaderRow.createCell(5).setCellValue("Date");
+            HeaderRow.createCell(6).setCellValue("Time");
+            HeaderRow.createCell(7).setCellValue("Status");
+            HeaderRow.createCell(8).setCellValue("Amount");
+            HeaderRow.createCell(9).setCellValue("Link");
+            
+            ResultSet rs = PatientDao.getPatient(resultSet.getInt(4));
+            ResultSet rs2 = PatientDao.getPatient(resultSet.getInt(5));
 
             int RowNum = 1;
             while (resultSet.next()) {
                 XSSFRow Row = XFSheet.createRow(RowNum);
                 Row.createCell(0).setCellValue(resultSet.getInt(1));
-                Row.createCell(1).setCellValue(resultSet.getString(3));
-                Row.createCell(2).setCellValue(resultSet.getString(4));
-                Row.createCell(3).setCellValue(resultSet.getString(5));
-                Row.createCell(4).setCellValue(resultSet.getString(6));
-                Row.createCell(5).setCellValue(resultSet.getString(7));
-                Row.createCell(6).setCellValue(resultSet.getString(8));
-                Row.createCell(7).setCellValue(resultSet.getString(10));
-                Row.createCell(8).setCellValue(resultSet.getString(9));
-                Row.createCell(9).setCellValue(resultSet.getString(11));
+                Row.createCell(1).setCellValue(resultSet.getInt(4));
+                Row.createCell(2).setCellValue(rs.getString(3) + " " + rs.getString(4));
+                Row.createCell(3).setCellValue(resultSet.getInt(5));
+                Row.createCell(4).setCellValue(rs2.getString(3) + " " + rs2.getString(4));
+                Row.createCell(5).setCellValue(resultSet.getString(2));
+                Row.createCell(6).setCellValue(resultSet.getString(3));
+                Row.createCell(7).setCellValue(resultSet.getString(6));
+                Row.createCell(8).setCellValue(resultSet.getString(7));
+                Row.createCell(9).setCellValue(resultSet.getString(8));
 
                 RowNum++;
             }
