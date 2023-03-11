@@ -263,6 +263,19 @@
 		});
 	</script>
 	<%
+	} else if (status.equals("successCancel")) {
+	%>
+	<script>
+		swal({
+			title : "Success!",
+			text : "You cancelled the Appointment successfully!",
+			icon : "success",
+			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/AllAppointments");
+		});
+	</script>
+	<%
 	}
 	%>
 
