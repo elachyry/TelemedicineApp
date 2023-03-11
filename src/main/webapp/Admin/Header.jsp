@@ -190,7 +190,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="AllAppointments">All Appointments</a></li>
                   <li class="nav-item"> <a class="nav-link" href="AddAppointment">Add</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="TrachAppointment">Trash</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="TrashAppointment">Trash</a></li>
                 </ul>
               </div>
             </li>

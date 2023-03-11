@@ -332,8 +332,8 @@
   <servlet-mapping>
     <servlet-name>UpdatePatient</servlet-name>
     <url-pattern>/updatepatient</url-pattern>
-</servlet-mapping>
-  
+  </servlet-mapping>
+  <servlet>
     <display-name>GetPatientInfosServlet</display-name>
     <servlet-name>GetPatientInfosServlet</servlet-name>
     <servlet-class>Controllers.GetPatientInfosServlet</servlet-class>
@@ -351,5 +351,15 @@
   <servlet-mapping>
     <servlet-name>GetDoctorInfosServlet</servlet-name>
     <url-pattern>/GetDoctorInfos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrashAppointmentServlet</display-name>
+    <servlet-name>TrashAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.TrashAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrashAppointmentServlet</servlet-name>
+    <url-pattern>/TrashAppointment</url-pattern>
   </servlet-mapping>
 </web-app>
