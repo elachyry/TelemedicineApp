@@ -362,4 +362,24 @@
     <servlet-name>TrashAppointmentServlet</servlet-name>
     <url-pattern>/TrashAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentSoftDeleteServlet</display-name>
+    <servlet-name>AppointmentSoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentSoftDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentSoftDeleteServlet</servlet-name>
+    <url-pattern>/AppointmentSoftDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RestoreAppointmentServlet</display-name>
+    <servlet-name>RestoreAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.RestoreAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestoreAppointmentServlet</servlet-name>
+    <url-pattern>/RestoreAppointment</url-pattern>
+  </servlet-mapping>
 </web-app>

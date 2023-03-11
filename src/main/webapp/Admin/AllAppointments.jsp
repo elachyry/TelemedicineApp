@@ -222,7 +222,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/AllPatients");
+			window.location.replace("/telemedicine/AllAppointments");
 		});
 	</script>
 	<%
@@ -235,7 +235,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/AllPatients");
+			window.location.replace("/telemedicine/AllAppointments");
 		});
 	</script>
 	<%
@@ -248,7 +248,7 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/AllPatients");
+			window.location.replace("/telemedicine/AllAppointments");
 		});
 	</script>
 	<%
@@ -261,7 +261,7 @@
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicneApp/AllPatients");
+			window.location.replace("/telemedicine/AllAppointments");
 		});
 	</script>
 	<%
