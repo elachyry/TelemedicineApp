@@ -129,16 +129,14 @@
                                         						<path
 																	d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"> </path>
                                     						</svg>
-														</a> <a href="resetPasswordPatient?id=<%=rs.getString(1)%>"
+														</a> <a href="CancelAppointment?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-															aria-label="reset"> <svg
+															aria-label="cancel"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="green" class="bi bi-arrow-repeat"
+																height="16" fill="red" class="bi bi-arrow-repeat"
 																viewBox="0 0 16 16">
   																	<path
-																	d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-  																	<path fill-rule="evenodd"
-																	d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+																	<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/> />
 																				</svg>
 														</a> <a href="AppointmentSoftDelete?id=<%=rs.getString(1)%>"
 															class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
@@ -158,7 +156,7 @@
 											} else {
 											%>
 											<tr>
-												<td colspan="7"><center>No data to show!</center></td>
+												<td colspan="8"><center>No data to show!</center></td>
 											</tr>
 											<%
 											}

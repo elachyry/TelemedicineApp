@@ -136,7 +136,7 @@
 											} else {
 											%>
 											<tr>
-												<td colspan="7"><center>No data to show!</center></td>
+												<td colspan="8"><center>No data to show!</center></td>
 											</tr>
 											<%
 											}

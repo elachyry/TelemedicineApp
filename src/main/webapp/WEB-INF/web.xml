@@ -382,4 +382,24 @@
     <servlet-name>RestoreAppointmentServlet</servlet-name>
     <url-pattern>/RestoreAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentHardDeleteServlet</display-name>
+    <servlet-name>AppointmentHardDeleteServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentHardDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentHardDeleteServlet</servlet-name>
+    <url-pattern>/AppointmentHardDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelAppointmentServlet</display-name>
+    <servlet-name>CancelAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.CancelAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelAppointmentServlet</servlet-name>
+    <url-pattern>/CancelAppointment</url-pattern>
+  </servlet-mapping>
 </web-app>
