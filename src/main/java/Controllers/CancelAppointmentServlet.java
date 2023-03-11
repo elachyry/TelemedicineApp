@@ -14,7 +14,7 @@ public class CancelAppointmentServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		if(AppointmentDao.updateStatus(id, "cancelled") == 1) {
+		if(AppointmentDao.updateStatus(id, "Cancelled") == 1) {
 			response.sendRedirect("/telemedicine/AllAppointments?status=successCancel");
 		}else {
 			response.sendRedirect("/telemedicine/AllAppointments?status=failed");
