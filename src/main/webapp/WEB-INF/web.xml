@@ -432,4 +432,24 @@
     <servlet-name>EditAppointmentServlet</servlet-name>
     <url-pattern>/EditAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookAppointmentPatientServlet</display-name>
+    <servlet-name>BookAppointmentPatientServlet</servlet-name>
+    <servlet-class>Controllers.BookAppointmentPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookAppointmentPatientServlet</servlet-name>
+    <url-pattern>/BookAppointmentPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookAppointmentDoctorServlet</display-name>
+    <servlet-name>BookAppointmentDoctorServlet</servlet-name>
+    <servlet-class>Controllers.BookAppointmentDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookAppointmentDoctorServlet</servlet-name>
+    <url-pattern>/BookAppointmentDoctor</url-pattern>
+  </servlet-mapping>
 </web-app>

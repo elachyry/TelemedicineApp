@@ -79,9 +79,17 @@
 															<%
 															ResultSet rs = PatientDao.getAllPatients("NULL");
 															while (rs.next()) {
+																if (request.getParameter("id") != null) {
+															%>
+
+															<option value="<%=rs.getInt(1)%>"
+																<%=(rs.getInt(1) == Integer.parseInt(request.getParameter("id")) ? "selected" : "")%>><%=rs.getString(3) + " " + rs.getString(4) + " ( SA: " + rs.getString(9) + " )"%></option>
+															<%
+															} else {
 															%>
 															<option value="<%=rs.getInt(1)%>"><%=rs.getString(3) + " " + rs.getString(4) + " ( SA: " + rs.getString(9) + " )"%></option>
 															<%
+															}
 															}
 															%>
 														</select>
@@ -195,9 +203,17 @@
 															<%
 															ResultSet rs2 = DoctorDao.getAllDoctors("NULL");
 															while (rs2.next()) {
+																if (request.getParameter("idDr") != null) {
 															%>
-															<option value="<%=rs2.getInt(1)%>"><%=rs2.getString(3) + " " + rs2.getString(4) + " ( Spes: " + rs2.getString(10) + " )"%></option>
+															<option value="<%=rs2.getInt(1)%>"
+																<%=(rs2.getInt(1) == Integer.parseInt(request.getParameter("idDr")) ? "selected" : "")%>><%=rs2.getString(3) + " " + rs2.getString(4) + " ( Spes: " + rs2.getString(10) + " )"%></option>
 															<%
+															} else {
+															%>
+															<option value="<%=rs2.getInt(1)%>" l><%=rs2.getString(3) + " " + rs2.getString(4) + " ( Spes: " + rs2.getString(10) + " )"%></option>
+
+															<%
+															}
 															}
 															%>
 														</select>
@@ -493,7 +509,77 @@
 	%>
 
 
+	<%
+	if (request.getParameter("id") != null) {
+		System.out.println("test " + request.getParameter("id"));
+	%>
 
+	<script>
+		console.log("in");
+
+		var id = $('#Patient').val();
+		console.log(id);
+		var url = 'GetPatientInfos?id=' + id;
+		$.ajax({
+			url : url,
+			type : 'get',
+			dataType : 'json',
+			success : function(response) {
+				if (response != null) {
+
+					$('#firstName').val(response['firstName']);
+					$('#lastName').val(response['lastName']);
+					$('#BirthDay').val(response['BirthDay']);
+					$('#email').val(response['email']);
+					$('#phoneNumber').val(response['phoneNumber']);
+					$('#address').val(response['address']);
+					$('#socialAccount').val(response['socialAccount']);
+					$('#sex').val(response['sex']);
+				} else {
+					console.log("null");
+
+				}
+			}
+		});
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (request.getParameter("idDr") != null) {
+		System.out.println("test " + request.getParameter("id"));
+	%>
+
+	<script>
+		var id = $('#Doctor').val();
+		console.log(id);
+		var url = 'GetDoctorInfos?id=' + id;
+		$.ajax({
+			url : url,
+			type : 'get',
+			dataType : 'json',
+			success : function(response) {
+				if (response != null) {
+
+					$('#firstName2').val(response['firstName']);
+					$('#lastName2').val(response['lastName']);
+					$('#BirthDay2').val(response['BirthDay']);
+					$('#email2').val(response['email']);
+					$('#phoneNumber2').val(response['phoneNumber']);
+					$('#address2').val(response['address']);
+					$('#Specialty').val(response['Specialty']);
+					$('#sex2').val(response['sex']);
+				} else {
+					console.log("null");
+
+				}
+			}
+		});
+	</script>
+	<%
+	}
+	%>
 
 	<script>
 		$('#Patient').change(function() {

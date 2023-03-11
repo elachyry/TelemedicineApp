@@ -146,19 +146,19 @@ public class Tools {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
                 message.setSubject("Welcom to Medivist");
-                message.setText("Hello Dr." + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou have been added to become a member of the medical staff" + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n\\n" + "Password: " + password + "\n" + "Noticed: You can change your username and password from your account.");
+                message.setText("Hello Dr." + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou have been added to become a member of the medical staff" + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n\n" + "Password: " + password + "\n" + "Noticed: You can change your username and password from your account.");
             }
             if ("New Account Patient".equals(emailType)) {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
                 message.setSubject("Welcom to Medivist");
-                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou account has been created. " + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n" + "Password: " + password + "\n\\n" + "Noticed: You can change your username and password from your account.");
+                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou account has been created. " + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n" + "Password: " + password + "\n\n" + "Noticed: You can change your username and password from your account.");
             }
             if ("Update Account".equals(emailType)) {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
                 message.setSubject("Your username and password has been reset.");
-                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "We reset your login information for you.\n\nYour login information:" + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n" + "Mot de passe: " + password + "\n\\n" + "Noticed: You can change your username and password from your account.");
+                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "We reset your login information for you.\n\nYour login information:" + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n" + "Mot de passe: " + password + "\n\n" + "Noticed: You can change your username and password from your account.");
             }
             if ("Delete Account".equals(emailType)) {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
@@ -172,7 +172,7 @@ public class Tools {
                 rs2.next();
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(rs.getString(6)));
                 message.setSubject("New Appointment");
-                message.setText("Hello " + rs.getString(3) + " " + rs.getString(4) + ", \n\n" + "Congratulations! \nYou have booked an appointment with Dr." + rs2.getString(3) + " " + rs2.getString(4) + ".\n\nYour Appointment informations: " + "\nDate: " + recipient + "\n" + "Time: " + username + "\n" + "Appointment Link: " + password + "\n\\n" + "Noticed: You can change or cancel your appointment before 2 days.");
+                message.setText("Hello " + rs.getString(3) + " " + rs.getString(4) + ", \n\n" + "Congratulations! \nYou have booked an appointment with Dr." + rs2.getString(3) + " " + rs2.getString(4) + ".\n\nYour Appointment informations: " + "\nDate: " + recipient + "\n" + "Time: " + username + "\n" + "Appointment Link: " + password + "\n\n" + "Noticed: You can change or cancel your appointment before 2 days.");
             }
 
             return message;
