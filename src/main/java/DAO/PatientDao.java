@@ -98,6 +98,19 @@ public class PatientDao {
 
 	}
 	
+	public static int count() {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM `patient` WHERE `deleted_at`IS NULL" );
+			ResultSet resultSet = ps.executeQuery();
+			resultSet.next();
+			return resultSet.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
 	public static ResultSet searchPatients(String type, String val) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
