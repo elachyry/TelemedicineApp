@@ -28,8 +28,8 @@
             </form>
           </div>
           <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" id="profileDropdown" href="AdminShowProfile" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item nav-profile ">
+              <a class="nav-link"  href="AdminShowProfile" >
                 <div class="nav-profile-img">
                   <img src="assets/Admin/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>

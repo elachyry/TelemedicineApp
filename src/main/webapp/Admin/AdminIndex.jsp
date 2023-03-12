@@ -172,6 +172,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         datasets: [{
+        	label: 'Number Of Appointments evry day',
             data: [<%= counts[6]%>, <%= counts[5]%>, <%= counts[4]%>, <%= counts[3]%>, <%= counts[2]%>, <%= counts[1]%>, <%= counts[0]%>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
