@@ -482,4 +482,14 @@
     <servlet-name>DoctorSearchServlet</servlet-name>
     <url-pattern>/DoctorSearch</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportSearchResultDoctorServlet</display-name>
+    <servlet-name>ExportSearchResultDoctorServlet</servlet-name>
+    <servlet-class>Controllers.ExportSearchResultDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportSearchResultDoctorServlet</servlet-name>
+    <url-pattern>/ExportSearchResultDoctor</url-pattern>
+  </servlet-mapping>
 </web-app>

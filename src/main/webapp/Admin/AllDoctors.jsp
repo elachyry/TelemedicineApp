@@ -381,7 +381,7 @@
 								'</tr>';
 			            		$('#search-result').append(searchResult);
 			                }
-			            	var url6 = 'ExportSearchResultAppointment?search=' + searchQuest;
+			            	var url6 = 'ExportSearchResultDoctor?search=' + searchQuest;
 		                	searchResult = '<tr>' +
 		                    '<td colspan="8">' +
 		                    '<center><a href="'+url6+'" class="btn btn-success"><i '

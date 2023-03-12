@@ -267,17 +267,59 @@ public class DoctorDao {
         }
     }
 	
-	public static ResultSet search(String value) {
-		try {
-			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `doctor` WHERE `First_Name` like ?% OR `Last_Name` like ?% OR `Speciality` like ?% ORDER BY `Last_Name`");
-			ResultSet resultSet = ps.executeQuery();
-			return resultSet;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+	public static boolean exportSearchResult(HttpServletResponse response, String type, String search) throws ClassNotFoundException, IOException {
+        try {
+        	
+			ResultSet resultSet = searchDoctors(type, search);
 
-	}
+            XSSFWorkbook XFWB = new XSSFWorkbook();
+            XSSFSheet XFSheet = XFWB.createSheet("Doctors List");
+            XSSFRow HeaderRow = XFSheet.createRow(0);
+            HeaderRow.createCell(0).setCellValue("Id");
+            HeaderRow.createCell(1).setCellValue("First Name");
+            HeaderRow.createCell(2).setCellValue("First Name");
+            HeaderRow.createCell(3).setCellValue("Date of Birth");
+            HeaderRow.createCell(4).setCellValue("Email");
+            HeaderRow.createCell(5).setCellValue("Phone Number");
+            HeaderRow.createCell(6).setCellValue("Sex");
+            HeaderRow.createCell(7).setCellValue("Address");
+            HeaderRow.createCell(8).setCellValue("Speciality");
+            HeaderRow.createCell(9).setCellValue("Working Days");
+            HeaderRow.createCell(10).setCellValue("Working Hours");
+            HeaderRow.createCell(11).setCellValue("Username");
+
+
+            int RowNum = 1;
+            while (resultSet.next()) {
+                XSSFRow Row = XFSheet.createRow(RowNum);
+                Row.createCell(0).setCellValue(resultSet.getInt(1));
+                Row.createCell(1).setCellValue(resultSet.getString(3));
+                Row.createCell(2).setCellValue(resultSet.getString(4));
+                Row.createCell(3).setCellValue(resultSet.getString(5));
+                Row.createCell(4).setCellValue(resultSet.getString(6));
+                Row.createCell(5).setCellValue(resultSet.getString(7));
+                Row.createCell(6).setCellValue(resultSet.getString(8));
+                Row.createCell(7).setCellValue(resultSet.getString(9));
+                Row.createCell(8).setCellValue(resultSet.getString(10));
+                Row.createCell(9).setCellValue(resultSet.getString(11));
+                Row.createCell(10).setCellValue(resultSet.getString(12));
+                Row.createCell(11).setCellValue(resultSet.getString(13));
+                RowNum++;
+            }
+            response.setContentType( "application/vnd.ms-excel" );
+            XFWB.write(response.getOutputStream());
+            XFWB.close();
+            return true;
+//            try (FileOutputStream FileOutStr = new FileOutputStream("Exported/Clients.xlsx")) {
+//                XFWB.write(FileOutStr);
+//                System.out.println("Okay");
+//            }
+        } catch ( SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+	
+
 
 }
