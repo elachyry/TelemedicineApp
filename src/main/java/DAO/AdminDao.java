@@ -52,4 +52,20 @@ public class AdminDao {
 		}
 		return status;
 	}
+	public static int updatePassword(String password, int id) {
+		int status = 0;
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement(
+					"UPDATE `admin` SET `Password`=? WHERE id = ?");
+			ps.setString(1, Tools.encryptPassword(password));
+			ps.setInt(2, id);
+			status = ps.executeUpdate();
+			ps.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
 }

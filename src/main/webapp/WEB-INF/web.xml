@@ -542,4 +542,14 @@
     <servlet-name>AdminShowProfileServlet</servlet-name>
     <url-pattern>/AdminShowProfile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminChangePasswordServlet</display-name>
+    <servlet-name>AdminChangePasswordServlet</servlet-name>
+    <servlet-class>Controllers.AdminChangePasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminChangePasswordServlet</servlet-name>
+    <url-pattern>/AdminChangePassword</url-pattern>
+  </servlet-mapping>
 </web-app>

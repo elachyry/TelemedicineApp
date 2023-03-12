@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@page import="DAO.PatientDao"%>
 <%@page import="Models.Patient"%>
 <%@page import="java.sql.ResultSet"%>
@@ -50,8 +50,8 @@ if (session.getAttribute("EmailAdmin") == null) {
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="adminDashboard">Dashboard</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Edit
-									Profile</li>
+								<li class="breadcrumb-item active" aria-current="page">Update
+									Password</li>
 							</ol>
 						</nav>
 					</div>
@@ -68,87 +68,36 @@ if (session.getAttribute("EmailAdmin") == null) {
 											value="<%=session.getAttribute("IdAdmin")%>" />
 
 										<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-4">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">First Name</label>
+													<label class="col-sm-3 col-form-label">Old Password</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="firstName"
-															value="<%=session.getAttribute("First_NameAdmin")%>"
+														<input type="password" class="form-control" name="oldPassword"
 															required />
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
+											<div class="col-md-4">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Last Name</label>
+													<label class="col-sm-3 col-form-label">New Password</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="lastName"
-															value="<%=session.getAttribute("Last_NameAdmin")%>"
+														<input type="password" class="form-control" name="newPassword"
+														
 															required />
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-
-											<div class="col-md-6">
+											<div class="col-md-4">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Date of
-														Birth</label>
+													<label class="col-sm-3 col-form-label">Repeat New Password</label>
 													<div class="col-sm-9">
-														<input type="date" class="form-control"
-															value="<%=session.getAttribute("BirthDayAdmin")%>"
-															name="BirthDay" required />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Username</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="username"
-															value="<%=session.getAttribute("UsernameAdmin")%>"
+														<input type="password" class="form-control" name="newPassword2"
 															required />
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Email</label>
-													<div class="col-sm-9">
-														<input type="email" class="form-control" name="email"
-															value="<%=session.getAttribute("EmailAdmin")%>" required />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Phone Number</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="phoneNumber"
-															value="<%=session.getAttribute("Phone_NumberAdmin")%>"
-															required />
-													</div>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Password</label>
-													<div class="col-sm-9">
-														<input type="password" class="form-control"
-															name="password" required />
-													</div>
-												</div>
-											</div>
-
-										</div>
-
+										
 										<div class="form-check mx-sm-2">
 											<label class="form-check-label"> <input type="hidden"
 												class="form-check-input" checked>
@@ -156,7 +105,7 @@ if (session.getAttribute("EmailAdmin") == null) {
 										</div>
 										<center>
 											<input type="submit" class="btn btn-primary mb-4"
-												name="submit" value="Update Profile" />
+												name="submit" value="Update Password" />
 
 										</center>
 									</form>
@@ -204,11 +153,11 @@ if (session.getAttribute("EmailAdmin") == null) {
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have updated your profile successfully!",
+			text : "You have updated your password successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AdminShowProfile");
+			window.location.replace("/telemedicine/AdminChangePassword");
 		});
 	</script>
 	<%
@@ -221,7 +170,20 @@ if (session.getAttribute("EmailAdmin") == null) {
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AdminShowProfile");
+			window.location.replace("/telemedicine/AdminChangePassword");
+		});
+	</script>
+	<%
+	} else if (status.equals("passwordsNotMatch")) {
+	%>
+	<script>
+		swal({
+			title : "Error!",
+			text : "Your Passwords do not match, Please try again!",
+			icon : "error",
+			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/AdminChangePassword");
 		});
 	</script>
 	<%

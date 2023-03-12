@@ -3,9 +3,7 @@ package Controllers;
 import java.io.IOException;
 
 import DAO.AdminDao;
-import DAO.PatientDao;
 import Models.Admin;
-import Models.Patient;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
@@ -48,6 +46,9 @@ public class AdminShowProfileServlet extends HttpServlet {
 				} else {
 					response.sendRedirect("/telemedicine/AdminShowProfile?status=failed");
 				}
+			}else {
+				response.sendRedirect("/telemedicine/AdminShowProfile?status=passwordIncorrect");
+
 			}
 		}
 	}
