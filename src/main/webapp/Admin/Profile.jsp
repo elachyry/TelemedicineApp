@@ -234,7 +234,7 @@ if (session.getAttribute("EmailAdmin") == null) {
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/AdminChangePassword");
+			window.location.replace("/telemedicine/AdminShowProfile");
 		});
 	</script>
 	<%

@@ -30,11 +30,11 @@ public class AdminChangePasswordServlet extends HttpServlet {
 						response.sendRedirect("/telemedicine/AdminChangePassword?status=successUpdate");
 					}
 				}else {
-					response.sendRedirect("/telemedicine/AdminShowProfile?status=passwordsNotMatch");
+					response.sendRedirect("/telemedicine/AdminChangePassword?status=passwordsNotMatch");
 
 				}
 			}else {
-				response.sendRedirect("/telemedicine/AdminShowProfile?status=passwordIncorrect");
+				response.sendRedirect("/telemedicine/AdminChangePassword?status=passwordIncorrect");
 			}
 			
 
