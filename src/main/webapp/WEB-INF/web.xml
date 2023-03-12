@@ -492,4 +492,24 @@
     <servlet-name>ExportSearchResultDoctorServlet</servlet-name>
     <url-pattern>/ExportSearchResultDoctor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PatientSearchServlet</display-name>
+    <servlet-name>PatientSearchServlet</servlet-name>
+    <servlet-class>Controllers.PatientSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientSearchServlet</servlet-name>
+    <url-pattern>/PatientSearch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportSearchResultPatientServlet</display-name>
+    <servlet-name>ExportSearchResultPatientServlet</servlet-name>
+    <servlet-class>Controllers.ExportSearchResultPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportSearchResultPatientServlet</servlet-name>
+    <url-pattern>/ExportSearchResultPatient</url-pattern>
+  </servlet-mapping>
 </web-app>
