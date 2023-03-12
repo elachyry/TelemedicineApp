@@ -452,4 +452,14 @@
     <servlet-name>BookAppointmentDoctorServlet</servlet-name>
     <url-pattern>/BookAppointmentDoctor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentSearchServlet</display-name>
+    <servlet-name>AppointmentSearchServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentSearchServlet</servlet-name>
+    <url-pattern>/AppointmentSearch</url-pattern>
+  </servlet-mapping>
 </web-app>

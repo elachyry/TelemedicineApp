@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Appointment {
 	
+	private int id;
 	private String date;
 	private String time;
 	private int doctorId;
@@ -11,8 +12,42 @@ public class Appointment {
 	private String status;
 	private double amount;
 	private String link;
+	private String doctorName;
+	private String patientName;
+	private String doctorSpec;
 	
 
+
+	
+
+	public Appointment(int id, String date, String time, int doctorId, int patientId, String status, double amount,
+			String link, String patientName, String doctorName, String doctorSpec) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.time = time;
+		this.doctorId = doctorId;
+		this.patientId = patientId;
+		this.status = status;
+		this.amount = amount;
+		this.link = link;
+		this.doctorName = doctorName;
+		this.patientName = patientName;
+		this.doctorSpec = doctorSpec;
+	}
+
+	public Appointment(int id, String date, String time, int doctorId, int patientId, String status, double amount,
+			String link) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.time = time;
+		this.doctorId = doctorId;
+		this.patientId = patientId;
+		this.status = status;
+		this.amount = amount;
+		this.link = link;
+	}
 
 	public Appointment(String date, String time, int doctorId, int patientId, String status, double amount,
 			String link) {
@@ -24,6 +59,16 @@ public class Appointment {
 		this.status = status;
 		this.amount = amount;
 		this.link = link;
+	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDate() {
@@ -82,6 +127,30 @@ public class Appointment {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public String getDoctorName() {
+		return doctorName;
+	}
+
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+
+	public String getDoctorSpec() {
+		return doctorSpec;
+	}
+
+	public void setDoctorSpec(String doctorSpec) {
+		this.doctorSpec = doctorSpec;
 	}
 	
 	
