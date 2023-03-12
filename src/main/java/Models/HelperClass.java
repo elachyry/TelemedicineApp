@@ -6,7 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
 import jakarta.servlet.http.Part;
 
@@ -92,5 +97,90 @@ public class HelperClass {
 				return doctors; 
 			 }
 		 }
-		
+		 
+		 public Doctor getDoctor(String id) throws SQLException{
+				{
+					 try {
+						connection = DataBaseConnection.getConnection();
+					
+					  if(connection!=null) {
+					  System.out.println("Database is Connected !");
+					  ps = connection.prepareStatement("SELECT * FROM doctor WHERE Id = ?");
+					  ps.setString(1, id);
+					  ResultSet rs = ps.executeQuery();
+					  doctors = new ArrayList<Doctor>();
+					  while(rs.next()) {
+						  doctor = new Doctor();
+								 doctor.setId(rs.getInt("Id"));
+								 doctor.setImagePath(rs.getString("Image_Path")); 
+								 doctor.setFirstName(rs.getString("First_Name")); 
+								 doctor.setLastName(rs.getString("Last_Name")); 
+								 doctor.setEmail(rs.getString("Email"));  
+								 doctor.setPhoneNumber(rs.getString("Number_Phone")); 
+								 doctor.setAddress(rs.getString("Address")); 
+								 doctor.setSpecialty(rs.getString("Speciality")); 
+								 String[] days = splitArray(rs.getString("Work_Days"));
+								 String[] hours = splitArray(rs.getString("Work_Hours"));
+								 doctor.setWorkingDays(days);
+								 doctor.setWorkingHours(hours);
+								 
+						  
+					  }
+					  connection.close();
+						
+					  }else {
+						  System.out.println("ERROR!");
+					  }} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					  
+					return doctor; 
+				 }
+			 }
+		 
+		 
+		 public String[] splitArray(String string) {
+			 String[] daysArray = string.split("-");
+			return daysArray;
+		 }
+		 
+		 public String FullDayNameExtractor(String dateString) {
+		        try {
+		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		        
+		        
+		        Date date;
+				
+					date = dateFormat.parse(dateString);
+				
+		        Calendar calendar = Calendar.getInstance();
+		        calendar.setTime(date);
+		        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+		        String fullDayName = "";
+		        switch (dayOfWeek) {
+		            case Calendar.SUNDAY:
+		                return "Sunday";
+				case Calendar.MONDAY:
+						return "Monday";
+		            case Calendar.TUESDAY:
+		            	return "Tuesday";
+		            case Calendar.WEDNESDAY:
+		            	return"Wednesday";
+		            case Calendar.THURSDAY:
+		            	return "Thursday";
+		            case Calendar.FRIDAY:
+		            	return "Friday";
+		            case Calendar.SATURDAY:
+		            	return "Saturday";
+		        }
+		        } catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+		    }
+		 
 }
+		
+

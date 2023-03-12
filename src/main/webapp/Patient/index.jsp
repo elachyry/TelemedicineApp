@@ -77,7 +77,7 @@
                 
                 <div class="navbar-nav w-100">
                     <a href="index.jsp" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Home</a>
-                    <a href="consultations.jsp" class="nav-item nav-link"><i class="fa fa-commenting" aria-hidden="true"></i>Consultations</a>
+                    <a href="consultations.jsp" class="nav-item nav-link"><i class="fa fa-commenting me-2" aria-hidden="true"></i>Consultations</a>
                     <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
                     <a href="messages.jsp" class="nav-item nav-link"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Messages</a>
                     <a href="<%= request.getContextPath() %>/Patient/profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
@@ -183,12 +183,12 @@
                 
                     <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
                         <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
-				            <img src="../assets/Doctor/img/testimonial-1.jpg" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px;">
+				            <img src="<%=request.getContextPath()%>\<%=list.get(i).getImagePath()%>" class="card-img-top rounded-circle m-2" style="width:100%;  padding-left: 100px; padding-right: 100px;">
 							<div class="text-center"><%=list.get(i).getFirstName()%> <%=list.get(i).getLastName()%></div>
 				            <div class="card-body">
 				                <h5 class="card-title text-center"><%=list.get(i).getSpecialty()%></h5>
 				                <p class="card-text"><%=list.get(i).getAddress()%></p>
-				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
+				                <a href="booking.jsp?itemId=<%=list.get(i).getId()%>" class="btn btn-primary w-100">Take an appointment</a>
 				            </div>
 			        	</div>
                     </div>
