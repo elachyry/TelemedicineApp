@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="DAO.AppointmentDao"%>
+<%@page import="DAO.DoctorDao"%>
 <%@page import="DAO.PatientDao"%>
-<%@page import="Models.Patient"%>
+<%@page import="Models.Appointment"%>
 <%@page import="java.sql.ResultSet"%>
 
 <!DOCTYPE html>
@@ -32,9 +34,8 @@
 		<!-- partial:../../partials/_navbar.html -->
 
 
-		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
-			<!-- partial:../../partials/_sidebar.html -->
+
 			<jsp:include page="Header.jsp" />
 			<!-- partial -->
 			<div class="main-panel">
@@ -43,8 +44,8 @@
 						<h3 class="page-title">Trash</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="AllPatients">All
-										Patients</a></li>
+								<li class="breadcrumb-item"><a href="AllAppointments">All
+										Appointments</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Trash</li>
 							</ol>
 						</nav>
@@ -60,35 +61,40 @@
 											<thead>
 												<tr>
 													<th>#</th>
-													<th></th>
-													<th>Full Name</th>
-													<th>Email</th>
-													<th>Phone Number</th>
-													<th>Social Account</th>
-													<th>Sex</th>
+													<th>Patient</th>
+													<th>Doctor</th>
+													<th>Speciality</th>
+													<th>Date</th>
+													<th>Link</th>
+													<th>Status</th>
 													<th></th>
 												</tr>
 
 											</thead>
 											<tbody>
 												<%
-												ResultSet rs = PatientDao.getAllPatients("NOT NULL");
+												ResultSet rs = AppointmentDao.getAllAppointments("NOT NULL");
+												ResultSet rs2 = null;
+												ResultSet rs3 = null;
 												if (rs != null && rs.next() == true) {
 													do {
+														rs2 = PatientDao.getPatient(rs.getInt(4));
+														rs2.next();
+														rs3 = DoctorDao.getDoctor(rs.getInt(5));
+														rs3.next();
 												%>
 												<tr>
-													<td><%=rs.getString(1)%></td>
-													<td class="py-1"><img src="<%=rs.getString(2)%>"
-														alt="image" /></td>
-													<td><%=rs.getString(3) + " " + rs.getString(4)%></td>
-													<td><%=rs.getString(6)%></td>
-													<td><%=rs.getString(7)%></td>
-													<td><%=rs.getString(9)%></td>
+													<td class="py-1"><%=rs.getString(1)%></td>
+													<td><%=rs2.getString(3) + " " + rs2.getString(4)%></td>
+													<td><%=rs3.getString(3) + " " + rs3.getString(4)%></td>
+													<td><%=rs3.getString(10)%></td>
+													<td><%=rs.getString(2) + " " + rs.getString(3)%></td>
 													<td><%=rs.getString(8)%></td>
+													<td><%=rs.getString(6)%></td>
 													<td class="px-4 py-3" style="text-align: center">
 														<div class="flex items-center space-x-4 text-sm">
 
-															<a href="PatientInfos?id=<%=rs.getString(1)%>"
+															<a href="AppointmentInfos?id=<%=rs.getString(1)%>"
 																class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 																aria-label="Show"> <svg
 																	xmlns="http://www.w3.org/2000/svg" width="16"
@@ -99,7 +105,7 @@
                                         						<path
 																		d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                     						</svg>
-															</a> <a href="RestorPatient?id=<%=rs.getString(1)%>"
+															</a> <a href="RestoreAppointment?id=<%=rs.getString(1)%>"
 																class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 																aria-label="restor"> <svg
 																	xmlns="http://www.w3.org/2000/svg" width="16"
@@ -108,7 +114,7 @@
                                         						<path
 																		d="M3.24,7.51c-0.146,0.142-0.146,0.381,0,0.523l5.199,5.193c0.234,0.238,0.633,0.064,0.633-0.262v-2.634c0.105-0.007,0.212-0.011,0.321-0.011c2.373,0,4.302,1.91,4.302,4.258c0,0.957-0.33,1.809-1.008,2.602c-0.259,0.307,0.084,0.762,0.451,0.572c2.336-1.195,3.73-3.408,3.73-5.924c0-3.741-3.103-6.783-6.916-6.783c-0.307,0-0.615,0.028-0.881,0.063V2.575c0-0.327-0.398-0.5-0.633-0.261L3.24,7.51 M4.027,7.771l4.301-4.3v2.073c0,0.232,0.21,0.409,0.441,0.366c0.298-0.056,0.746-0.123,1.184-0.123c3.402,0,6.172,2.709,6.172,6.041c0,1.695-0.718,3.24-1.979,4.352c0.193-0.51,0.293-1.045,0.293-1.602c0-2.76-2.266-5-5.046-5c-0.256,0-0.528,0.018-0.747,0.05C8.465,9.653,8.328,9.81,8.328,9.995v2.074L4.027,7.771z" />
                                     						</svg>
-															</a> <a href="PatientHardDelete?id=<%=rs.getString(1)%>"
+															</a> <a href="AppointmentHardDelete?id=<%=rs.getString(1)%>"
 																class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
 																aria-label="Delete for ever"> <svg
 																	xmlns="http://www.w3.org/2000/svg" width="16"
@@ -138,6 +144,14 @@
 							</div>
 						</div>
 					</div>
+					<table border="0">
+						<tr>
+
+						</tr>
+						<tr>
+							<td><div id="result"></div></td>
+						</tr>
+					</table>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->
@@ -173,16 +187,16 @@
 	}
 	System.out.println(request.getParameter("test"));
 	System.out.println(status);
-	if (status.equals("success")) {
+	if (status.equals("successSoftDelete")) {
 	%>
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have deleted the patient successfully!",
+			text : "You have deleted the Appoitment successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/TrachPatient");
+			window.location.replace("/telemedicine/TrashAppointment");
 		});
 	</script>
 	<%
@@ -191,11 +205,11 @@
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have restored the patient successfully!",
+			text : "You have restored the Appoitment successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/TrachPatient");
+			window.location.replace("/telemedicine/TrashAppointment");
 		});
 	</script>
 	<%
@@ -208,12 +222,14 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/TrachPatient");
+			window.location.replace("/telemedicine/TrashAppointment");
 		});
 	</script>
 	<%
 	}
 	%>
+
+
 
 
 	<!-- End custom js for this page -->

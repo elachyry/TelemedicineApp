@@ -45,8 +45,9 @@
 						<h3 class="page-title">Update Patient</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="AllPatients">All Patients</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Add
+								<li class="breadcrumb-item"><a href="AllPatients">All
+										Patients</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Edit
 									Patient</li>
 							</ol>
 						</nav>
@@ -64,6 +65,7 @@
 								<div class="card-body">
 									<form class="form-sample" action="" method="post"
 										autocomplete="off" enctype='multipart/form-data'>
+
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group row">
@@ -118,7 +120,7 @@
 															<%
 															}
 															%>
-															
+
 														</select>
 													</div>
 												</div>
@@ -130,7 +132,7 @@
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
 															value="<%=rs.getString(5)%>" placeholder="dd/mm/yyyy"
-															name="BirthDay" required/>
+															name="BirthDay" required />
 													</div>
 												</div>
 											</div>
@@ -167,17 +169,19 @@
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Social Account</label>
+													<label class="col-sm-3 col-form-label">Social
+														Account</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="socialAccount"
-															value="<%=rs.getString(9)%>" required />
+														<input type="text" class="form-control"
+															name="socialAccount" value="<%=rs.getString(9)%>"
+															required />
 													</div>
 												</div>
 											</div>
 										</div>
 
 
-										
+
 										<div class="form-check mx-sm-2">
 											<label class="form-check-label"> <input type="hidden"
 												class="form-check-input" checked>
@@ -185,8 +189,8 @@
 										</div>
 										<center>
 											<input type="submit" class="btn btn-primary mb-4"
-												name="submit" value="Update Patient">
-											</button>
+												name="submit" value="Update Patient"/>
+											
 										</center>
 									</form>
 									<%

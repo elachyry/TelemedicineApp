@@ -23,7 +23,7 @@
                 <div class="input-group-prepend bg-transparent">
                   <i class="input-group-text border-0 mdi mdi-magnify"></i>
                 </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+                <input type="text" id="search" name="search" class="form-control bg-transparent border-0" placeholder="Search projects">
               </div>
             </form>
           </div>
@@ -189,8 +189,8 @@
               <div class="collapse" id="ui-appointments">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="AllAppointments">All Appointments</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="addAppointment">Add</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="TrachAppointment">Trash</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AddAppointment">Add</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="TrashAppointment">Trash</a></li>
                 </ul>
               </div>
             </li>
