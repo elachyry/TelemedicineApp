@@ -42,6 +42,9 @@
 	int cancelled = AppointmentDao.countStatus("Cancelled");
 	int denied = AppointmentDao.countStatus("Denied");
 	int finished = AppointmentDao.countStatus("Finished");
+	
+	int[] counts = AppointmentDao.lineChart();
+	
 	%>
 	<div class="container-scroller">
 
@@ -115,7 +118,7 @@
 					<div class="col-lg-7 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Pie chart</h4>
+								<h4 class="card-title">Appointments last week</h4>
 								<canvas id="lineChart" style="height: 250px"></canvas>
 							</div>
 						</div>
@@ -167,17 +170,17 @@ var ctx = document.getElementById('lineChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [<%= counts[6]%>, <%= counts[5]%>, <%= counts[4]%>, <%= counts[3]%>, <%= counts[2]%>, <%= counts[1]%>, <%= counts[0]%>],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(0, 136, 12, 0.6)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -185,7 +188,8 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 136, 12, 1)'
             ],
             borderWidth: 1
         }]
