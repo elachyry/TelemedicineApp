@@ -522,4 +522,14 @@
     <servlet-name>AdminLoginPageServlet</servlet-name>
     <url-pattern>/AdminLoginPage</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLogoutServlet</display-name>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <servlet-class>Controllers.AdminLogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <url-pattern>/AdminLogout</url-pattern>
+  </servlet-mapping>
 </web-app>
