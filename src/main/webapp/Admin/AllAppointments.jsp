@@ -407,11 +407,11 @@
 								'</tr>';
 			            		$('#search-result').append(searchResult);
 			                }
-			            	var url5 = '';
+			            	var url5 = 'ExportSearchResultAppointment?search=' + searchQuest;
 		                	searchResult = '<tr>' +
 		                    '<td colspan="8">' +
-		                    '<center><a href="'+url4+'" class="btn btn-success"><i '
-		                           +' class="bi bi-file-excel me-1"></i>Exporter La résultats</a><a> </center>' +
+		                    '<center><a href="'+url5+'" class="btn btn-success"><i '
+		                           +' class="bi bi-file-excel me-1"></i>Export Search Result</a><a> </center>' +
 		                    '</td>' +
 		                    '</tr>';
 		                $('#search-result').append(searchResult);

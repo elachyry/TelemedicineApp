@@ -222,5 +222,58 @@ public class AppointmentDao {
 			return false;
 		}
 	}
+	
+	public static boolean exportSearchResult(HttpServletResponse response, String type, String search) throws ClassNotFoundException, IOException {
+		try {
+			
+			ResultSet resultSet = searchAppointments(type, search);
+
+			XSSFWorkbook XFWB = new XSSFWorkbook();
+			XSSFSheet XFSheet = XFWB.createSheet("Appointments List");
+			XSSFRow HeaderRow = XFSheet.createRow(0);
+			HeaderRow.createCell(0).setCellValue("Id");
+			HeaderRow.createCell(1).setCellValue("Patient Id");
+			HeaderRow.createCell(2).setCellValue("FullName");
+			HeaderRow.createCell(3).setCellValue("Doctor Id");
+			HeaderRow.createCell(4).setCellValue("FullName");
+			HeaderRow.createCell(5).setCellValue("Date");
+			HeaderRow.createCell(6).setCellValue("Time");
+			HeaderRow.createCell(7).setCellValue("Status");
+			HeaderRow.createCell(8).setCellValue("Amount");
+			HeaderRow.createCell(9).setCellValue("Link");
+
+			int RowNum = 1;
+			while (resultSet.next()) {
+				ResultSet rs = PatientDao.getPatient(resultSet.getInt(4));
+				ResultSet rs2 = DoctorDao.getDoctor(resultSet.getInt(5));
+				rs.next();
+				rs2.next();
+				XSSFRow Row = XFSheet.createRow(RowNum);
+				Row.createCell(0).setCellValue(resultSet.getInt(1));
+				Row.createCell(1).setCellValue(resultSet.getInt(4));
+				Row.createCell(2).setCellValue(rs.getString(3) + " " + rs.getString(4));
+				Row.createCell(3).setCellValue(resultSet.getInt(5));
+				Row.createCell(4).setCellValue(rs2.getString(3) + " " + rs2.getString(4));
+				Row.createCell(5).setCellValue(resultSet.getString(2));
+				Row.createCell(6).setCellValue(resultSet.getString(3));
+				Row.createCell(7).setCellValue(resultSet.getString(6));
+				Row.createCell(8).setCellValue(resultSet.getString(7));
+				Row.createCell(9).setCellValue(resultSet.getString(8));
+
+				RowNum++;
+			}
+			response.setContentType("application/vnd.ms-excel");
+			XFWB.write(response.getOutputStream());
+			XFWB.close();
+			return true;
+//            try (FileOutputStream FileOutStr = new FileOutputStream("Exported/Clients.xlsx")) {
+//                XFWB.write(FileOutStr);
+//                System.out.println("Okay");
+//            }
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 
 }
