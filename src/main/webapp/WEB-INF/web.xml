@@ -532,4 +532,14 @@
     <servlet-name>AdminLogoutServlet</servlet-name>
     <url-pattern>/AdminLogout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminShowProfileServlet</display-name>
+    <servlet-name>AdminShowProfileServlet</servlet-name>
+    <servlet-class>Controllers.AdminShowProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowProfileServlet</servlet-name>
+    <url-pattern>/AdminShowProfile</url-pattern>
+  </servlet-mapping>
 </web-app>

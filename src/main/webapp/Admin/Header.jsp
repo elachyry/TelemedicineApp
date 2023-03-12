@@ -29,7 +29,7 @@
           </div>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="AdminShowProfile" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="assets/Admin/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
@@ -139,8 +139,8 @@
               </a>
               <div class="collapse" id="ui-profile">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Show Profile</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Change Password</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AdminShowProfile">Show Profile</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="AdminChangePassword">Change Password</a></li>
                 </ul>
               </div>
             </li>

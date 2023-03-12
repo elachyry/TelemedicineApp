@@ -35,7 +35,7 @@ public class AdminLoginPageServlet extends HttpServlet {
 			ResultSet rs = AdminDao.login(email, password);
 			try {
 				if (rs.next()) {
-					HttpSession session = (HttpSession) request.getSession();
+					HttpSession session =request.getSession();
 					session.setAttribute("IdAdmin", rs.getInt(1));
 					session.setAttribute("First_NameAdmin", rs.getString(2));
 					session.setAttribute("Last_NameAdmin", rs.getString(3));
