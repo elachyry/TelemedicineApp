@@ -512,4 +512,14 @@
     <servlet-name>ExportSearchResultPatientServlet</servlet-name>
     <url-pattern>/ExportSearchResultPatient</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginPageServlet</display-name>
+    <servlet-name>AdminLoginPageServlet</servlet-name>
+    <servlet-class>Controllers.AdminLoginPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginPageServlet</servlet-name>
+    <url-pattern>/AdminLoginPage</url-pattern>
+  </servlet-mapping>
 </web-app>

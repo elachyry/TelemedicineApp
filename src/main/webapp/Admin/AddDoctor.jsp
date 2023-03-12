@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%
+if (session.getAttribute("EmailAdmin") == null) {
+	response.sendRedirect("/telemedicine/AdminLoginPage");
+}
+%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -39,7 +44,8 @@
 						<h3 class="page-title">Add Doctor</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="AllDoctors">All Doctors</a></li>
+								<li class="breadcrumb-item"><a href="AllDoctors">All
+										Doctors</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Add
 									Doctor</li>
 							</ol>
@@ -50,25 +56,28 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<form class="form-sample" action="" method="post" autocomplete="off" enctype='multipart/form-data'>
+									<form class="form-sample" action="" method="post"
+										autocomplete="off" enctype='multipart/form-data'>
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Image</label>
 													<div class="col-sm-9">
-														<input type="file" class="form-control" name="image" required/>
+														<input type="file" class="form-control" name="image"
+															required />
 													</div>
 												</div>
 											</div>
-											
+
 										</div>
-										
+
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">First Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="firstName" required/>
+														<input type="text" class="form-control" name="firstName"
+															required />
 													</div>
 												</div>
 											</div>
@@ -76,7 +85,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Last Name</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="lastName" required/>
+														<input type="text" class="form-control" name="lastName"
+															required />
 													</div>
 												</div>
 											</div>
@@ -86,7 +96,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Gender</label>
 													<div class="col-md-9">
-														<select class="form-control" name="sex" >
+														<select class="form-control" name="sex">
 															<option value="Male">Male</option>
 															<option value="Female">Female</option>
 														</select>
@@ -99,7 +109,7 @@
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															placeholder="dd/mm/yyyy" name="BirthDay" required/>
+															placeholder="dd/mm/yyyy" name="BirthDay" required />
 													</div>
 												</div>
 											</div>
@@ -109,7 +119,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Email</label>
 													<div class="col-sm-9">
-														<input type="email" class="form-control" name="email" required/>
+														<input type="email" class="form-control" name="email"
+															required />
 													</div>
 												</div>
 											</div>
@@ -117,7 +128,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Phone Number</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="phoneNumber" required/>
+														<input type="text" class="form-control" name="phoneNumber"
+															required />
 													</div>
 												</div>
 											</div>
@@ -127,7 +139,8 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Address</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="address" required/>
+														<input type="text" class="form-control" name="address"
+															required />
 													</div>
 												</div>
 											</div>
@@ -377,7 +390,8 @@
 										</div>
 										<center>
 											<input type="submit" class="btn btn-primary mb-4"
-												name="submit" value="Add Doctor"></button>
+												name="submit" value="Add Doctor">
+											</button>
 										</center>
 									</form>
 								</div>
@@ -432,7 +446,7 @@
 		});
 	</script>
 	<%
-	}else if(status.equals("failed")){
+	} else if (status.equals("failed")) {
 	%>
 	<script>
 		swal({
@@ -445,7 +459,7 @@
 		});
 	</script>
 	<%
-	}else if(status.equals("emailExist")){
+	} else if (status.equals("emailExist")) {
 	%>
 	<script>
 		swal({
@@ -458,7 +472,7 @@
 		});
 	</script>
 	<%
-	}else if(status.equals("phoneExist")){
+	} else if (status.equals("phoneExist")) {
 	%>
 	<script>
 		swal({
@@ -471,7 +485,7 @@
 		});
 	</script>
 	<%
-	}else if(status.equals("successExport")){
+	} else if (status.equals("successExport")) {
 	%>
 	<script>
 		swal({
