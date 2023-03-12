@@ -116,6 +116,20 @@ public class DoctorDao {
 		}
 
 	}
+	
+	public static ResultSet searchDoctors(String type, String val) {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement(
+					"SELECT * FROM `doctor` WHERE (First_Name LIKE '%" + val + "%' OR Last_Name LIKE '%" + val + "%' OR Speciality  LIKE '%" + val + "%' OR Email  LIKE '%" + val + "%' OR Number_Phone  LIKE '%" + val + "%') AND `deleted_at`IS " + type);
+			ResultSet resultSet = ps.executeQuery();
+			return resultSet;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	public static ResultSet getDoctor(int id) {
 		try {

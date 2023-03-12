@@ -472,4 +472,14 @@
     <servlet-name>ExportSearchResultAppointmentServlet</servlet-name>
     <url-pattern>/ExportSearchResultAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoctorSearchServlet</display-name>
+    <servlet-name>DoctorSearchServlet</servlet-name>
+    <servlet-class>Controllers.DoctorSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoctorSearchServlet</servlet-name>
+    <url-pattern>/DoctorSearch</url-pattern>
+  </servlet-mapping>
 </web-app>
