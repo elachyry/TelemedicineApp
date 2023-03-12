@@ -10,6 +10,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%
+	if (session.getAttribute("EmailAdmin") == null) {
+		response.sendRedirect("/telemedicine/AdminLoginPage");
+	}
+	%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -113,7 +118,7 @@
 													</label></td>
 
 													<%
-													} else if (rs.getString(6).equals("Cancelled")) {
+													} else if (rs.getString(6).equals("Cancelled") || rs.getString(6).equals("Denied")) {
 													%>
 													<td><label class="badge badge-danger"><%=rs.getString(6)%>
 													</label></td>
@@ -345,7 +350,7 @@
 			            			status = '<label class="badge badge-info">' + response[val].status +'</label>'
 			            		}else if(response[val].status == "Accepted"){
 			            			status = '<label class="badge badge-success">' + response[val].status +'</label>'
-			            		}else if(response[val].status == "Cancelled"){
+			            		}else if(response[val].status == "Cancelled" || response[val].status == "Denied"){
 			            			status = '<label class="badge badge-danger">' + response[val].status +'</label>'
 			            		}else{
 			            			status = '<label>' + response[val].status +'</label>'

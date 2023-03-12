@@ -10,10 +10,7 @@ import jakarta.servlet.*;
 
 import com.google.gson.Gson;
 
-import DAO.AppointmentDao;
 import DAO.DoctorDao;
-import DAO.PatientDao;
-import Models.Appointment;
 import Models.Doctor;
 
 

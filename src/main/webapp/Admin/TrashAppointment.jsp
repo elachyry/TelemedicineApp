@@ -9,6 +9,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%
+	if (session.getAttribute("EmailAdmin") == null) {
+		response.sendRedirect("/telemedicine/AdminLoginPage");
+	}
+	%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -90,7 +95,35 @@
 													<td><%=rs3.getString(10)%></td>
 													<td><%=rs.getString(2) + " " + rs.getString(3)%></td>
 													<td><%=rs.getString(8)%></td>
-													<td><%=rs.getString(6)%></td>
+													<%
+													if (rs.getString(6).equals("Pending")) {
+													%>
+													<td><label class="badge badge-warning"><%=rs.getString(6)%>
+													</label></td>
+
+													<%
+													} else if (rs.getString(6).equals("Cancelled") || rs.getString(6).equals("Denied")) {
+													%>
+													<td><label class="badge badge-danger"><%=rs.getString(6)%>
+													</label></td>
+													<%
+													} else if (rs.getString(6).equals("Accepted")) {
+													%>
+													<td><label class="badge badge-success"><%=rs.getString(6)%>
+													</label></td>
+
+													<%
+													} else if (rs.getString(6).equals("Finished")) {
+													%>
+													<td><label class="badge badge-info"><%=rs.getString(6)%>
+													</label></td>
+													<%
+													} else {
+													%>
+													<td><label><%=rs.getString(6)%> </label></td>
+													<%
+													}
+													%>
 													<td class="px-4 py-3" style="text-align: center">
 														<div class="flex items-center space-x-4 text-sm">
 

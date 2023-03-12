@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@page import="DAO.PatientDao"%>
 <%@page import="Models.Patient"%>
 <%@page import="java.sql.ResultSet"%>
@@ -10,10 +9,10 @@
 <html lang="en">
 <head>
 <%
-	if (session.getAttribute("EmailAdmin") == null) {
-		response.sendRedirect("/telemedicine/AdminLoginPage");
-	}
-	%>
+if (session.getAttribute("EmailAdmin") == null) {
+	response.sendRedirect("/telemedicine/AdminLoginPage");
+}
+%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -47,44 +46,26 @@
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="page-header">
-						<h3 class="page-title">Update Patient</h3>
+						<h3 class="page-title">Profile</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="AllPatients">All
-										Patients</a></li>
+								<li class="breadcrumb-item"><a href="adminDashboard">Dashboard</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Edit
-									Patient</li>
+									Profile</li>
 							</ol>
 						</nav>
 					</div>
 					<div class="row">
 
-						<%
-						int id = Integer.parseInt(request.getParameter("id"));
-						ResultSet rs = PatientDao.getPatient(id);
-						if (rs != null && rs.next() == true) {
-						%>
+
 
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<form class="form-sample" action="" method="post"
-										autocomplete="off" enctype='multipart/form-data'>
+									<form class="form-sample" action="" method="post">
 
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Image</label>
-													<div class="col-sm-9">
-														<input type="file" class="form-control" name="image" />
-													</div>
-												</div>
-											</div>
-
-										</div>
-										<input type="hidden" class="form-control" name="id"
-											value="<%=rs.getString(1)%>" /> <input type="hidden"
-											class="form-control" name="path" value="<%=rs.getString(2)%>" />
+										<input type="hidden" name="id"
+											value="<%=session.getAttribute("IdAdmin")%>" />
 
 										<div class="row">
 											<div class="col-md-6">
@@ -92,7 +73,8 @@
 													<label class="col-sm-3 col-form-label">First Name</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="firstName"
-															value="<%=rs.getString(3)%>" required />
+															value="<%=session.getAttribute("First_NameAdmin")%>"
+															required />
 													</div>
 												</div>
 											</div>
@@ -101,43 +83,32 @@
 													<label class="col-sm-3 col-form-label">Last Name</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="lastName"
-															value="<%=rs.getString(4)%>" required />
+															value="<%=session.getAttribute("Last_NameAdmin")%>"
+															required />
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Gender</label>
-													<div class="col-md-9">
-														<select class="form-control" name="sex">
-															<%
-															if (rs.getString(8).equals("Male")) {
-															%>
-															<option value="Male" selected>Male</option>
-															<option value="Female">Female</option>
-															<%
-															} else if (rs.getString(8).equals("Female")) {
-															%>
-															<option value="Male">Male</option>
-															<option value="Female" selected>Female</option>
-															<%
-															}
-															%>
 
-														</select>
-													</div>
-												</div>
-											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Date of
 														Birth</label>
 													<div class="col-sm-9">
 														<input type="date" class="form-control"
-															value="<%=rs.getString(5)%>" placeholder="dd/mm/yyyy"
+															value="<%=session.getAttribute("BirthDayAdmin")%>"
 															name="BirthDay" required />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Username</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="username"
+															value="<%=session.getAttribute("UsernameAdmin")%>"
+															required />
 													</div>
 												</div>
 											</div>
@@ -148,7 +119,7 @@
 													<label class="col-sm-3 col-form-label">Email</label>
 													<div class="col-sm-9">
 														<input type="email" class="form-control" name="email"
-															value="<%=rs.getString(6)%>" required />
+															value="<%=session.getAttribute("EmailAdmin")%>" required />
 													</div>
 												</div>
 											</div>
@@ -157,28 +128,7 @@
 													<label class="col-sm-3 col-form-label">Phone Number</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="phoneNumber"
-															value="<%=rs.getString(7)%>" required />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Address</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="address"
-															value="<%=rs.getString(10)%>" required />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Social
-														Account</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control"
-															name="socialAccount" value="<%=rs.getString(9)%>"
+															value="<%=session.getAttribute("Phone_NumberAdmin")%>"
 															required />
 													</div>
 												</div>
@@ -186,6 +136,18 @@
 										</div>
 
 
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Password</label>
+													<div class="col-sm-9">
+														<input type="password" class="form-control"
+															name="password" required />
+													</div>
+												</div>
+											</div>
+
+										</div>
 
 										<div class="form-check mx-sm-2">
 											<label class="form-check-label"> <input type="hidden"
@@ -194,13 +156,11 @@
 										</div>
 										<center>
 											<input type="submit" class="btn btn-primary mb-4"
-												name="submit" value="Update Patient"/>
-											
+												name="submit" value="Update Profile" />
+
 										</center>
 									</form>
-									<%
-									}
-									%>
+
 								</div>
 							</div>
 						</div>
@@ -239,17 +199,16 @@
 		status = request.getParameter("status");
 	}
 	System.out.println(request.getParameter("test"));
-	System.out.println(status);
-	if (status.equals("success")) {
+	if (status.equals("successUpdate")) {
 	%>
 	<script>
 		swal({
 			title : "Success!",
-			text : "You have updated the patient successfully!",
+			text : "You have updated your profile successfully!",
 			icon : "success",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/editPatient");
+			window.location.replace("/telemedicine/AdminShowProfile");
 		});
 	</script>
 	<%
@@ -262,33 +221,20 @@
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/editPatient");
+			window.location.replace("/telemedicine/AdminShowProfile");
 		});
 	</script>
 	<%
-	} else if (status.equals("emailExist")) {
+	} else if (status.equals("passwordIncorrect")) {
 	%>
 	<script>
 		swal({
 			title : "Error!",
-			text : "This Email is already exist!",
+			text : "Old password is inccorect, Please try again!",
 			icon : "error",
 			button : "Okay!",
 		}).then(function() {
-			window.location.replace("/telemedicine/editPatient");
-		});
-	</script>
-	<%
-	} else if (status.equals("phoneExist")) {
-	%>
-	<script>
-		swal({
-			title : "Error!",
-			text : "This Phone Number is already exist!",
-			icon : "error",
-			button : "Okay!",
-		}).then(function() {
-			window.location.replace("/telemedicine/editPatient");
+			window.location.replace("/telemedicine/AdminShowProfile");
 		});
 	</script>
 	<%

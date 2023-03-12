@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 01:41 AM
+-- Generation Time: Mar 12, 2023 at 08:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,12 +33,19 @@ CREATE TABLE `admin` (
   `id` int(10) NOT NULL,
   `First_Name` varchar(30) NOT NULL,
   `Last_Name` varchar(30) NOT NULL,
-  `BirthDay` date NOT NULL,
+  `BirthDay` varchar(50) DEFAULT NULL,
   `Email` varchar(50) NOT NULL,
   `Phone_Number` varchar(30) NOT NULL,
-  `Username` int(30) NOT NULL,
-  `Password` int(30) NOT NULL
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Phone_Number`, `Username`, `Password`) VALUES
+(1, 'Mohammed', 'ELachyry', '2000-11-15', 'app.medivist@gmail.com', '0680346100', 'admin', 'YWRtaW4=');
 
 -- --------------------------------------------------------
 
@@ -55,6 +62,7 @@ CREATE TABLE `appointments` (
   `Status` varchar(10) NOT NULL,
   `amount` double NOT NULL,
   `Link` varchar(255) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,8 +70,13 @@ CREATE TABLE `appointments` (
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `Date`, `Time`, `Patient_id`, `Doctor_id`, `Status`, `amount`, `Link`, `deleted_at`) VALUES
-(2, '2023-03-22', '15:29', 4, 11, 'cancelled', 500, 'https://meet.google.com/irp-espf-pve', NULL);
+INSERT INTO `appointments` (`id`, `Date`, `Time`, `Patient_id`, `Doctor_id`, `Status`, `amount`, `Link`, `created_at`, `deleted_at`) VALUES
+(2, '2023-03-22', '15:29', 4, 11, 'Cancelled', 800, 'https://meet.google.com/irp-espf-pve', '2023-03-05', NULL),
+(3, '2023-03-20', '14:00', 3, 11, 'Pending', 3000, 'https://meet.google.com/icu-eqmr-usv', '2023-03-05', NULL),
+(4, '2023-03-19', '12:00', 2, 11, 'Pending', 3000, 'https://meet.google.com/icu-eqmr-usv', '2023-02-27', NULL),
+(5, '2023-03-21', '13:00', 2, 11, 'Pending', 500, 'https://meet.google.com/icu-eqmr-usv', '2023-02-27', NULL),
+(6, '2023-03-15', '23:00', 3, 11, 'Pending', 800, 'https://meet.google.com/icu-eqmr-usv', '2023-03-01', NULL),
+(7, '2023-03-19', '02:03', 3, 8, 'Pending', 400, 'sdfsdfsdffffffgdhfgjyujuyyu', '2023-02-27', '2023-03-12 17:54:54');
 
 -- --------------------------------------------------------
 
@@ -94,9 +107,9 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Address`, `Speciality`, `Work_Days`, `Work_Hours`, `Username`, `Password`, `deleted_at`) VALUES
-(8, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-13', 'achyri2ed000@gmail.com', '0680346100', 'Female', 'sadassadsa', 'Urology', 'Monday-Wednesday-Thursday-Friday-Saturday-', '9-11-12-13-16-', 'adam71517', 'mG6s0WIvK8', NULL),
-(10, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-15', 'achyri2000@gmail.com', '0680346100', 'Male', 'sadassadsa', 'Allergy and immunology', 'Monday-Tuesday-', '9-10-', 'adam77072', 'c1c0R1Jrb2ZsWA==', NULL),
-(11, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\doctors-2.jpg', 'Ahmed', 'Chair', '2023-03-08', 'ahmed@gmail.com', '066174586', 'Male', 'HAY EL WAHDA 3', 'Ophthalmology', 'Monday-Tuesday-', '10-', 'Chair37163', 'dk4ybTVaZ3dIMw==', NULL);
+(8, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-13', 'achyri2ed000@gmail.com', '0680346100', 'Female', 'sadassadsa', 'Urology', 'Monday-Wednesday-Thursday-Friday-Saturday-', '9-11-12-13-16-', 'adam71517', 'mG6s0WIvK8', '2023-03-12 01:53:44'),
+(10, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'mohamed', 'adam', '2023-03-15', 'achyri2000@gmail.com', '0680346100', 'Male', 'sadassadsa', 'Allergy and immunology', 'Monday-Tuesday-', '9-10-', 'adam34678', 'dEs3dFJpaVVDdw==', NULL),
+(11, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\doctors-2.jpg', 'Ahmed', 'Chair', '2023-03-08', 'ahmed123@gmail.com', '066174586', 'Male', 'HAY EL WAHDA 3', 'Ophthalmology', 'Monday-Tuesday-', '10-', 'Chair37163', 'dk4ybTVaZ3dIMw==', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,9 +138,10 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `Image_Path`, `First_Name`, `Last_Name`, `BirthDay`, `Email`, `Number_Phone`, `Sex`, `Social_Account`, `Address`, `Username`, `Password`, `deleted_at`) VALUES
-(2, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'Mohammed', 'Elachyry', '2023-03-09', 'mohammedelachyry@gmailcom', '0661705486', 'Male', '01478932158', 'hay nahda', 'Elachyry48726', 'dkc1RHp5aExwag==', NULL),
+(2, 'C:\\Users\\achyr\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\telemedicneApp\\\\images\\c.PNG', 'Mohammed', 'Elachyry', '2023-03-09', 'mohammedelachyry@gmailcom', '0660000486', 'Female', '01478932158', 'hay nahda', 'Elachyry48726', 'dkc1RHp5aExwag==', NULL),
 (3, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\Capture.PNG', 'MOHAMMED', 'ELACHYRY', '2023-03-16', 'mohammedelachyry@gmail.com', '+212658346100', 'Male', '202020202', 'HAY SALAM ABD LAKARIM LAKHADTABI NR134', 'ELACHYRY74981', 'dkg3aXQ1Qk1JeA==', NULL),
-(4, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\Capture.PNG', 'MOHAMMED', 'ELACHYRY', '2023-03-21', 'mohammedelkachyry@gmail.com', '+2126580346100', 'Female', '2020201', 'HAY SALAM ABD LAKARIM LAKHADTABI NR134', 'ELACHYRY12079', 'c0MzcmpId0JDZg==', NULL);
+(4, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\Capture.PNG', 'MOHAMMED', 'ELACHYRY', '2023-03-21', 'mohammedelkachyry@gmail.com', '+2126580346100', 'Female', '2020201', 'HAY SALAM ABD LAKARIM LAKHADTABI NR134', 'ELACHYRY12079', 'c0MzcmpId0JDZg==', NULL),
+(5, 'D:\\Eclipse Work Space\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\telemedicine\\\\images\\testimonials-5.jpg', 'Oussama', 'Moukhlis', '2023-03-15', 'Oussama@gmail.com', '0124578963', 'Male', '014789877', 'Haysalam', 'Moukhlis82263', 'eUw5Y1k5VWhuRA==', NULL);
 
 --
 -- Indexes for dumped tables
@@ -167,13 +181,13 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -185,7 +199,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
