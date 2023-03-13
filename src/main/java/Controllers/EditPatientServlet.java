@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 
 
 import DAO.PatientDao;
+import Models.HelperClass;
 import Models.Patient;
 import Models.Tools;
 
@@ -50,6 +51,7 @@ public class EditPatientServlet extends HttpServlet {
 			Part part = request.getPart("image");
 			System.out.println("part " + part);
 			String savePath;
+			String img_url;
 			try {
 			String fileName = extractFileName(part);// file name
 
@@ -69,6 +71,9 @@ public class EditPatientServlet extends HttpServlet {
 			System.out.println("sRootPath: " + sRootPath);
 			part.write(savePath + File.separator);
 			File fileSaveDir1 = new File(savePath);
+			
+			HelperClass save = new HelperClass();
+			img_url = save.SaveImage(applicationPath, part);
 			/*
 			 * if you may have more than one files with same name then you can calculate
 			 * some random characters and append that characters in fileName so that it will
@@ -77,7 +82,7 @@ public class EditPatientServlet extends HttpServlet {
 			dbFileName = UPLOAD_DIR + File.separator + fileName;
 			part.write(savePath + File.separator);
 			}catch(IOException ex) {
-				savePath = path;
+				img_url = path;
 			}
 			try {
 				System.out.println(Tools.checkField("patient", "Email", email));
@@ -99,7 +104,7 @@ public class EditPatientServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			Patient patient = new Patient(savePath, firstName, lastName, email, sex, address, phoneNumber, BirthDay, socialAccount);
+			Patient patient = new Patient(img_url, firstName, lastName, email, sex, address, phoneNumber, BirthDay, socialAccount);
 
 			if (PatientDao.updatePatient(patient, id) == 1) {
 				response.sendRedirect("/telemedicine/AllPatients?status=successUpdate");

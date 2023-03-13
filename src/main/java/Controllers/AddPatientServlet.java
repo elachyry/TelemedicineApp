@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.MultipartConfig;
 import DAO.PatientDao;
+import Models.HelperClass;
 import Models.Patient;
 import Models.Tools;
 
@@ -64,6 +65,9 @@ public class AddPatientServlet extends HttpServlet {
 			 */
 			dbFileName = UPLOAD_DIR + File.separator + fileName;
 			part.write(savePath + File.separator);
+			
+			HelperClass save = new HelperClass();
+			String img_url = save.SaveImage(applicationPath, part);
 
 			try {
 				System.out.println(Tools.checkField("patient", "Email", email));
@@ -86,7 +90,7 @@ public class AddPatientServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			Patient patient = new Patient(savePath, firstName, lastName, email, sex, address, phoneNumber, BirthDay,
+			Patient patient = new Patient(img_url, firstName, lastName, email, sex, address, phoneNumber, BirthDay,
 					socialAccount);
 
 			if (PatientDao.addPatient(patient) == 1) {
