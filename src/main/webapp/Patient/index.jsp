@@ -141,11 +141,11 @@
                 
                     <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
                         <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
-				            <img src="../assets/Doctor/img/testimonial-1.jpg" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px;">
-							<div class="text-center"><%=list.get(i).getFirstName()%> <%=list.get(i).getLastName()%></div>
+				            <img src="<%=request.getContextPath()%>\<%=list.get(i).getImagePath()%>" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px; margin-top: 20px">
+							<div class="text-center" style="margin-top: 20px;"><%=list.get(i).getFirstName()%> <%=list.get(i).getLastName()%></div>
 				            <div class="card-body">
 				                <h5 class="card-title text-center"><%=list.get(i).getSpecialty()%></h5>
-				                <p class="card-text"><%=list.get(i).getAddress()%></p>
+				                <p class="card-text" style="text-align: center;"><%=list.get(i).getAddress()%></p>
 				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
 				            </div>
 			        	</div>
