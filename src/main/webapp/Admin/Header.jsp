@@ -79,7 +79,7 @@
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                   <span class="font-weight-bold mb-2"><%=session.getAttribute("Last_NameAdmin") + " " +  session.getAttribute("First_NameAdmin")%></span>
-                  <span class="text-secondary text-small">Project Manager</span>
+                  <span class="text-secondary text-small">Admin</span>
                 </div>
               </a>
             </li>
