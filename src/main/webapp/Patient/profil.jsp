@@ -93,15 +93,12 @@
 				<div class="navbar-nav w-100">
 					<a href="<%=request.getContextPath()%>/Patient/index.jsp"
 						class="nav-item nav-link "><i
-						class="fa fa-tachometer-alt me-2"></i>Dashboard</a> <a
+						class="fa fa-tachometer-alt me-2"></i>Home</a> <a
 						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
 						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
 					<a href="<%=request.getContextPath()%>/Patientr/patients.jsp"
 						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
-						aria-hidden="true"></i>Patients</a> <a
-						href="<%=request.getContextPath()%>/Patient/messages.jsp"
-						class="nav-item nav-link"><i class="fa fa-envelope me-2"
-						aria-hidden="true"></i>Messages</a> <a
+						aria-hidden="true"></i>Patients</a>  <a
 						href="<%=request.getContextPath()%>/Patient/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
@@ -184,37 +181,60 @@
 										<div class="card-body text-center">
 											<div class="row">
 												<div class="col-sm-3">
-													<p class="mb-0">Full Name</p>
+													<p class="mb-0">First Name</p>
 												</div>
 												<div class="col-sm-9">
 													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="FullName"
-														value="<%=session.getAttribute("fullname")%>">
+														style="text-align: center;" name="fisrtname"
+														value="<%=session.getAttribute("FisrtName")%>">
 												</div>
 											</div>
 											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Email</p>
+											<div class="card-body text-center">
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Last Name</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="lastname"
+															value="<%=session.getAttribute("LastName")%>">
+													</div>
 												</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="email"
-														value="<%=session.getAttribute("Email")%>">
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Email</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="email"
+															value="<%=session.getAttribute("Email")%>">
+													</div>
 												</div>
-											</div>
-											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Phone</p>
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Phone</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="phone"
+															value="<%=session.getAttribute("Phone")%>">
+													</div>
 												</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="phone"
-														value="<%=session.getAttribute("Phone")%>">
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Address</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="address"
+															value="<%=session.getAttribute("Adress")%>">
+													</div>
 												</div>
-											</div>
-											<hr>
+												<hr>
 											<div class="row">
 												<div class="col-sm-3">
 													<p class="mb-0">Social Number</p>
@@ -228,23 +248,12 @@
 											<hr>
 											<div class="row">
 												<div class="col-sm-3">
-													<p class="mb-0">Address</p>
-												</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="address"
-														value="<%=session.getAttribute("Adress")%>">
-												</div>
-											</div>
-											<hr>
-											<div class="row">
-												<div class="col-sm-3">
 													<p class="mb-0">BirthDay</p>
 												</div>
 												<div class="col-sm-9">
 													<input type="date" class="form-control-plaintext inp"
 														style="text-align: center;" name="birthday"
-														value="<%=session.getAttribute("BirthDay")%>">
+														value="<%=session.getAttribute("birthday")%>">
 												</div>
 											</div>
 											<hr>

@@ -72,7 +72,7 @@ public class Login extends HttpServlet {
 					  }else if(profil.equals("patient")) {
 						  statement = connection.prepareStatement("SELECT * FROM `patient` WHERE Username = ? AND Password = ?");
 						  statement.setString(1,username);
-						  statement.setString(2,password);
+						  statement.setString(2,Tools.encryptPassword(password) );
 						  ResultSet rs = statement.executeQuery();
 						  if(rs.next()) {
 							  HttpSession session =(HttpSession) request.getSession();
@@ -84,10 +84,10 @@ public class Login extends HttpServlet {
 							  session.setAttribute("Image", rs.getString("Image_Path"));
 							  session.setAttribute("Email", rs.getString("Email"));
 							  session.setAttribute("Phone", rs.getString("Number_Phone"));
-							  session.setAttribute("BirthDay", rs.getString("BirthDay"));
+							  session.setAttribute("birthday", rs.getString("BirthDay"));
 							  session.setAttribute("Adress", rs.getString("Address"));
 							  session.setAttribute("Sex", rs.getString("Sex"));
-							  session.setAttribute("Password", rs.getString("Password"));
+							  session.setAttribute("Password", Tools.decryptPassword(rs.getString("Password")));
 							  session.setAttribute("Social_Account", rs.getString("Social_Account"));
 							  
 							  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Patient/index.jsp");
@@ -95,7 +95,7 @@ public class Login extends HttpServlet {
 						  
 					  }
 			  			if(dispatcher == null) {
-			  				System.out.println("tzzzz");
+			  				System.out.println("ok");
 			  			}else {
 			  				dispatcher.forward(request, response);
 			  			}
