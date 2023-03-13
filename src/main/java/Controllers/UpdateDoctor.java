@@ -30,9 +30,8 @@ public class UpdateDoctor extends HttpServlet {
 			PreparedStatement ps = null;
 			RequestDispatcher dispatcher = null;
 			int id = (Integer) session.getAttribute("Id");
-			String[] fullname = req.getParameter("FullName").split(" ");
-			String firstName = fullname[0];
-			String lastName = fullname[1];
+			String firstName = req.getParameter("fisrtname");
+			String lastName = req.getParameter("lastname");
 			String email = req.getParameter("email");
 			String address = req.getParameter("address");
 			String phoneNumber = req.getParameter("phone");

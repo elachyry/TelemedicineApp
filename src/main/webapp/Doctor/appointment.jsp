@@ -65,7 +65,6 @@
                    
                     <a href="appointment.jsp" class="nav-item nav-link active"><i class="fa fa-medkit  me-2"></i>Appointments</a>
                     <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
-                    <a href="messages.jsp" class="nav-item nav-link"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Messages</a>
                     <a href="profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
                     
                     
