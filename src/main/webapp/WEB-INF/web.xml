@@ -4,11 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-	<!-- <error-page> -->
-	<!-- <location>/Admin/Error404.jsp</location> -->
-	<!-- </error-page> -->
- 
-  
   <servlet>
     <description></description>
     <display-name>PatientRegister</display-name>
@@ -59,8 +54,7 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  
- <servlet>
+  <servlet>
     <description></description>
     <display-name>AddDoctorServlet</display-name>
     <servlet-name>AddDoctorServlet</servlet-name>
@@ -198,7 +192,7 @@
   <servlet-mapping>
     <servlet-name>ExportDoctorsServlet</servlet-name>
     <url-pattern>/ExportDoctors</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>AddPatientServlet</display-name>
@@ -309,9 +303,6 @@
     <servlet-name>AllAppointmentsServlet</servlet-name>
     <url-pattern>/AllAppointments</url-pattern>
   </servlet-mapping>
-   
-  
-
   <servlet>
     <description></description>
     <display-name>UpdateDoctor</display-name>
@@ -321,5 +312,244 @@
   <servlet-mapping>
     <servlet-name>UpdateDoctor</servlet-name>
     <url-pattern>/updateDoctor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAppointmentSevlet</display-name>
+    <servlet-name>AddAppointmentSevlet</servlet-name>
+    <servlet-class>Controllers.AddAppointmentSevlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAppointmentSevlet</servlet-name>
+    <url-pattern>/AddAppointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePatient</display-name>
+    <servlet-name>UpdatePatient</servlet-name>
+    <servlet-class>Controllers.UpdatePatient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePatient</servlet-name>
+    <url-pattern>/updatepatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>GetPatientInfosServlet</display-name>
+    <servlet-name>GetPatientInfosServlet</servlet-name>
+    <servlet-class>Controllers.GetPatientInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPatientInfosServlet</servlet-name>
+    <url-pattern>/GetPatientInfos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDoctorInfosServlet</display-name>
+    <servlet-name>GetDoctorInfosServlet</servlet-name>
+    <servlet-class>Controllers.GetDoctorInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDoctorInfosServlet</servlet-name>
+    <url-pattern>/GetDoctorInfos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrashAppointmentServlet</display-name>
+    <servlet-name>TrashAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.TrashAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrashAppointmentServlet</servlet-name>
+    <url-pattern>/TrashAppointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentSoftDeleteServlet</display-name>
+    <servlet-name>AppointmentSoftDeleteServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentSoftDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentSoftDeleteServlet</servlet-name>
+    <url-pattern>/AppointmentSoftDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RestoreAppointmentServlet</display-name>
+    <servlet-name>RestoreAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.RestoreAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestoreAppointmentServlet</servlet-name>
+    <url-pattern>/RestoreAppointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentHardDeleteServlet</display-name>
+    <servlet-name>AppointmentHardDeleteServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentHardDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentHardDeleteServlet</servlet-name>
+    <url-pattern>/AppointmentHardDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelAppointmentServlet</display-name>
+    <servlet-name>CancelAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.CancelAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelAppointmentServlet</servlet-name>
+    <url-pattern>/CancelAppointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportAppointmentsServlet</display-name>
+    <servlet-name>ExportAppointmentsServlet</servlet-name>
+    <servlet-class>Controllers.ExportAppointmentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportAppointmentsServlet</servlet-name>
+    <url-pattern>/ExportAppointments</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentShowAllInfosServlet</display-name>
+    <servlet-name>AppointmentShowAllInfosServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentShowAllInfosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentShowAllInfosServlet</servlet-name>
+    <url-pattern>/AppointmentShowAllInfos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditAppointmentServlet</display-name>
+    <servlet-name>EditAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.EditAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditAppointmentServlet</servlet-name>
+    <url-pattern>/EditAppointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookAppointmentPatientServlet</display-name>
+    <servlet-name>BookAppointmentPatientServlet</servlet-name>
+    <servlet-class>Controllers.BookAppointmentPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookAppointmentPatientServlet</servlet-name>
+    <url-pattern>/BookAppointmentPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookAppointmentDoctorServlet</display-name>
+    <servlet-name>BookAppointmentDoctorServlet</servlet-name>
+    <servlet-class>Controllers.BookAppointmentDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookAppointmentDoctorServlet</servlet-name>
+    <url-pattern>/BookAppointmentDoctor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentSearchServlet</display-name>
+    <servlet-name>AppointmentSearchServlet</servlet-name>
+    <servlet-class>Controllers.AppointmentSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentSearchServlet</servlet-name>
+    <url-pattern>/AppointmentSearch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportSearchResultAppointmentServlet</display-name>
+    <servlet-name>ExportSearchResultAppointmentServlet</servlet-name>
+    <servlet-class>Controllers.ExportSearchResultAppointmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportSearchResultAppointmentServlet</servlet-name>
+    <url-pattern>/ExportSearchResultAppointment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoctorSearchServlet</display-name>
+    <servlet-name>DoctorSearchServlet</servlet-name>
+    <servlet-class>Controllers.DoctorSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoctorSearchServlet</servlet-name>
+    <url-pattern>/DoctorSearch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportSearchResultDoctorServlet</display-name>
+    <servlet-name>ExportSearchResultDoctorServlet</servlet-name>
+    <servlet-class>Controllers.ExportSearchResultDoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportSearchResultDoctorServlet</servlet-name>
+    <url-pattern>/ExportSearchResultDoctor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PatientSearchServlet</display-name>
+    <servlet-name>PatientSearchServlet</servlet-name>
+    <servlet-class>Controllers.PatientSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientSearchServlet</servlet-name>
+    <url-pattern>/PatientSearch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportSearchResultPatientServlet</display-name>
+    <servlet-name>ExportSearchResultPatientServlet</servlet-name>
+    <servlet-class>Controllers.ExportSearchResultPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportSearchResultPatientServlet</servlet-name>
+    <url-pattern>/ExportSearchResultPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginPageServlet</display-name>
+    <servlet-name>AdminLoginPageServlet</servlet-name>
+    <servlet-class>Controllers.AdminLoginPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginPageServlet</servlet-name>
+    <url-pattern>/AdminLoginPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLogoutServlet</display-name>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <servlet-class>Controllers.AdminLogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <url-pattern>/AdminLogout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminShowProfileServlet</display-name>
+    <servlet-name>AdminShowProfileServlet</servlet-name>
+    <servlet-class>Controllers.AdminShowProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowProfileServlet</servlet-name>
+    <url-pattern>/AdminShowProfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminChangePasswordServlet</display-name>
+    <servlet-name>AdminChangePasswordServlet</servlet-name>
+    <servlet-class>Controllers.AdminChangePasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminChangePasswordServlet</servlet-name>
+    <url-pattern>/AdminChangePassword</url-pattern>
   </servlet-mapping>
 </web-app>

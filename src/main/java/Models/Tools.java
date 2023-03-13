@@ -23,6 +23,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import DAO.DoctorDao;
+import DAO.PatientDao;
+
 public class Tools {
 
 	public static String generatePassword(int length) {
@@ -116,8 +119,8 @@ public class Tools {
             properties.put("mail.smtp.host", "smtp.gmail.com");
             properties.put("mail.smtp.port", "587");
 
-            final String myEmail = "medivisit.app@gmail.com";
-            final String myPassword = "moebohtqtxutppgr";
+            final String myEmail = "app.medivisit@gmail.com";
+            final String myPassword = "gqwukfuxlufpjuxb";
 
 
             Session session = Session.getInstance(properties, new Authenticator() {
@@ -134,23 +137,42 @@ public class Tools {
 
     }
 
-    private static Message preapareMessage(Session session, String MyEmail, String recipient, String nom, String prenom, String username, String password, String emailType) {
+    private static Message preapareMessage(Session session, String MyEmail, String recipient, String nom, String prenom, String username, String password, String emailType) throws SQLException {
         try {
            
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(MyEmail));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             if ("New Account".equals(emailType)) {
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+
                 message.setSubject("Welcom to Medivist");
-                message.setText("Hello Dr." + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou have been added to become a member of the medical staff" + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "\nUsername: " + username + "\n" + "Password: " + password + "\n" + "Noticed: You can change your username and password from your account.");
+                message.setText("Hello Dr." + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou have been added to become a member of the medical staff" + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n\n" + "Password: " + password + "\n" + "Noticed: You can change your username and password from your account.");
+            }
+            if ("New Account Patient".equals(emailType)) {
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+
+                message.setSubject("Welcom to Medivist");
+                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "Congratulations! \nYou account has been created. " + "\n\nYour login information: " + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n" + "Password: " + password + "\n\n" + "Noticed: You can change your username and password from your account.");
             }
             if ("Update Account".equals(emailType)) {
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+
                 message.setSubject("Your username and password has been reset.");
-                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "We reset your login information for you.\n\nYour login information:" + "\nEmail: " + recipient + "\n" + "\nUsername: " + username + "\n" + "Mot de passe: " + password + "\n" + "Noticed: You can change your username and password from your account.");
+                message.setText("Hello " + prenom + " " + nom + ", \n\n" + "We reset your login information for you.\n\nYour login information:" + "\nEmail: " + recipient + "\n" + "Username: " + username + "\n" + "Mot de passe: " + password + "\n\n" + "Noticed: You can change your username and password from your account.");
             }
             if ("Delete Account".equals(emailType)) {
-                message.setSubject("Your account have been deleted!");
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+
+                message.setSubject("Your account has been deleted!");
                 message.setText("Hello " + prenom + " " + nom + ", \n\n" + "Unfortunately your account has been deleted, you will no longer be able to log in to your account.\n" + "If you believe an error has been made, please contact us.");
+            } if ("New Appointment".equals(emailType)) {
+            	ResultSet rs = PatientDao.getPatient(Integer.parseInt(nom));
+                ResultSet rs2 = DoctorDao.getDoctor(Integer.parseInt(prenom));
+                rs.next();
+                rs2.next();
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(rs.getString(6)));
+                message.setSubject("New Appointment");
+                message.setText("Hello " + rs.getString(3) + " " + rs.getString(4) + ", \n\n" + "Congratulations! \nYou have booked an appointment with Dr." + rs2.getString(3) + " " + rs2.getString(4) + ".\n\nYour Appointment informations: " + "\nDate: " + recipient + "\n" + "Time: " + username + "\n" + "Appointment Link: " + password + "\n\n" + "Noticed: You can change or cancel your appointment before 2 days.");
             }
 
             return message;

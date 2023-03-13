@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/Login/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/Login/css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/assets/Login/css/style.css">
 </head>
 
 <body>
