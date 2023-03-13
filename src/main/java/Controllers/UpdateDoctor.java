@@ -6,13 +6,25 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import Models.DataBaseConnection;
+import Models.HelperClass;
 import Models.Tools;
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.*;
 
-
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50)
 public class UpdateDoctor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	public static final String UPLOAD_DIR = "images";
+	public String dbFileName = "";
+	
+
+	Connection connection = null;
+	PreparedStatement ps = null;
+	RequestDispatcher dispatcher = null;
 	
 
 	@Override
@@ -25,10 +37,17 @@ public class UpdateDoctor extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(req.getParameter("Submit") != null) {
+			   
+
+			
+			
+			Part part = req.getPart("image");
+
 			HttpSession session =(HttpSession) req.getSession();
-			Connection connection = null;
-			PreparedStatement ps = null;
-			RequestDispatcher dispatcher = null;
+			
+			String applicationPath = getServletContext().getRealPath("");
+			
+			
 			int id = (Integer) session.getAttribute("Id");
 			String firstName = req.getParameter("fisrtname");
 			String lastName = req.getParameter("lastname");
@@ -56,23 +75,30 @@ public class UpdateDoctor extends HttpServlet {
 				hours += s + "-";
 			}
 			
+			HelperClass save = new HelperClass();
+			String img_url = save.SaveImage(applicationPath, part);
+			if(part.getSize()==0) {
+				img_url = (String) session.getAttribute("Image");
+			}
+			
 			try {
 				connection = DataBaseConnection.getConnection();
 				  System.out.println("Database is Connected !");
 
 				ps = connection.prepareStatement(
-						"UPDATE `doctor` SET `First_Name`=?,`Last_Name`=?,`Email`=?,`Number_Phone`=?,"
+						"UPDATE `doctor` SET `Image_Path` = ? ,`First_Name`=?,`Last_Name`=?,`Email`=?,`Number_Phone`=?,"
 						+ "`Address`=?,`Work_Days`=?,`Work_Hours`=?,`Password`=? WHERE id = ?");
 				
-				ps.setString(1, firstName);
-				ps.setString(2, lastName);
-				ps.setString(3, email);
-				ps.setString(4, phoneNumber);
-				ps.setString(5, address);
-				ps.setString(6, days);
-				ps.setString(7, hours);
-				ps.setString(8, password);
-				ps.setInt(9, id);
+				ps.setString(1, img_url);
+				ps.setString(2, firstName);
+				ps.setString(3, lastName);
+				ps.setString(4, email);
+				ps.setString(5, phoneNumber);
+				ps.setString(6, address);
+				ps.setString(7, days);
+				ps.setString(8, hours);
+				ps.setString(9, password);
+				ps.setInt(10, id);
 			
 				int rowsCount = ps.executeUpdate();
 				  
@@ -88,6 +114,7 @@ public class UpdateDoctor extends HttpServlet {
 					  session.setAttribute("Password", Tools.decryptPassword(password));
 					  session.setAttribute("WorkingDays", days);
 					  session.setAttribute("WorkingHours", hours);
+					  session.setAttribute("Image",img_url);
 
 				  } else { 
 					  req.setAttribute("status", "failed");

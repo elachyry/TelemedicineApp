@@ -39,7 +39,7 @@ public class UpdatePatient extends HttpServlet {
 	
    @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	   Part part = req.getPart("image");//
+	   Part part = req.getPart("image");
 		HttpSession session =(HttpSession) req.getSession();
 		String applicationPath = getServletContext().getRealPath("");
 		

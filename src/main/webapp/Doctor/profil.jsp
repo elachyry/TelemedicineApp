@@ -75,7 +75,7 @@
 				<div class="d-flex align-items-center ms-4 mb-4">
 					<div class="position-relative">
 						<img class="rounded-circle"
-							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;">
 						<div
 							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
@@ -129,7 +129,7 @@
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
 							class="rounded-circle me-lg-2"
-							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;"> <span
 							class="d-none d-lg-inline-flex"><%=session.getAttribute("fullname")%></span>
 						</a>
@@ -152,18 +152,24 @@
 				<div class="row" style="margin-top: 30px; height: auto;">
 					<div class="col-lg-12">
 						<div class="card mb-4">
+						<form action="<%=request.getContextPath()%>/updateDoctor"
+								method="post" enctype = "multipart/form-data">
 							<div class="card-body text-center">
+														<label for="file">
+							
 								<img
-									src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+									src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
 									alt="avatar" class="rounded-circle img-fluid"
 									style="width: 150px;">
+									<input type="file" id="file" style="display: none" name="image" accept="image/gif,image/jpeg,image/jpg,image/png" multiple="" data-original-title="upload photos">
+							</label>
+									
 								<h5 class="my-3" name="dctname"><%=session.getAttribute("fullname")%></h5>
 								<p class="text-muted mb-1">Doctor</p>
 								<p class="text-muted mb-4" name="specialty"><%=session.getAttribute("Speciality")%></p>
 
 							</div>
-							<form action="<%=request.getContextPath()%>/updateDoctor"
-								method="post">
+							
 								<div class="col-lg-8" style="margin-left: 190px;">
 									<div class="card mb-4" style="border: 100px;">
 										<div class="card-body text-center">
