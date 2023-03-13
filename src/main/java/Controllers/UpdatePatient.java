@@ -13,6 +13,7 @@ import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -44,19 +45,21 @@ public class UpdatePatient extends HttpServlet {
 		String applicationPath = getServletContext().getRealPath("");
 		
 		int id = (Integer) session.getAttribute("Id");
-		String[] fullname = req.getParameter("FullName").split(" ");
-		String firstName = fullname[0];
-		String lastName = fullname[1];
+		String firstName = req.getParameter("fisrtname");
+		String lastName = req.getParameter("lastname");
 		String email = req.getParameter("email");
 		String address = req.getParameter("address");
 		String phoneNumber = req.getParameter("phone");
-		String Social_Number = req.getParameter("Social_Account");
-		String birthday = req.getParameter("birthday");
-		String password = req.getParameter("passwordNew");
+		String birth = req.getParameter("birthday");
+		String social = req.getParameter("Social_Account");
+		
+		
+		String password = Tools.encryptPassword(req.getParameter("passwordNew"));
 		
 		if(password.isEmpty()) {
-			password = req.getParameter("password");
+			password = Tools.encryptPassword(req.getParameter("password"));
 		}
+		
 		
 		HelperClass save = new HelperClass();
 		String img_url = save.SaveImage(applicationPath, part);
@@ -68,16 +71,17 @@ public class UpdatePatient extends HttpServlet {
 		  System.out.println("Database is Connected !");
 
 		ps = connection.prepareStatement(
-				"UPDATE `patient` SET`First_Name`=?,`Last_Name`=?,`Email`=?,`Number_Phone`=?,`Address`=?,`Social_Account`=?,`BirthDay`=?, `Image_Path`=? , `Password`=? WHERE id = ?");
+				"UPDATE `patient` SET`First_Name`=?,`Last_Name`=?,`Email`=?,`Number_Phone`=?,`Address`=?,`Social_Account`=?,"
+				+ "`BirthDay`=?, `Image_Path`=? , `Password`=? WHERE id = ?");
 		
 			ps.setString(1, firstName);
 			ps.setString(2, lastName);
 			ps.setString(3, email);
 			ps.setString(4, phoneNumber);
 			ps.setString(5, address);
-			ps.setString(6, Social_Number);
-			ps.setString(7, birthday);
-			ps.setString(8,img_url);
+			ps.setString(6, social);
+			ps.setString(7, birth);
+			ps.setString(8, img_url);
 			ps.setString(9, password);
 			ps.setInt(10, id);
 		
@@ -94,9 +98,9 @@ public class UpdatePatient extends HttpServlet {
 			  session.setAttribute("Email", email);
 			  session.setAttribute("Phone", phoneNumber);
 			  session.setAttribute("Adress", address);
-			  session.setAttribute("Password", password);
-			  session.setAttribute("Social_Account", Social_Number);
-			  session.setAttribute("birthday", birthday);
+			  session.setAttribute("Password", Tools.decryptPassword(password));
+			  session.setAttribute("Social_Account", social);
+			  session.setAttribute("birthday", birth);
 
 		  } else { 
 			  req.setAttribute("status", "failed");
