@@ -83,6 +83,19 @@ public class AppointmentDao {
 
 	}
 	
+	public static ResultSet getPatient(int id) {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT Patient_id FROM `appointments` WHERE Doctor_id = ?");
+			ps.setInt(1, id);
+			ResultSet resultSet = ps.executeQuery();
+			return resultSet;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public static int count() {
 		try {
 			Connection con = DataBaseConnection.getConnection();
