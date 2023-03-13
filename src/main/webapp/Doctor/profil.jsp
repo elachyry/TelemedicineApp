@@ -47,7 +47,8 @@
 </head>
 
 <body>
-	<input type="hidden" id="status" value="<%= request.getAttribute("status") %>" />
+	<input type="hidden" id="status"
+		value="<%=request.getAttribute("status")%>" />
 
 	<div class="container-xxl position-relative bg-white d-flex p-0">
 		<!-- Spinner Start -->
@@ -95,9 +96,6 @@
 					<a href="<%=request.getContextPath()%>/Doctor/patients.jsp"
 						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
 						aria-hidden="true"></i>Patients</a> <a
-						href="<%=request.getContextPath()%>/Doctor/messages.jsp"
-						class="nav-item nav-link"><i class="fa fa-envelope me-2"
-						aria-hidden="true"></i>Messages</a> <a
 						href="<%=request.getContextPath()%>/Doctor/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
@@ -164,456 +162,482 @@
 								<p class="text-muted mb-4" name="specialty"><%=session.getAttribute("Speciality")%></p>
 
 							</div>
-							<form action="<%=request.getContextPath()%>/updateDoctor" method="post">
+							<form action="<%=request.getContextPath()%>/updateDoctor"
+								method="post">
 								<div class="col-lg-8" style="margin-left: 190px;">
 									<div class="card mb-4" style="border: 100px;">
 										<div class="card-body text-center">
 											<div class="row">
 												<div class="col-sm-3">
-													<p class="mb-0">Full Name</p>
+													<p class="mb-0">First Name</p>
 												</div>
 												<div class="col-sm-9">
 													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="FullName"
-														value="<%=session.getAttribute("fullname")%>">
+														style="text-align: center;" name="fisrtname"
+														value="<%=session.getAttribute("FisrtName")%>">
 												</div>
 											</div>
 											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Email</p>
-												</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="email"
-														value="<%=session.getAttribute("Email")%>">
-												</div>
-											</div>
-											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Phone</p>
-												</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="phone"
-														value="<%=session.getAttribute("Phone")%>">
-												</div>
-											</div>
-											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Address</p>
-												</div>
-												<div class="col-sm-9">
-													<input type="text" class="form-control-plaintext inp"
-														style="text-align: center;" name="address"
-														value="<%=session.getAttribute("Adress")%>">
-												</div>
-											</div>
-											<hr>
-											<%
-											
-											String workD = (String)session.getAttribute("WorkingDays");
-											
-											Boolean Monday = false;
-											Boolean Tuesday = false;
-											Boolean Wednesday = false;
-											Boolean Thursday = false;
-											Boolean Friday = false;
-											Boolean Saturday = false;
-											String[] arrOfStr = workD.split("-");
-											for (String s : arrOfStr) {
-												System.out.println(s);
-												if (s.equals("Monday")) {
-													Monday = true;
-												}
-												if (s.equals("Tuesday")) {
-													Tuesday = true;
-												}
-												if (s.equals("Wednesday")) {
-													Wednesday = true;
-												}
-												if (s.equals("Thursday")) {
-													Thursday = true;
-												}
-												if (s.equals("Friday")) {
-													Friday = true;
-												}
-												if (s.equals("Saturday")) {
-													Saturday = true;
-												}
-
-											}
-											%>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Working Days</p>
-												</div>
-												<div class="col-sm-9">
-													<div class="row">
-
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Monday"
-																		<%=(Monday == true ? "checked" : "")%>> Monday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Tuesday"
-																		<%=(Tuesday == true ? "checked" : "")%>>
-																		Tuesday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="form-group">
-
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Wednesday"
-																		<%=(Wednesday == true ? "checked" : "")%>>
-																		Wednesday
-																	</label>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info"
-																	style="margin-left: 7px;">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Thursday"
-																		<%=(Thursday == true ? "checked" : "")%>>
-																		Thursday
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info"
-																	style="margin-left: -18px;">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingDays" value="Friday"
-																		<%=(Friday == true ? "checked" : "")%>> Friday
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-4">
-															<div class="form-group">
-																<div class="form-check form-check-info"
-																	style="margin-left: -18px;">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingdays" value="Saturday"
-																		<%=(Saturday == true ? "checked" : "")%>>
-																		Saturday
-																	</label>
-																</div>
-															</div>
-														</div>
-
+											<div class="card-body text-center">
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Last Name</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="lastname"
+															value="<%=session.getAttribute("LastName")%>">
 													</div>
 												</div>
-											</div>
-											<hr>
-											<%
-											
-											String workH = (String)session.getAttribute("WorkingHours");
-											
-										Boolean val8 = false;
-										Boolean val9 = false;
-										Boolean val10 = false;
-										Boolean val11 = false;
-										Boolean val12 = false;
-										Boolean val13 = false;
-										Boolean val14 = false;
-										Boolean val15 = false;
-										Boolean val16 = false;
-										Boolean val17 = false;
-										Boolean val18 = false;
-										Boolean val19 = false;
-										String[] arrOfStr2 = workH.split("-");
-										for (String s : arrOfStr2) {
-											System.out.println(s);
-											if (s.equals("8")) {
-												val8 = true;
-											}
-											if (s.equals("9")) {
-												val9 = true;
-											}
-											if (s.equals("10")) {
-												val10 = true;
-											}
-											if (s.equals("11")) {
-												val11 = true;
-											}
-											if (s.equals("12")) {
-												val12 = true;
-											}
-											if (s.equals("13")) {
-												val13 = true;
-											}
-											if (s.equals("14")) {
-												val14 = true;
-											}
-											if (s.equals("15")) {
-												val15 = true;
-											}
-											if (s.equals("16")) {
-												val16 = true;
-											}
-											if (s.equals("17")) {
-												val17 = true;
-											}
-											if (s.equals("18")) {
-												val18 = true;
-											}
-											if (s.equals("19")) {
-												val19 = true;
-											}
-
-										}
-										%>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Working Hours</p>
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Email</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="email"
+															value="<%=session.getAttribute("Email")%>">
+													</div>
 												</div>
-												<div class="col-sm-9">
-													<div class="row">
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="8" <%=(val8 == true ? "checked" : "")%>> 8
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Phone</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="phone"
+															value="<%=session.getAttribute("Phone")%>">
+													</div>
+												</div>
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Address</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="text" class="form-control-plaintext inp"
+															style="text-align: center;" name="address"
+															value="<%=session.getAttribute("Adress")%>">
+													</div>
+												</div>
+												<hr>
+												<%
+												String workD = (String) session.getAttribute("WorkingDays");
 
-															<div class="form-group">
+												Boolean Monday = false;
+												Boolean Tuesday = false;
+												Boolean Wednesday = false;
+												Boolean Thursday = false;
+												Boolean Friday = false;
+												Boolean Saturday = false;
+												String[] arrOfStr = workD.split("-");
+												for (String s : arrOfStr) {
+													System.out.println(s);
+													if (s.equals("Monday")) {
+														Monday = true;
+													}
+													if (s.equals("Tuesday")) {
+														Tuesday = true;
+													}
+													if (s.equals("Wednesday")) {
+														Wednesday = true;
+													}
+													if (s.equals("Thursday")) {
+														Thursday = true;
+													}
+													if (s.equals("Friday")) {
+														Friday = true;
+													}
+													if (s.equals("Saturday")) {
+														Saturday = true;
+													}
 
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="9" <%=(val9 == true ? "checked" : "")%>> 9
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
+												}
+												%>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Working Days</p>
+													</div>
+													<div class="col-sm-9">
+														<div class="row">
 
-															<div class="form-group">
+															<div class="col-md-4">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingDays" value="Monday"
+																			<%=(Monday == true ? "checked" : "")%>>
+																			Monday
+																		</label>
+																	</div>
+																</div>
+															</div>
 
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="10" <%=(val10 == true ? "checked" : "")%>> 10
-																	</label>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingDays" value="Tuesday"
+																			<%=(Tuesday == true ? "checked" : "")%>>
+																			Tuesday
+																		</label>
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="11" <%=(val11 == true ? "checked" : "")%>> 11
-																	</label>
+
+															<div class="col-md-4">
+																<div class="form-group">
+
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingDays" value="Wednesday"
+																			<%=(Wednesday == true ? "checked" : "")%>>
+																			Wednesday
+																		</label>
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="12" <%=(val12 == true ? "checked" : "")%>> 12
-																	</label>
+
+															<div class="col-md-4">
+																<div class="form-group">
+																	<div class="form-check form-check-info"
+																		style="margin-left: 7px;">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingDays" value="Thursday"
+																			<%=(Thursday == true ? "checked" : "")%>>
+																			Thursday
+																		</label>
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="13" <%=(val13 == true ? "checked" : "")%>> 13
-																	</label>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<div class="form-check form-check-info"
+																		style="margin-left: -18px;">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingDays" value="Friday"
+																			<%=(Friday == true ? "checked" : "")%>>
+																			Friday
+																		</label>
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="14"  <%=(val14 == true ? "checked" : "")%>> 14
-																	</label>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<div class="form-check form-check-info"
+																		style="margin-left: -18px;">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingdays" value="Saturday"
+																			<%=(Saturday == true ? "checked" : "")%>>
+																			Saturday
+																		</label>
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="15" <%=(val15 == true ? "checked" : "")%>> 15
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="16" <%=(val16 == true ? "checked" : "")%>> 16
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="17" <%=(val17 == true ? "checked" : "")%>> 17
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="18" <%=(val18 == true ? "checked" : "")%>> 18
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<div class="form-group">
-																<div class="form-check form-check-info">
-																	<label class="form-check-label"> <input
-																		type="checkbox" class="form-check-input"
-																		name="workingHours" value="19" <%=(val19 == true ? "checked" : "")%>> 19
-																	</label>
-																</div>
-															</div>
+
 														</div>
 													</div>
 												</div>
-											</div>
+												<hr>
+												<%
+												String workH = (String) session.getAttribute("WorkingHours");
 
-											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">Old Password</p>
+												Boolean val8 = false;
+												Boolean val9 = false;
+												Boolean val10 = false;
+												Boolean val11 = false;
+												Boolean val12 = false;
+												Boolean val13 = false;
+												Boolean val14 = false;
+												Boolean val15 = false;
+												Boolean val16 = false;
+												Boolean val17 = false;
+												Boolean val18 = false;
+												Boolean val19 = false;
+												String[] arrOfStr2 = workH.split("-");
+												for (String s : arrOfStr2) {
+													System.out.println(s);
+													if (s.equals("8")) {
+														val8 = true;
+													}
+													if (s.equals("9")) {
+														val9 = true;
+													}
+													if (s.equals("10")) {
+														val10 = true;
+													}
+													if (s.equals("11")) {
+														val11 = true;
+													}
+													if (s.equals("12")) {
+														val12 = true;
+													}
+													if (s.equals("13")) {
+														val13 = true;
+													}
+													if (s.equals("14")) {
+														val14 = true;
+													}
+													if (s.equals("15")) {
+														val15 = true;
+													}
+													if (s.equals("16")) {
+														val16 = true;
+													}
+													if (s.equals("17")) {
+														val17 = true;
+													}
+													if (s.equals("18")) {
+														val18 = true;
+													}
+													if (s.equals("19")) {
+														val19 = true;
+													}
+
+												}
+												%>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Working Hours</p>
+													</div>
+													<div class="col-sm-9">
+														<div class="row">
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="8"
+																			<%=(val8 == true ? "checked" : "")%>> 8
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+
+																<div class="form-group">
+
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="9"
+																			<%=(val9 == true ? "checked" : "")%>> 9
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+
+																<div class="form-group">
+
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="10"
+																			<%=(val10 == true ? "checked" : "")%>> 10
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="11"
+																			<%=(val11 == true ? "checked" : "")%>> 11
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="12"
+																			<%=(val12 == true ? "checked" : "")%>> 12
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="13"
+																			<%=(val13 == true ? "checked" : "")%>> 13
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="14"
+																			<%=(val14 == true ? "checked" : "")%>> 14
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="15"
+																			<%=(val15 == true ? "checked" : "")%>> 15
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="16"
+																			<%=(val16 == true ? "checked" : "")%>> 16
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="17"
+																			<%=(val17 == true ? "checked" : "")%>> 17
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="18"
+																			<%=(val18 == true ? "checked" : "")%>> 18
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<div class="form-check form-check-info">
+																		<label class="form-check-label"> <input
+																			type="checkbox" class="form-check-input"
+																			name="workingHours" value="19"
+																			<%=(val19 == true ? "checked" : "")%>> 19
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
-												<div class="col-sm-9">
-													<input type="password" class="form-control-plaintext inp"
-														style="text-align: center;" name="password"
-														value="<%=session.getAttribute("Password")%>">
+
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Old Password</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="password" class="form-control-plaintext inp"
+															style="text-align: center;" name="password"
+															value="<%=session.getAttribute("Password")%>">
+													</div>
 												</div>
-											</div>
-											<hr>
-											<div class="row">
-												<div class="col-sm-3">
-													<p class="mb-0">New Password</p>
-												</div>
-												<div class="col-sm-9">
-													<input type="password" class="form-control-plaintext inp"
-														style="text-align: center;" name="passwordNew" value="">
+												<hr>
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">New Password</p>
+													</div>
+													<div class="col-sm-9">
+														<input type="password" class="form-control-plaintext inp"
+															style="text-align: center;" name="passwordNew" value="">
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+
+
+									<div class="d-flex justify-content-center mb-2">
+										<input type="submit" class="btn btn-primary" name="Submit"
+											value="Update Profil" />
+
+										<button type="button" class="btn btn-outline-primary ms-1"
+											name="Logout">
+											<a href="<%=request.getContextPath()%>/logout">Logout</a>
+										</button>
+									</div>
 								</div>
-
-
-								<div class="d-flex justify-content-center mb-2">
-									<input type="submit" class="btn btn-primary" name="Submit" value="Update Profil"/>
-									
-									<button type="button" class="btn btn-outline-primary ms-1"
-										name="Logout">
-										<a href="<%=request.getContextPath()%>/logout">Logout</a>
-									</button>
-								</div>
+							</form>
 						</div>
-						</form>
-					</div>
 
-
-				</div>
-			</div>
-			<!-- Table End -->
-
-
-			<!-- Footer Start -->
-			<div class="container-fluid pt-4 px-4">
-				<div class="bg-light rounded-top p-4">
-					<div class="row">
-						<div class="col-12 col-sm-6 text-center text-sm-start">
-							&copy; <a href="#">MEDIVISIT</a>, All Right Reserved.
-						</div>
 
 					</div>
 				</div>
+				<!-- Table End -->
+
+
+				<!-- Footer Start -->
+				<div class="container-fluid pt-4 px-4">
+					<div class="bg-light rounded-top p-4">
+						<div class="row">
+							<div class="col-12 col-sm-6 text-center text-sm-start">
+								&copy; <a href="#">MEDIVISIT</a>, All Right Reserved.
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- Footer End -->
 			</div>
-			<!-- Footer End -->
+			<!-- Content End -->
+
+
+			<!-- Back to Top -->
+			<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+				class="bi bi-arrow-up"></i></a>
 		</div>
-		<!-- Content End -->
 
+		<!-- JavaScript Libraries -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/assets/Doctor/lib/chart/chart.min.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/assets/Doctor/lib/easing/easing.min.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
+		<script
+			src="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
+		<script
+			src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
+		<script
+			src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-		<!-- Back to Top -->
-		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-			class="bi bi-arrow-up"></i></a>
-	</div>
-
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/chart/chart.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/easing/easing.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/waypoints/waypoints.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/owlcarousel/owl.carousel.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/Doctor/lib/tempusdominus/js/moment.min.js"></script>
-	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/moment-timezone.min.js"></script>
-	<script
-		src="<%= request.getContextPath() %>/assets/Doctor/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-	<!-- Template Javascript -->
-	<script src="<%= request.getContextPath() %>/assets/Doctor/js/main.js"></script>
-	<script type="text/javascript">
+		<!-- Template Javascript -->
+		<script src="<%= request.getContextPath() %>/assets/Doctor/js/main.js"></script>
+		<script type="text/javascript">
     	var status = document.getElementById("status").value;
     	if(status=="success"){
     		swal("Congrats","Your profil is updated successfully","success");
