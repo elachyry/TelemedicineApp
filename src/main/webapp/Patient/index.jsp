@@ -44,6 +44,7 @@
 </head>
 
 <body>
+	<input type="hidden" id="status" value="<%=request.getParameter("status") %>" />
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -199,6 +200,17 @@
     </div>
 
     <!-- JavaScript Libraries -->
+    
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="alert/dist/sweetalert.css">
+    <script type="text/javascript">
+    var status = document.getElementById("status").value;
+	if(status=="success"){
+		swal("Congrats","your appointment has booked successfully","success");
+	}else if(status=="failed"){
+		swal("Failed","Please try again later !","error");
+	}
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<%= request.getContextPath() %>/assets/Doctor/lib/chart/chart.min.js"></script>

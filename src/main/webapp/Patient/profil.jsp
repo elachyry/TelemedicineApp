@@ -91,7 +91,7 @@
 					</div>
 					<div class="ms-3">
 						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
-						<span><%=session.getAttribute("username")%></span>
+						<span>PATIENT</span>
 					</div>
 				</div>
 

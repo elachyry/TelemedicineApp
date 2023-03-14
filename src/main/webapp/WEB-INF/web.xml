@@ -573,8 +573,7 @@
     <servlet-name>appointmentCancelled</servlet-name>
     <url-pattern>/appointmentCancelled</url-pattern>
   </servlet-mapping>
-
-
+  <servlet>
     <display-name>Booking</display-name>
     <servlet-name>Booking</servlet-name>
     <servlet-class>Controllers.Booking</servlet-class>

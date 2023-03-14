@@ -23,6 +23,7 @@
 </head>
 <body>
 
+	<input type="hidden" id="status" value="<%=request.getParameter("status") %>" />
 
 	<div class="main">
 
@@ -80,9 +81,16 @@
 
 	<!-- JS -->
 	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="alert/dist/sweetalert.css">
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="js/main.js"></script>
+
 	<script type="text/javascript">
+    var status = document.getElementById("status").value;
+	if(status=="failed"){
+		swal("Failed","Informations are incorrect !","error");
+	}
 	function onSignIn(googleUser) {
 		  var profile = googleUser.getBasicProfile();
 		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
