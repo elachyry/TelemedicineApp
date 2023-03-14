@@ -234,7 +234,7 @@
 												style="filter: drop-shadow(0 0 0.75rem #1977cc);">
 												<div class="card-body">
 													<h3 class="card-title">
-														<center>Sex</center>
+														<center>Gander</center>
 													</h3>
 													<p>
 													<center style="color: #1977cc;"><%=rs2.getString(8)%></center>
@@ -349,7 +349,7 @@
 												style="filter: drop-shadow(0 0 0.75rem #1977cc);">
 												<div class="card-body">
 													<h3 class="card-title">
-														<center>Sex</center>
+														<center>Gender</center>
 													</h3>
 													<p>
 													<center style="color: #1977cc;"><%=rs3.getString(8)%></center>
