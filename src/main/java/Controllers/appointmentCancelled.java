@@ -3,7 +3,6 @@ package Controllers;
 import java.io.IOException;
 
 import DAO.AppointmentDao;
-import DAO.DoctorDao;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 
