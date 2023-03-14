@@ -494,15 +494,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
-    <display-name>Booking</display-name>
-    <servlet-name>Booking</servlet-name>
-    <servlet-class>Controllers.Booking</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Booking</servlet-name>
-    <url-pattern>/booking</url-pattern>
-=======
     <display-name>PatientSearchServlet</display-name>
     <servlet-name>PatientSearchServlet</servlet-name>
     <servlet-class>Controllers.PatientSearchServlet</servlet-class>
@@ -570,6 +561,15 @@
   <servlet-mapping>
     <servlet-name>acceptAppointment</servlet-name>
     <url-pattern>/acceptAppointment</url-pattern>
->>>>>>> bd62b41e51ba53be695d14c7c001a29d9c8668d4
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Booking</display-name>
+    <servlet-name>Booking</servlet-name>
+    <servlet-class>Controllers.Booking</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Booking</servlet-name>
+    <url-pattern>/booking</url-pattern>
+  </servlet-mapping>  
 </web-app>
