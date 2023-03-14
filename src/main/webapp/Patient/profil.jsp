@@ -47,6 +47,11 @@
 <!-- Template Stylesheet -->
 <link href="<%=request.getContextPath()%>/assets/Patient/css/style.css"
 	rel="stylesheet">
+	
+    
+    <script src="https://kit.fontawesome.com/badbb472a2.js" crossorigin="anonymous"></script>
+    
+    
 </head>
 
 <body>
@@ -86,7 +91,7 @@
 					</div>
 					<div class="ms-3">
 						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
-						<span>PATIENT</span>
+						<span><%=session.getAttribute("username")%></span>
 					</div>
 				</div>
 
@@ -95,8 +100,10 @@
 						class="nav-item nav-link "><i
 						class="fa fa-tachometer-alt me-2"></i>Home</a> <a
 						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
+
 						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
 					  <a
+
 						href="<%=request.getContextPath()%>/Patient/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
@@ -171,7 +178,7 @@
 							</label>
 							
 								<h5 class="my-3" name="dctname"><%=session.getAttribute("fullname")%></h5>
-								<p class="text-muted mb-1">Patient</p>
+								<p class="text-muted mb-1"><%=session.getAttribute("username")%></p>
 
 							</div>
 							<div class="col-lg-8" style="margin-left: 190px;">

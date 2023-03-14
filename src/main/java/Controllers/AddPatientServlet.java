@@ -43,7 +43,7 @@ public class AddPatientServlet extends HttpServlet {
 			String fileName = extractFileName(part);// file name
 
 			/**
-			 * *** Get The Absolute Path Of The Web Application ****
+			 * * Get The Absolute Path Of The Web Application **
 			 */
 			String applicationPath = getServletContext().getRealPath("");
 			String uploadPath = applicationPath + File.separator + UPLOAD_DIR;
