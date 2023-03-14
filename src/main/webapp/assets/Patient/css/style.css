@@ -646,3 +646,7 @@ ul {
     margin: 0;
     padding-bottom: 3px;
 }
+
+.inp:focus{
+	outline: none;
+}
