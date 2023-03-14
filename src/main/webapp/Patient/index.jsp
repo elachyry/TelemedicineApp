@@ -76,13 +76,20 @@
                 </div>
                 
                 <div class="navbar-nav w-100">
-                    <a href="index.jsp" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Home</a>
-                    <a href="consultations.jsp" class="nav-item nav-link"><i class="fa fa-commenting" aria-hidden="true"></i>Consultations</a>
-                    <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
-                    <a href="<%= request.getContextPath() %>/Patient/profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
+					<a href="<%=request.getContextPath()%>/Patient/index.jsp"
+						class="nav-item nav-link active"><i
+						class="fa fa-tachometer-alt me-2"></i>Home</a> <a
+						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
+						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
+					<a href="<%=request.getContextPath()%>/Patientr/patients.jsp"
+						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
+						aria-hidden="true"></i>Patients</a>  <a
+						href="<%=request.getContextPath()%>/Patient/profil.jsp"
+						class="nav-item nav-link "><i class="fa fa-user-md me-2"
+						aria-hidden="true"></i>Profil</a>
 
-                    
-                </div>
+
+				</div>
             </nav>
         </div>
         <!-- Sidebar End -->
