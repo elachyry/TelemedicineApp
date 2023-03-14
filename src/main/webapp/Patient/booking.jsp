@@ -1,6 +1,14 @@
+<%@page import="Models.HelperClass"%>
+<%@page import="org.apache.poi.util.SystemOutLogger"%>
+<%@page import="Models.Doctor"%>
 <%@page import="Controllers.UpdatePatient"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% Doctor d;
+	String itemId =request.getParameter("itemId");
+	HelperClass h = new HelperClass();
+	d = h.getDoctor(itemId);
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +76,8 @@
 			<!-- Navbar Start -->
 			<nav
 				class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-				<a href="index.jsp" class="navbar-brand mx-4 m-2 ">
+				<img src="../assets/Doctor/img/flavicon.png" class="mb-2" alt="" style="height: 30px;">
+				<a href="index.jsp" class="navbar-brand mx-2 mt-1 ">
 				
 					<h3 class="text-primary ">
 						
@@ -97,12 +106,12 @@
 					</div>
 				</div>
 			</nav>
-			<!-- Navbar End -->
-			 <div class="container-sm bg-light d-grid gap-2 my-2 rounded-3 py-3 ">
+	<!-- Navbar End -->
+	<div class="container-sm bg-light d-grid gap-2 my-2 rounded-3 py-3 ">
         <div class="text-center ">
-            <img src="image.jpeg" alt="avatar" class="rounded-circle img-fluid align-content-center" style="width: 150px;">
-            <h2>Dr.Mohamed El ayady</h2>
-            <h4 class="fw-bold">Psychologue</h4>
+            <img src="<%=request.getContextPath()%>\<%= d.getImagePath() %>" alt="avatar" class="rounded-circle img-fluid align-content-center" style="width: 150px;">
+            <h2>Dr.<%= d.getFirstName()+" "+d.getLastName() %></h2>
+            <h4 class="fw-bold"><%= d.getSpecialty() %></h4>
         </div>
 
 
@@ -118,7 +127,7 @@
                             <p class="subtitles mb-0">Adress</p>
                         </div>
                         <div class="col-sm-9">
-                            Hay mohemmadi agadir
+                            <%= d.getAddress() %>
                         </div>
                     </div>
                     <hr>
@@ -127,7 +136,7 @@
                             <p class="subtitles mb-0">Phone</p>
                         </div>
                         <div class="col-sm-9">
-                            0617908755
+                            <%= d.getPhoneNumber() %>
                         </div>
                     </div>
                     <hr>
@@ -136,7 +145,7 @@
                             <p class="subtitles mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
-                            Moha.elayady@gmail.com
+                            <%= d.getEmail() %>
                         </div>
                     </div>
                 </div>
@@ -150,20 +159,31 @@
                     <h3 class="text-black-50 mx-3 fst-italic">Schedule :</h3>
                 </div>
                 <div class="card-body text-center">
+                <form method="post" action="<%=request.getContextPath()%>/booking">
+                <input type="hidden" name="Id" value="<%=request.getParameter("itemId") %>">
                     <div class="row">
                         <div class="col-sm-3">
                             <p class="subtitles mb-0">Working days</p>
                         </div>
                         <div class="col-sm-9 ">
-                            <div class="d-flex flex-wrap ">
-                                <label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="Monday"> Monday
+                            <div class="d-flex flex-wrap " >
+                             <% for(int i = 0; i < d.getWorkingDays().length;i++){ %>
+                             <label class="form-check-label mx-3" > 
+                               <!-- <input type="checkbox" class="form-check-input" name="workingDays" value="<%=d.getWorkingDays()[i] %>"> -->  <%=d.getWorkingDays()[i] %>
                             </label>
-                                <label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="Tuesday"> Tuesday
-                            </label></div>
+                            <%} %>
+                             </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3 mt-2">
+                            <p class="subtitles mb-0">Pick a Day</p>
+                        </div>
+                        <div class="col-sm-9 ">
+                            <div class="d-flex flex-wrap " >
+                            <input type="date" class="form-control-plaintext inp" style="text-align: center;" name="date" required>
+                           </div>
                         </div>
                     </div>
                     <hr>
@@ -172,34 +192,23 @@
                             <p class="subtitles mb-0">Working hours</p>
                         </div>
                         <div class="col-sm-9 d-flex flex-wrap ">
-
-                            <label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="19"> 19
-                            </label>
-                            <label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="12"> 12
-                            </label><label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="13"> 13
-                            </label>
-                            <label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="12"> 12
-                            </label><label class="form-check-label mx-3"> <input
-                                type="checkbox" class="form-check-input"
-                                name="workingHours" value="13"> 13
-                            </label>
+						<% for(int i = 0; i < d.getWorkingDays().length;i++){ %>
+                           <label class="form-check-label mx-3"> 
+                           		<input type="checkbox" class="form-check-input" name="workingHours" value="<%=d.getWorkingHours()[i] %>"> <%=d.getWorkingHours()[i] %>
+                           </label>
+                        <%} %>
+                       
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-
-        <button class="btn btn-primary" type="button">Make an appoinement</button>
+		<input type="hidden" name="Id" value="<%= request.getParameter("itemId") %>">
+        <input class="btn btn-primary" type="submit" value="Make an appoinement">
+        
     </div>
+    </form>
 			<!-- Footer Start -->
 			<div class="container-fluid pt-4 px-4">
 				<div class="bg-light rounded-top p-4">
