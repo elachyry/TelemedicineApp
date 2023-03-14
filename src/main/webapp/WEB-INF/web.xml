@@ -562,4 +562,15 @@
     <servlet-name>acceptAppointment</servlet-name>
     <url-pattern>/acceptAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>appointmentCancelled</display-name>
+    <servlet-name>appointmentCancelled</servlet-name>
+    <servlet-class>Controllers.appointmentCancelled</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>appointmentCancelled</servlet-name>
+    <url-pattern>/appointmentCancelled</url-pattern>
+  </servlet-mapping>
+
 </web-app>
