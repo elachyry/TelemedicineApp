@@ -59,7 +59,7 @@
     });
 
 
-    // Worldwide Sales Chart
+  /*  // Worldwide Sales Chart
     var ctx1 = $("#appointmens").get(0).getContext("2d");
     var myChart1 = new Chart(ctx1, {
         type: "bar",
@@ -76,11 +76,11 @@
         options: {
             responsive: true
         }
-    });
+    });*/
 
 
     // Salse & Revenue Chart
-    var ctx2 = $("#Income").get(0).getContext("2d");
+    /*var ctx2 = $("#Income").get(0).getContext("2d");
     var myChart2 = new Chart(ctx2, {
         type: "line",
         data: {
@@ -96,12 +96,12 @@
         options: {
             responsive: true
         }
-    });
+    });*/
     
 
 
     // Single Line Chart
-    var ctx3 = $("#line-chart").get(0).getContext("2d");
+  /*  var ctx3 = $("#line-chart").get(0).getContext("2d");
     var myChart3 = new Chart(ctx3, {
         type: "line",
         data: {
@@ -116,11 +116,11 @@
         options: {
             responsive: true
         }
-    });
+    });*/
 
 
     // Single Bar Chart
-    var ctx4 = $("#bar-chart").get(0).getContext("2d");
+   /* var ctx4 = $("#bar-chart").get(0).getContext("2d");
     var myChart4 = new Chart(ctx4, {
         type: "bar",
         data: {
@@ -139,11 +139,11 @@
         options: {
             responsive: true
         }
-    });
+    });*/
 
 
     // Pie Chart
-    var ctx5 = $("#pie-chart").get(0).getContext("2d");
+   /* var ctx5 = $("#pie-chart").get(0).getContext("2d");
     var myChart5 = new Chart(ctx5, {
         type: "pie",
         data: {
@@ -186,7 +186,7 @@
             responsive: true
         }
     });
-
+*/
     
 })(jQuery);
 

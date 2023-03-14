@@ -108,7 +108,6 @@ public class AppointmentDao {
 			return null;
 		}
 	}
-	
 
 	public static int getPCount(int id) {
 		try {
@@ -121,7 +120,9 @@ public class AppointmentDao {
 			return resultSet.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;}}
+			return 0;
+		}
+	}
 
 	public static ResultSet getAppointmentP(int id) {
 		try {
@@ -140,8 +141,7 @@ public class AppointmentDao {
 	public static int getDACount(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con
-					.prepareStatement("SELECT COUNT(id)  FROM `appointments` WHERE Doctor_id = ?");
+			PreparedStatement ps = con.prepareStatement("SELECT COUNT(id)  FROM `appointments` WHERE Doctor_id = ?");
 			ps.setInt(1, id);
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
@@ -151,11 +151,11 @@ public class AppointmentDao {
 			return 0;
 		}
 	}
-	
+
 	public static int Income(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT sum(amount) FROM `appointments` WHERE Doctor_id = ?" );
+			PreparedStatement ps = con.prepareStatement("SELECT sum(amount) FROM `appointments` WHERE Doctor_id = ?");
 			ps.setInt(1, id);
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
@@ -165,8 +165,7 @@ public class AppointmentDao {
 			return 0;
 		}
 	}
-	
-	
+
 	public static int count() {
 		try {
 			Connection con = DataBaseConnection.getConnection();
@@ -201,6 +200,66 @@ public class AppointmentDao {
 				Connection Con = DataBaseConnection.getConnection();
 				String Query = "SELECT COUNT(*) FROM appointments WHERE created_at = '" + formatter.format(ReturnDate)
 						+ "'";
+				PreparedStatement ps = Con.prepareStatement(Query);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				counts[i] = rs.getInt(1);
+			} catch (SQLException ex) {
+			}
+		}
+		return counts;
+	}
+
+	public static int[] lineChartD(int id) throws ClassNotFoundException {
+		int[] counts = new int[7];
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter2 = new SimpleDateFormat("u");
+		Date date = new Date();
+		int dayNbr = Integer.parseInt(formatter2.format(date));
+		System.out.println("day number " + dayNbr);
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, -dayNbr + 1);
+		System.out.println("date calculer" + formatter.format(c.getTime()));
+		Date ReturnDate = null;
+		for (int i = 0; i < 7; i++) {
+			c.add(Calendar.DATE, -1);
+			ReturnDate = c.getTime();
+			System.out.println("date " + formatter.format(ReturnDate));
+			try {
+				Connection Con = DataBaseConnection.getConnection();
+				String Query = "SELECT COUNT(*) FROM appointments WHERE created_at = '" + formatter.format(ReturnDate)
+						+ "'" + "AND Doctor_id = " + id;
+				PreparedStatement ps = Con.prepareStatement(Query);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				counts[i] = rs.getInt(1);
+			} catch (SQLException ex) {
+			}
+		}
+		return counts;
+	}
+
+	public static int[] lineChartIn(int id) throws ClassNotFoundException {
+		int[] counts = new int[7];
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter2 = new SimpleDateFormat("u");
+		Date date = new Date();
+		int dayNbr = Integer.parseInt(formatter2.format(date));
+		System.out.println("day number " + dayNbr);
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, -dayNbr + 1);
+		System.out.println("date calculer" + formatter.format(c.getTime()));
+		Date ReturnDate = null;
+		for (int i = 0; i < 7; i++) {
+			c.add(Calendar.DATE, -1);
+			ReturnDate = c.getTime();
+			System.out.println("date " + formatter.format(ReturnDate));
+			try {
+				Connection Con = DataBaseConnection.getConnection();
+				String Query = "SELECT amount FROM appointments WHERE created_at = '"
+						+ formatter.format(ReturnDate) + "'" + "AND Doctor_id = " + id;
 				PreparedStatement ps = Con.prepareStatement(Query);
 				ResultSet rs = ps.executeQuery();
 				rs.next();
@@ -288,8 +347,6 @@ public class AppointmentDao {
 			return 0;
 		}
 	}
-	
-	
 
 	public static boolean hardDelete(int id) {
 		try {

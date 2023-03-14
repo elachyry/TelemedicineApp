@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import DAO.AppointmentDao;
 import Models.Appointment;
+import Models.Tools;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 
@@ -20,6 +21,10 @@ public class AcceptAppointment extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		/*
+		 * String linkAppo = Tools.generateGoogleMeetLink("");
+		 * System.out.print(linkAppo+"hello");
+		 */
 		System.out.println("submit = " + request.getParameter("submit"));
 		if (request.getParameter("submit") != null) {
 			int id = Integer.parseInt(request.getParameter("id"));

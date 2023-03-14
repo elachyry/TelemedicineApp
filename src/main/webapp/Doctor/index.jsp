@@ -67,17 +67,13 @@
 
 	<%
 	int id1 = (Integer) session.getAttribute("Id");
+
 	int income = AppointmentDao.Income(id1);
 	int patientCount = AppointmentDao.getPCount(id1);
 	int appoinmentCount = AppointmentDao.getDACount(id1);
-	
-	int pending = AppointmentDao.countStatus("Pending");
-	int accepted = AppointmentDao.countStatus("Accepted");
-	int cancelled = AppointmentDao.countStatus("Cancelled");
-	int denied = AppointmentDao.countStatus("Denied");
-	int finished = AppointmentDao.countStatus("Finished");
 
-	int[] counts = AppointmentDao.lineChart();
+	int[] incoms = AppointmentDao.lineChartIn(id1);
+	int[] counts = AppointmentDao.lineChartD(id1);
 	%>
 	<div class="container-xxl position-relative bg-white d-flex p-0">
 		<!-- Spinner Start -->
@@ -181,7 +177,9 @@
 								alt="" style="height: 55px;">
 							<div class="ms-3">
 								<p class="mb-2">Income</p>
-								<h6 class="mb-0" name="monthlyincome"><%=income%> DH</h6>
+								<h6 class="mb-0" name="monthlyincome"><%=income%>
+									DH
+								</h6>
 							</div>
 						</div>
 					</div>
@@ -209,7 +207,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 
 				</div>
 			</div>
@@ -224,9 +222,9 @@
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Appointments</h6>
-								<!-- <a href="">Show All</a> -->
+
 							</div>
-							<canvas id="appointmens"></canvas>
+							<canvas id="appointments" style="height: 250px"></canvas>
 						</div>
 					</div>
 
@@ -235,9 +233,9 @@
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Income</h6>
-								<!-- <a href="">Show All</a> -->
+
 							</div>
-							<canvas id="Income"></canvas>
+							<canvas id="Income" style="height: 250px"></canvas>
 						</div>
 					</div>
 
@@ -363,6 +361,111 @@
 
 	<!-- Template Javascript -->
 	<script src="<%=request.getContextPath()%>/assets/Doctor/js/main.js"></script>
+
+	<script>
+		var ctx = document.getElementById('appointments').getContext('2d');
+		var myChart = new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels : [ 'Monday', 'Tuesday', 'Wednesday',
+								'Thursday', 'Friday', 'Saturday', 'Sunday' ],
+						datasets : [ {
+							label : 'Number Of Appointments',
+							data : [
+	<%=counts[6]%>
+		,
+	<%=counts[5]%>
+		,
+	<%=counts[4]%>
+		,
+	<%=counts[3]%>
+		,
+	<%=counts[2]%>
+		,
+	<%=counts[1]%>
+		,
+	<%=counts[0]%>
+		],
+							backgroundColor : [ 'rgba(255, 99, 132, 0.6)',
+									'rgba(54, 162, 235, 0.6)',
+									'rgba(255, 206, 86, 0.6)',
+									'rgba(75, 192, 192, 0.6)',
+									'rgba(153, 102, 255, 0.6)',
+									'rgba(255, 159, 64, 0.6)',
+									'rgba(0, 136, 12, 0.6)' ],
+							borderColor : [ 'rgba(255, 99, 132, 1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)',
+									'rgba(0, 136, 12, 1)' ],
+							borderWidth : 1
+						} ]
+					},
+					options : {
+						scales : {
+							yAxes : [ {
+								ticks : {
+									beginAtZero : true
+								}
+							} ]
+						}
+					}
+				});
+	</script>
+
+
+
+	<script>
+		var ctx = document.getElementById('Income').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type : 'line',
+			data : {
+				labels : [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+						'Friday', 'Saturday', 'Sunday' ],
+				datasets : [ {
+					label : 'Incomes',
+					data : [
+	<%=incoms[6]%>
+		,
+	<%=incoms[5]%>
+		,
+	<%=incoms[4]%>
+		,
+	<%=incoms[3]%>
+		,
+	<%=incoms[2]%>
+		,
+	<%=incoms[1]%>
+		,
+	<%=incoms[0]%>
+		],
+					backgroundColor : "rgba(0, 156, 255, .5)",
+
+					borderWidth : 1,
+					fill : true
+
+				} ]
+
+			},
+			options : {
+				scales : {
+					yAxes : [ {
+						ticks : {
+							beginAtZero : true
+						}
+					} ]
+				}
+			}
+		});
+	</script>
+
+
+
+
+
 </body>
 
 </html>
