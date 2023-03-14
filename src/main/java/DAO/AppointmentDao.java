@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -80,11 +83,96 @@ public class AppointmentDao {
 
 	}
 
+	public static ResultSet getPatient(int id) {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT Patient_id FROM `appointments` WHERE Doctor_id = ?");
+			ps.setInt(1, id);
+			ResultSet resultSet = ps.executeQuery();
+			return resultSet;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static ResultSet getAppointmentD(int id) {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM `appointments` WHERE Doctor_id = ?");
+			ps.setInt(1, id);
+			ResultSet resultSet = ps.executeQuery();
+			return resultSet;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static int count() {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con
+					.prepareStatement("SELECT COUNT(*) FROM `appointments` WHERE `deleted_at`IS NULL");
+			ResultSet resultSet = ps.executeQuery();
+			resultSet.next();
+			return resultSet.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public static int[] lineChart() throws ClassNotFoundException {
+		int[] counts = new int[7];
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter2 = new SimpleDateFormat("u");
+		Date date = new Date();
+		int dayNbr = Integer.parseInt(formatter2.format(date));
+		System.out.println("day number " + dayNbr);
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, -dayNbr + 1);
+		System.out.println("date calculer" + formatter.format(c.getTime()));
+		Date ReturnDate = null;
+		for (int i = 0; i < 7; i++) {
+			c.add(Calendar.DATE, -1);
+			ReturnDate = c.getTime();
+			System.out.println("date " + formatter.format(ReturnDate));
+			try {
+				Connection Con = DataBaseConnection.getConnection();
+				String Query = "SELECT COUNT(*) FROM appointments WHERE created_at = '" + formatter.format(ReturnDate)
+						+ "'";
+				PreparedStatement ps = Con.prepareStatement(Query);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				counts[i] = rs.getInt(1);
+			} catch (SQLException ex) {
+			}
+		}
+		return counts;
+	}
+
+	public static int countStatus(String status) {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con
+					.prepareStatement("SELECT COUNT(*) FROM `appointments` WHERE Status = ? AND `deleted_at`IS NULL");
+			ps.setString(1, status);
+			ResultSet resultSet = ps.executeQuery();
+			resultSet.next();
+			return resultSet.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 	public static ResultSet searchAppointments(String type, String val) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
-			PreparedStatement ps = con.prepareStatement(
-					"SELECT * FROM `appointments` WHERE (Status LIKE '%" + val + "%' OR Date LIKE '%" + val + "%' OR amount  LIKE '%" + val + "%') AND `deleted_at`IS " + type);
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM `appointments` WHERE (Status LIKE '%" + val
+					+ "%' OR Date LIKE '%" + val + "%' OR amount  LIKE '%" + val + "%') AND `deleted_at`IS " + type);
 			ResultSet resultSet = ps.executeQuery();
 			return resultSet;
 		} catch (Exception e) {
@@ -222,10 +310,11 @@ public class AppointmentDao {
 			return false;
 		}
 	}
-	
-	public static boolean exportSearchResult(HttpServletResponse response, String type, String search) throws ClassNotFoundException, IOException {
+
+	public static boolean exportSearchResult(HttpServletResponse response, String type, String search)
+			throws ClassNotFoundException, IOException {
 		try {
-			
+
 			ResultSet resultSet = searchAppointments(type, search);
 
 			XSSFWorkbook XFWB = new XSSFWorkbook();

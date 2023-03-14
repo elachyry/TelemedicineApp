@@ -8,6 +8,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%
+	if (session.getAttribute("EmailAdmin") == null) {
+		response.sendRedirect("/telemedicine/AdminLoginPage");
+	}
+	%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -355,7 +360,7 @@
 														' <path fill-rule="evenodd" ' +
 														' d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />' +
 																' </svg>' +
-											'</a> </a> <a href="' + url5 + '" ' +
+											'</a> </a> <a href="' + url4 + '" ' +
 												' class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"' +
 												' aria-label="reset"> <svg ' +
 												' xmlns="http://www.w3.org/2000/svg" width="16"' +
@@ -366,7 +371,7 @@
 													' <path ' +
 														' d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z" />' +
 													' </svg>' +
-											'</a><a href="' + url4 +'" '+
+											'</a><a href="' + url5 +'" '+
 												' class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"' +
 												' aria-label="delete"> <svg'+
 													' xmlns="http://www.w3.org/2000/svg" width="16"'+

@@ -494,6 +494,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>Booking</display-name>
     <servlet-name>Booking</servlet-name>
     <servlet-class>Controllers.Booking</servlet-class>
@@ -501,5 +502,74 @@
   <servlet-mapping>
     <servlet-name>Booking</servlet-name>
     <url-pattern>/booking</url-pattern>
+=======
+    <display-name>PatientSearchServlet</display-name>
+    <servlet-name>PatientSearchServlet</servlet-name>
+    <servlet-class>Controllers.PatientSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PatientSearchServlet</servlet-name>
+    <url-pattern>/PatientSearch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExportSearchResultPatientServlet</display-name>
+    <servlet-name>ExportSearchResultPatientServlet</servlet-name>
+    <servlet-class>Controllers.ExportSearchResultPatientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportSearchResultPatientServlet</servlet-name>
+    <url-pattern>/ExportSearchResultPatient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginPageServlet</display-name>
+    <servlet-name>AdminLoginPageServlet</servlet-name>
+    <servlet-class>Controllers.AdminLoginPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginPageServlet</servlet-name>
+    <url-pattern>/AdminLoginPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLogoutServlet</display-name>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <servlet-class>Controllers.AdminLogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <url-pattern>/AdminLogout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminShowProfileServlet</display-name>
+    <servlet-name>AdminShowProfileServlet</servlet-name>
+    <servlet-class>Controllers.AdminShowProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowProfileServlet</servlet-name>
+    <url-pattern>/AdminShowProfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminChangePasswordServlet</display-name>
+    <servlet-name>AdminChangePasswordServlet</servlet-name>
+    <servlet-class>Controllers.AdminChangePasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminChangePasswordServlet</servlet-name>
+    <url-pattern>/AdminChangePassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>acceptAppointment</display-name>
+    <servlet-name>acceptAppointment</servlet-name>
+    <servlet-class>Controllers.AcceptAppointment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>acceptAppointment</servlet-name>
+    <url-pattern>/acceptAppointment</url-pattern>
+>>>>>>> bd62b41e51ba53be695d14c7c001a29d9c8668d4
   </servlet-mapping>
 </web-app>

@@ -9,6 +9,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.MultipartConfig;
 import DAO.DoctorDao;
 import Models.Doctor;
+import Models.HelperClass;
 import Models.Tools;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -69,6 +70,9 @@ public class AddDoctorServlet extends HttpServlet {
 			 */
 			dbFileName = UPLOAD_DIR + File.separator + fileName;
 			part.write(savePath + File.separator);
+			
+			HelperClass save = new HelperClass();
+			String img_url = save.SaveImage(applicationPath, part);
 
 			try {
 				System.out.println(Tools.checkField("doctor", "Email", email));
@@ -91,7 +95,7 @@ public class AddDoctorServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			Doctor doctor = new Doctor(savePath, firstName, lastName, email, sex, address, phoneNumber, BirthDay,
+			Doctor doctor = new Doctor(img_url, firstName, lastName, email, sex, address, phoneNumber, BirthDay,
 					specialty, workingDays, workingHours);
 
 			if (DoctorDao.addDoctor(doctor) == 1) {

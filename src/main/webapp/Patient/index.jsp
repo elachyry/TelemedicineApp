@@ -76,14 +76,20 @@
                 </div>
                 
                 <div class="navbar-nav w-100">
-                    <a href="index.jsp" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Home</a>
-                    <a href="consultations.jsp" class="nav-item nav-link"><i class="fa fa-commenting me-2" aria-hidden="true"></i>Consultations</a>
-                    <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
-                    <a href="messages.jsp" class="nav-item nav-link"><i class="fa fa-envelope me-2" aria-hidden="true"></i>Messages</a>
-                    <a href="<%= request.getContextPath() %>/Patient/profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
+					<a href="<%=request.getContextPath()%>/Patient/index.jsp"
+						class="nav-item nav-link active"><i
+						class="fa fa-tachometer-alt me-2"></i>Home</a> <a
+						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
+						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
+					<a href="<%=request.getContextPath()%>/Patientr/patients.jsp"
+						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
+						aria-hidden="true"></i>Patients</a>  <a
+						href="<%=request.getContextPath()%>/Patient/profil.jsp"
+						class="nav-item nav-link "><i class="fa fa-user-md me-2"
+						aria-hidden="true"></i>Profil</a>
 
-                    
-                </div>
+
+				</div>
             </nav>
         </div>
         <!-- Sidebar End -->
@@ -99,50 +105,9 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
+                
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Messages</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="<%= request.getContextPath() %>/assets/Patient/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <!-- <small>15 minutes ago</small> -->
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../assets/Patient/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <!-- <small>15 minutes ago</small> -->
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../assets/Patient/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <!-- <small>15 minutes ago</small> -->
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                  
+                    
                    <div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
@@ -172,7 +137,7 @@
                 
                 <% 
         			HelperClass help = new HelperClass();
-            	ArrayList<Doctor> list ;
+            		ArrayList<Doctor> list ;
             	
         			list = help.getDoctors();
         		
@@ -183,12 +148,12 @@
                 
                     <div class="col-sm-12 col-xl-4  d-flex flex-wrap">
                         <div id="card1" class="card mx-auto rounded" data-aos="fade-up" data-aos-duration="2000" style="width:400px;">
-				            <img src="<%=request.getContextPath()%>\<%=list.get(i).getImagePath()%>" class="card-img-top rounded-circle m-2" style="width:100%;  padding-left: 100px; padding-right: 100px;">
-							<div class="text-center"><%=list.get(i).getFirstName()%> <%=list.get(i).getLastName()%></div>
+				            <img src="<%=request.getContextPath()%>\<%=list.get(i).getImagePath()%>" class="card-img-top rounded-circle" style="width:100%;  padding-left: 100px; padding-right: 100px; margin-top: 20px">
+							<div class="text-center" style="margin-top: 20px;"><%=list.get(i).getFirstName()%> <%=list.get(i).getLastName()%></div>
 				            <div class="card-body">
 				                <h5 class="card-title text-center"><%=list.get(i).getSpecialty()%></h5>
-				                <p class="card-text"><%=list.get(i).getAddress()%></p>
-				                <a href="Patient/booking.jsp?itemId=<%=list.get(i).getId()%>" class="btn btn-primary w-100">Take an appointment</a>
+				                <p class="card-text" style="text-align: center;"><%=list.get(i).getAddress()%></p>
+				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
 				            </div>
 			        	</div>
                     </div>

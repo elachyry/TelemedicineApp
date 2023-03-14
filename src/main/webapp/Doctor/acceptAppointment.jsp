@@ -11,6 +11,14 @@
 <html lang="en">
 
 <head>
+
+
+<%
+if (session.getAttribute("Id") == null) {
+	response.sendRedirect("/telemedicine/Login/DoctorLogin.jsp");
+}
+%>
+
 <meta charset="utf-8">
 <title>MEDIVISIT</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -149,118 +157,175 @@
 
 
 			<!-- Table Start -->
-			<form action="" method="">
-				<div class="container-fluid pt-4 px-4">
-					<div class="row g-4">
-
-						<div class="col-12">
-							<div class="bg-light rounded h-100 p-4">
-								<h6 class="mb-4">Appointments</h6>
-								<div class="table-responsive">
-									<table
-										class="table text-start align-middle table-bordered table-hover mb-0">
 
 
-										<thead>
-											<tr class="text-dark text-center">
-												<th scope="col">Date</th>
-												<th scope="col">Time</th>
-												<th scope="col">Patient</th>
-												<th scope="col">Link</th>
-												<th scope="col">Amount</th>
-												<th scope="col">Status</th>
-												<th scope="col"></th>
-
-											</tr>
-										</thead>
+			<div class="container-scroller">
+				<!-- partial:../../partials/_navbar.html -->
 
 
-										<%
-										int id = (Integer) session.getAttribute("Id");
-										ResultSet rs = AppointmentDao.getAppointmentD(id);
-										ResultSet rs2 = null;
-										ResultSet rs3 = null;
-										if (rs != null && rs.next() == true) {
-											do {
-												rs2 = PatientDao.getPatient(rs.getInt("Patient_id"));
-												rs2.next();
-												rs3 = DoctorDao.getDoctor((Integer) session.getAttribute("Id"));
-												rs3.next();
-										%>
+				<!-- partial -->
+				<div class="container-fluid page-body-wrapper">
+					<!-- partial:../../partials/_sidebar.html -->
+
+					<!-- partial -->
+					<div class="main-panel">
+						<div class="content-wrapper">
+							<div class="page-header">
+								<h3 class="page-title">Update Appointment</h3>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a
+											href="<%=request.getContextPath()%>/Doctor/appointment.jsp">All
+												Appointments</a></li>
+
+									</ol>
+								</nav>
+							</div>
+
+							<%
+							int id = Integer.parseInt(request.getParameter("id"));
+							ResultSet rs = AppointmentDao.getAppointment(id);
+							if (rs != null && rs.next() == true) {
+							%>
 
 
-										<tr>
-											<td><%=rs.getString(2)%></td>
-											<td><%=rs.getString(3)%></td>
-											<td><%=rs2.getString(4) + " " + rs2.getString(3)%></td>
-											<td><%=rs.getString(8)%></td>
-											<td><%=rs.getString(7)%></td>
-											<td><%=rs.getString(6)%></td>
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body">
+										<form class="form-sample" action="" method="post">
+											<input type="hidden" name="Patient"
+												value="<%=rs.getString(4)%>" /> <input type="hidden"
+												name="Doctor" value="<%=rs.getString(5)%>" /> <input
+												type="hidden" name="status" value="<%=rs.getString(6)%>" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Date</label>
+														<div class="col-sm-9">
+															<input type="date" class="form-control"
+																placeholder="dd/mm/yyyy" name="date" id="date"
+																value="<%=rs.getString(2)%>" required />
+														</div>
+													</div>
+												</div>
 
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Time</label>
+														<div class="col-sm-9">
+															<input type="time" class="form-control" name="time"
+																id="time" value="<%=rs.getString(3)%>" required />
+														</div>
+													</div>
+												</div>
 
-											<td><a
-												href="<%=request.getContextPath()%>/acceptAppointment?id=<%=rs.getString(1)%>"
-												class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-												aria-label="edit"> <svg
-														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-														fill="black" class="w-5 h-5" viewBox="0 0 20 20">
-                                        						<path
-															d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"> </path>
-                                    						</svg>
-											</a> <a href="<%=request.getContextPath()%>/appointmentCancelled?id=<%=rs.getString(1)%>"
-												class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-												aria-label="cancel"> <svg
-														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-														fill="red" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-  																	<path
-															<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/> />
-																				</svg>
-											</a></td>
+											</div>
 
-										</tr>
-										<%
-										} while (rs.next());
-										} else {
-										%>
-										<tr>
-											<td colspan="7"><center>No data to show!</center></td>
-										</tr>
-										<%
-										}
-										%>
+											
+											<div class="row" style="margin-top: 15px;!important">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Amount</label>
+														<div class="col-sm-9">
+															<input type="number" class="form-control" name="amount"
+																value="<%=rs.getString(7)%>" required />
+														</div>
+													</div>
+												</div>
 
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Meeting
+															Link</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="link"
+																value="<%=rs.getString(8)%>" required />
+														</div>
+													</div>
+												</div>
 
+											</div>
 
-
-									</table>
+											<div class="form-check mx-sm-2">
+												<label class="form-check-label"> <input
+													type="hidden" class="form-check-input" checked>
+												</label>
+											</div>
+											<center>
+												<input type="submit" class="btn btn-primary mb-4"
+													name="submit" value="Edit Appointment" />
+											</center>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</form>
-			<!-- Table End -->
-
-
-			<!-- Footer Start -->
-			<div class="container-fluid pt-4 px-4">
-				<div class="bg-light rounded-top p-4">
-					<div class="row">
-						<div class="col-12 col-sm-6 text-center text-sm-start">
-							&copy; <a href="#">MEDIVISIT</a>, All Right Reserved.
-						</div>
-
-					</div>
-				</div>
+				<%
+				}
+				%>
 			</div>
-			<!-- Footer End -->
 		</div>
-		<!-- Content End -->
+		<!-- content-wrapper ends -->
+		<!-- partial:../../partials/_footer.html -->
 
 
-		<!-- Back to Top -->
-		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-			class="bi bi-arrow-up"></i></a>
+		<!-- partial -->
+	</div>
+	<!-- main-panel ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="assets/Admin/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<script src="assets/Admin/vendors/chart.js/Chart.min.js"></script>
+	<script src="assets/Admin/js/jquery.cookie.js" type="text/javascript"></script>
+	<!-- End plugin js for this page -->
+	<!-- inject:js -->
+	<script src="assets/Admin/js/off-canvas.js"></script>
+	<script src="assets/Admin/js/hoverable-collapse.js"></script>
+	<script src="assets/Admin/js/misc.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page -->
+	<script src="assets/Admin/js/dashboard.js"></script>
+	<script src="assets/Admin/js/todolist.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+
+
+	<script>
+		var today = new Date().toISOString().split('T')[0];
+		document.getElementsByName("date")[0].setAttribute('min', today);
+	</script>
+	<!-- Table End -->
+
+
+	<!-- Footer Start -->
+	<div class="container-fluid pt-4 px-4">
+		<div class="bg-light rounded-top p-4">
+			<div class="row">
+				<div class="col-12 col-sm-6 text-center text-sm-start">
+					&copy; <a href="#">MEDIVISIT</a>, All Right Reserved.
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Footer End -->
+	</div>
+	<!-- Content End -->
+
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+		class="bi bi-arrow-up"></i></a>
 	</div>
 
 	<!-- JavaScript Libraries -->

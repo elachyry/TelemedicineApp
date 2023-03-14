@@ -7,6 +7,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%
+if (session.getAttribute("EmailAdmin") == null) {
+	response.sendRedirect("/telemedicine/AdminLoginPage");
+}
+%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"

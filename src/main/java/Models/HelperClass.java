@@ -35,7 +35,7 @@ public class HelperClass {
 				fileUploadDirectory.mkdirs();
 			}
 			String savePath = uploadPath + File.separator+hashCode()+"-"+ fileName ;
-			System.out.println("savePath: " + savePath);
+			System.out.println("savePath test: " + savePath);
 			String sRootPath = new File(savePath).getAbsolutePath();
 			System.out.println("sRootPath: " + sRootPath);
 			part.write(savePath + File.separator);
@@ -46,6 +46,7 @@ public class HelperClass {
 			 * make your each image name identical.
 			 */
 			dbFileName = UPLOAD_DIR + File.separator +hashCode()+"-"+ fileName;
+			System.out.println("path test " + dbFileName);
 			part.write(savePath + File.separator);
 			return dbFileName;
 		}
