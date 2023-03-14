@@ -153,7 +153,7 @@
 				            <div class="card-body">
 				                <h5 class="card-title text-center"><%=list.get(i).getSpecialty()%></h5>
 				                <p class="card-text" style="text-align: center;"><%=list.get(i).getAddress()%></p>
-				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
+				                <a href="<%=request.getContextPath()%>\Patient\booking.jsp?itemId=<%=list.get(i).getId()%>" class="btn btn-primary w-100">Take an appointment</a>
 				            </div>
 			        	</div>
                     </div>

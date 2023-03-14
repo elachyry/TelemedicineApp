@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.http.*;
-import javax.servlet.*;
-import javax.servlet.annotation.MultipartConfig;
+import jakarta.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.MultipartConfig;
 import DAO.PatientDao;
 import Models.HelperClass;
 import Models.Patient;
@@ -43,7 +43,7 @@ public class AddPatientServlet extends HttpServlet {
 			String fileName = extractFileName(part);// file name
 
 			/**
-			 * *** Get The Absolute Path Of The Web Application ****
+			 * * Get The Absolute Path Of The Web Application **
 			 */
 			String applicationPath = getServletContext().getRealPath("");
 			String uploadPath = applicationPath + File.separator + UPLOAD_DIR;
