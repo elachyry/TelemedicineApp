@@ -182,7 +182,7 @@
                         </div>
                         <div class="col-sm-9 ">
                             <div class="d-flex flex-wrap " >
-                            <input type="date" class="form-control-plaintext inp" style="text-align: center;" name="date">
+                            <input type="date" class="form-control-plaintext inp" style="text-align: center;" name="date" required>
                            </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
             </div>
 
         </div>
-		
+		<input type="hidden" name="Id" value="<%= request.getParameter("itemId") %>">
         <input class="btn btn-primary" type="submit" value="Make an appoinement">
         
     </div>

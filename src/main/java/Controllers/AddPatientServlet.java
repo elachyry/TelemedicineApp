@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import jakarta.servlet.http.*;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.MultipartConfig;
+import javax.servlet.http.*;
+import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
 import DAO.PatientDao;
 import Models.Patient;
 import Models.Tools;

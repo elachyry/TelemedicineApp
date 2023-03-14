@@ -9,12 +9,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 
+import com.mysql.cj.Session;
+
 import Models.Doctor;
 import Models.HelperClass;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Booking
@@ -28,25 +31,17 @@ public class Booking extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
+		HttpSession session = request.getSession();
 		String Id = request.getParameter("Id");
 		String workingHours[] = request.getParameterValues("workingHours");
 		String date = request.getParameter("date");
-		Doctor d;
-		int itemId = Integer.parseInt(request.getParameter("itemId"));
-		HelperClass h = new HelperClass();
-		d = h.getDoctor(Id);
-		for(int i;i<d.getWorkingDays().length;i++) {
-			
-		}
-		
-		System.out.println(help.FullDayNameExtractor(date));
 		
 		
-			} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("doctor id : "+Id);
+		System.out.println("my id : "+session.getAttribute("Id"));
+		
+		
+	
 		
 	}
 	
