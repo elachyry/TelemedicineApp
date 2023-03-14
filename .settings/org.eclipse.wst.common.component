@@ -6,6 +6,8 @@
     
     
     <wb-module deploy-name="telemedicine-0.0.1-SNAPSHOT">
+
+
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 
