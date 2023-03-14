@@ -562,4 +562,14 @@
     <servlet-name>acceptAppointment</servlet-name>
     <url-pattern>/acceptAppointment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppointmentCP</display-name>
+    <servlet-name>AppointmentCP</servlet-name>
+    <servlet-class>Controllers.AppointmentCP</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentCP</servlet-name>
+    <url-pattern>/AppointmentCP</url-pattern>
+  </servlet-mapping>
 </web-app>
