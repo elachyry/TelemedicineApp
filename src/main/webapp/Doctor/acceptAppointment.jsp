@@ -5,7 +5,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.PreparedStatement" import="java.sql.ResultSet"%>
-<%@ page import="Models.DataBaseConnection" import="Models.Appointment "
+<%@ page import="Models.DataBaseConnection" import="Models.Appointment "  import="Models.Tools"
 	import="DAO.AppointmentDao" import="DAO.PatientDao"
 	import="DAO.DoctorDao" import="java.sql.Connection"%>
 
@@ -243,7 +243,7 @@ if (session.getAttribute("Id") == null) {
 															Link</label>
 														<div class="col-sm-9">
 															<input type="text" class="form-control" name="link"
-																value="<%=rs.getString(8)%>" required />
+																value="<%=Tools.generateGoogleMeetLink()%>" required />
 														</div>
 													</div>
 												</div>
