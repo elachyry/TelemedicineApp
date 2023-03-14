@@ -352,6 +352,8 @@
 			            			status = '<label class="badge badge-success">' + response[val].status +'</label>'
 			            		}else if(response[val].status == "Cancelled" || response[val].status == "Denied"){
 			            			status = '<label class="badge badge-danger">' + response[val].status +'</label>'
+			            		}else if(response[val].status == "Pending"){
+			            			status = '<label class="badge badge-warning">' + response[val].status +'</label>'
 			            		}else{
 			            			status = '<label>' + response[val].status +'</label>'
 			            		}
