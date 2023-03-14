@@ -10,10 +10,10 @@
 <html lang="en">
 <head>
 <%
-	if (session.getAttribute("EmailAdmin") == null) {
-		response.sendRedirect("/telemedicine/AdminLoginPage");
-	}
-	%>
+if (session.getAttribute("EmailAdmin") == null) {
+	response.sendRedirect("/telemedicine/AdminLoginPage");
+}
+%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -73,7 +73,10 @@
 										%>
 
 										<div class="col-lg-12">
-										<center><img src="<%= rs.getString(2)%>" class="rounded-circle mx-auto d-block"  alt="patient image"></center>	
+											<center>
+												<img src="<%=rs.getString(2)%>"
+													class="rounded-circle mx-auto d-block" alt="patient image">
+											</center>
 										</div>
 
 
@@ -90,7 +93,7 @@
 													<h3 class="card-title">
 														<center>First Name</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(3)%></center>
 													</p>
 												</div>
@@ -103,13 +106,13 @@
 													<h3 class="card-title">
 														<center>Last Name</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(4)%></center>
 													</p>
 												</div>
 											</div>
 										</div>
-										
+
 
 
 									</div>
@@ -124,7 +127,7 @@
 													<h3 class="card-title">
 														<center>Date Of Birth</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(5)%></center>
 													</p>
 												</div>
@@ -137,7 +140,7 @@
 													<h3 class="card-title">
 														<center>Gender</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(8)%></center>
 													</p>
 												</div>
@@ -146,12 +149,12 @@
 
 
 									</div>
-									
+
 									<br>
-									
+
 									<div class="row">
 
-										
+
 										<div class="col-lg-6">
 											<div class="card"
 												style="filter: drop-shadow(0 0 0.75rem #1977cc);">
@@ -159,7 +162,7 @@
 													<h3 class="card-title">
 														<center>Address</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(9)%></center>
 													</p>
 												</div>
@@ -172,7 +175,7 @@
 													<h3 class="card-title">
 														<center>Social Account</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(10)%></center>
 													</p>
 												</div>
@@ -182,11 +185,7 @@
 
 									</div>
 
-									<br>
-
-									
-
-									<br>
+									<br> <br>
 
 									<div class="row">
 
@@ -198,7 +197,7 @@
 													<h3 class="card-title">
 														<center>Email</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(6)%></center>
 													</p>
 												</div>
@@ -211,7 +210,7 @@
 													<h3 class="card-title">
 														<center>Phone Number</center>
 													</h3>
-													<p >
+													<p>
 													<center style="color: #1977cc;"><%=rs.getString(7)%></center>
 													</p>
 												</div>
