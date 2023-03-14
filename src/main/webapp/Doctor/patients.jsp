@@ -73,8 +73,8 @@
 				<div class="d-flex align-items-center ms-4 mb-4">
 					<div class="position-relative">
 						<img class="rounded-circle"
-							src="../assets/Doctor/img/testimonial-1.jpg" alt=""
-							style="width: 40px; height: 40px;">
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
+							alt="" style="width: 40px; height: 40px;">
 						<div
 							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
 					</div>
@@ -91,8 +91,6 @@
 						class="fa fa-medkit  me-2"></i>Appointments</a> <a href="patients.jsp"
 						class="nav-item nav-link active"><i
 						class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a> <a
-						href="messages.jsp" class="nav-item nav-link"><i
-						class="fa fa-envelope me-2" aria-hidden="true"></i>Messages</a> <a
 						href="profil.jsp" class="nav-item nav-link"><i
 						class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
 
@@ -111,7 +109,7 @@
 				<a href="index.jsp" class="navbar-brand d-flex d-lg-none me-4">
 					<h2 class="text-primary mb-0">
 						<img
-							src="<%=request.getContextPath()%>/assets/Doctor/img/flavicon.png"
+							 
 							alt="" style="height: 30px;">
 					</h2>
 				</a> <a href="#" class="sidebar-toggler flex-shrink-0"> <i
@@ -125,7 +123,7 @@
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
 							class="rounded-circle me-lg-2"
-							src="<%=request.getContextPath()%><%=session.getAttribute("Image")%>"
+							src="<%=request.getContextPath()%>\<%=session.getAttribute("Image")%>"
 							alt="" style="width: 40px; height: 40px;"> <span
 							class="d-none d-lg-inline-flex"><%=session.getAttribute("fullname")%></span>
 						</a>
@@ -169,19 +167,14 @@
 										ResultSet rs3 = AppointmentDao.getPatient(id);
 
 										int intValue = 0;
-										if (rs3.next()) {
+										while (rs3.next()==true) {
 
 											Object obj = rs3.getObject(1);
 											intValue = ((Integer) obj).intValue();
 											System.out.println(intValue);
 
-										}
+										
 
-										/* int columnValue = rs3.getInt(1);
-										System.out.println(columnValue); */
-
-										//System.out.print(rs3.getMetaData().getColumnCount());
-										/* System.out.print(rs3.getObject("Patient_id")); */
 										ResultSet rs2 = PatientDao.getPatient(intValue);
 
 										if (rs2.next() == true) {
@@ -208,9 +201,10 @@
 										</tr>
 										<%
 										}
+										}
 										%>
 
-
+		
 									</tbody>
 								</table>
 							</div>

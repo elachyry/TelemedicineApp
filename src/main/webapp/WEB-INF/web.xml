@@ -552,4 +552,14 @@
     <servlet-name>AdminChangePasswordServlet</servlet-name>
     <url-pattern>/AdminChangePassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>acceptAppointment</display-name>
+    <servlet-name>acceptAppointment</servlet-name>
+    <servlet-class>Controllers.AcceptAppointment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>acceptAppointment</servlet-name>
+    <url-pattern>/acceptAppointment</url-pattern>
+  </servlet-mapping>
 </web-app>
