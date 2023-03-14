@@ -114,7 +114,7 @@
 												style="filter: drop-shadow(0 0 0.75rem #1977cc);">
 												<div class="card-body">
 													<h3 class="card-title">
-														<center>Sex</center>
+														<center>Gender</center>
 													</h3>
 													<p >
 													<center style="color: #1977cc;"><%=rs.getString(8)%></center>

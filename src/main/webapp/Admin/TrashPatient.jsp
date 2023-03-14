@@ -70,7 +70,7 @@ if (session.getAttribute("EmailAdmin") == null) {
 													<th>Email</th>
 													<th>Phone Number</th>
 													<th>Social Account</th>
-													<th>Sex</th>
+													<th>Gender</th>
 													<th></th>
 												</tr>
 
