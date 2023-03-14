@@ -1,3 +1,10 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.PreparedStatement" import="java.sql.ResultSet"%>
+<%@ page import="Models.DataBaseConnection" import="Models.Appointment "
+	import="DAO.AppointmentDao" import="DAO.PatientDao"
+	import="DAO.DoctorDao" import="java.sql.Connection"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,12 +58,12 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="../assets/Doctor/img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="<%= request.getContextPath() %>\<%= session.getAttribute("Image") %>" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Fatima FRIST</h6>
-                        <span>DOCTOR</span>
+                        <h6 class="mb-0"><%= session.getAttribute("fullname") %></h6>
+                        <span>PATIENT</span>
                     </div>
                 </div>
 
@@ -64,7 +71,6 @@
                     <a href="index.jsp" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                    
                     <a href="appointment.jsp" class="nav-item nav-link active"><i class="fa fa-medkit  me-2"></i>Appointments</a>
-                    <a href="patients.jsp" class="nav-item nav-link"><i class="fa fa-user-plus me-2" aria-hidden="true"></i>Patients</a>
                     <a href="profil.jsp" class="nav-item nav-link"><i class="fa fa-user-md me-2" aria-hidden="true"></i>Profil</a>
                     
                     
@@ -96,13 +102,13 @@
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <img
 							class="rounded-circle me-lg-2"
-							src="<%= request.getContextPath() %><%= session.getAttribute("Image") %>"
+							src="<%= request.getContextPath() %>\<%= session.getAttribute("Image") %>"
 							alt="" style="width: 40px; height: 40px;"> <span
 							class="d-none d-lg-inline-flex"><%= session.getAttribute("fullname") %></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="<%= request.getContextPath() %>/Doctor/profil.jsp" class="dropdown-item">My Profile</a>  <a href="<%= request.getContextPath() %>/logout"
+							<a href="<%= request.getContextPath() %>/Patient/profil.jsp" class="dropdown-item">My Profile</a>  <a href="<%= request.getContextPath() %>/logout"
 								class="dropdown-item">Log Out</a>
 						</div>
 					</div>
@@ -122,57 +128,61 @@
                             <div class="table-responsive">
                                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                                     <thead>
-                                        <tr class="text-dark text-center">
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Link</th>
-                                            <th scope="col">Patient</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td name="date">01 Jan 2045</td>
-                                            <td name="link">INV-0123</td>
-                                            <td name="patient">Jhon Doe</td>
-                                            <td name="amount">$123</td>
-                                            <td name="status">Paid</td>
-                                            <td><a class="btn btn-sm btn-primary" href="" name="action">Pending</a></td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>01 Jan 2045</td>
-                                            <td>INV-0123</td>
-                                            <td>Jhon Doe</td>
-                                            <td>$123</td>
-                                            <td>Paid</td>
-                                            <td><a class="btn btn-sm btn-primary" href="">Pending</a></td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>01 Jan 2045</td>
-                                            <td>INV-0123</td>
-                                            <td>Jhon Doe</td>
-                                            <td>$123</td>
-                                            <td>Paid</td>
-                                            <td><a class="btn btn-sm btn-primary" href="">Pending</a></td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>01 Jan 2045</td>
-                                            <td>INV-0123</td>
-                                            <td>Jhon Doe</td>
-                                            <td>$123</td>
-                                            <td>Not Paid</td>
-                                            <td><a class="btn btn-sm btn-primary" href="">Pending</a></td>
-                                        </tr>
-                                        <tr class="text-center"> 
-                                            <td>01 Jan 2045</td>
-                                            <td>INV-0123</td>
-                                            <td>Jhon Doe</td>
-                                            <td>$123</td>
-                                            <td>Not Paid</td>
-                                            <td><a class="btn btn-sm btn-primary" href="">Pending</a></td>
-                                        </tr>
-                                    </tbody>
+											<tr class="text-dark text-center">
+												<th scope="col">Date</th>
+												<th scope="col">Time</th>
+												<th scope="col">Doctor</th>
+												<th scope="col">Link</th>
+												<th scope="col">Amount</th>
+												<th scope="col">Status</th>
+												<th scope="col">Action</th>
+
+											</tr>
+										</thead>
+                                    <%
+										int id = (Integer) session.getAttribute("Id");
+										ResultSet rs = AppointmentDao.getAppointmentP(id);
+										ResultSet rs2 = null;
+										ResultSet rs3 = null;
+										if (rs != null && rs.next() == true) {
+											do {
+												rs2 = DoctorDao.getDoctor(rs.getInt("Doctor_id"));
+												rs2.next();
+												rs3 = PatientDao.getPatient((Integer) session.getAttribute("Id"));
+												rs3.next();
+										%>
+
+
+										<tr>
+											<td><%=rs.getString(2)%></td>
+											<td><%=rs.getString(3)%></td>
+											<td><%=rs2.getString(4) + " " + rs2.getString(3)%></td>
+											<td><%=rs.getString(8)%></td>
+											<td><%=rs.getString(7)%></td>
+											<td><%=rs.getString(6)%></td>
+
+
+											<td><a href="<%=request.getContextPath()%>/AppointmentCP?id=<%=rs.getString(1)%>"
+												class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+												aria-label="cancel"> <svg
+														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="red" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+  																	<path
+															<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/> />
+																				</svg>
+											</a></td>
+
+										</tr>
+										<%
+										} while (rs.next());
+										} else {
+										%>
+										<tr>
+											<td colspan="7"><center>No data to show!</center></td>
+										</tr>
+										<%
+										}
+										%>
                                 </table>
                             </div>
                         </div>

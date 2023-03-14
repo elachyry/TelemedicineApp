@@ -109,6 +109,7 @@ public class AppointmentDao {
 		}
 	}
 	
+
 	public static int getPCount(int id) {
 		try {
 			Connection con = DataBaseConnection.getConnection();
@@ -121,6 +122,18 @@ public class AppointmentDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
+
+	public static ResultSet getAppointmentP(int id) {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM `appointments` WHERE Patient_id = ?");
+			ps.setInt(1, id);
+			ResultSet resultSet = ps.executeQuery();
+			return resultSet;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+
 		}
 	}
 

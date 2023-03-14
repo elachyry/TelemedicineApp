@@ -81,9 +81,7 @@
 						class="fa fa-tachometer-alt me-2"></i>Home</a> <a
 						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
 						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
-					<a href="<%=request.getContextPath()%>/Patientr/patients.jsp"
-						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
-						aria-hidden="true"></i>Patients</a>  <a
+					  <a
 						href="<%=request.getContextPath()%>/Patient/profil.jsp"
 						class="nav-item nav-link "><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
@@ -153,7 +151,7 @@
 				            <div class="card-body">
 				                <h5 class="card-title text-center"><%=list.get(i).getSpecialty()%></h5>
 				                <p class="card-text" style="text-align: center;"><%=list.get(i).getAddress()%></p>
-				                <a href="#" class="btn btn-primary w-100">Take an appointment</a>
+				                <a href="<%=request.getContextPath()%>\Patient\booking.jsp?itemId=<%=list.get(i).getId()%>" class="btn btn-primary w-100">Take an appointment</a>
 				            </div>
 			        	</div>
                     </div>
