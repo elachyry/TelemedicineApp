@@ -87,7 +87,7 @@
 							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
 					</div>
 					<div class="ms-3">
-						<h6 class="mb-0">Fatima FRIST</h6>
+						<h6 class="mb-0"><%=session.getAttribute("fullname")%></h6>
 						<span>DOCTOR</span>
 					</div>
 				</div>
@@ -169,7 +169,7 @@
 												<th scope="col">Link</th>
 												<th scope="col">Amount</th>
 												<th scope="col">Status</th>
-												<th scope="col"></th>
+												<th scope="col">Action</th>
 
 											</tr>
 										</thead>
