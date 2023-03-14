@@ -565,6 +565,16 @@
   <servlet>
     <description></description>
 
+    <display-name>AppointmentCP</display-name>
+    <servlet-name>AppointmentCP</servlet-name>
+    <servlet-class>Controllers.AppointmentCP</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentCP</servlet-name>
+    <url-pattern>/AppointmentCP</url-pattern>
+  </servlet-mapping>
+
+
     <display-name>appointmentCancelled</display-name>
     <servlet-name>appointmentCancelled</servlet-name>
     <servlet-class>Controllers.appointmentCancelled</servlet-class>
@@ -583,5 +593,6 @@
     <servlet-name>Booking</servlet-name>
     <url-pattern>/booking</url-pattern>
   </servlet-mapping>  
+
 
 </web-app>
