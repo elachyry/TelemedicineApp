@@ -154,7 +154,7 @@
 									<thead>
 										<tr class="text-dark text-center">
 											<th scope="col">Patient</th>
-											<th scope="col">Sex</th>
+											<th scope="col">Gender</th>
 											<th scope="col">Email</th>
 											<th scope="col">Address</th>
 											<th scope="col">BirthDay</th>
