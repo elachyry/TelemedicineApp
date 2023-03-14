@@ -574,7 +574,8 @@
     <url-pattern>/AppointmentCP</url-pattern>
   </servlet-mapping>
 
-
+  <servlet>
+    <description></description>
     <display-name>appointmentCancelled</display-name>
     <servlet-name>appointmentCancelled</servlet-name>
     <servlet-class>Controllers.appointmentCancelled</servlet-class>

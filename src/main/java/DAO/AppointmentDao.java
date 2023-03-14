@@ -121,7 +121,7 @@ public class AppointmentDao {
 			return resultSet.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return 0;}}
 
 	public static ResultSet getAppointmentP(int id) {
 		try {
