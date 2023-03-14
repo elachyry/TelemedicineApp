@@ -130,6 +130,19 @@ public class DoctorDao {
 		}
 	}
 	
+	public static int Income() {
+		try {
+			Connection con = DataBaseConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM `doctor` WHERE `deleted_at`IS NULL" );
+			ResultSet resultSet = ps.executeQuery();
+			resultSet.next();
+			return resultSet.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
 	public static ResultSet searchDoctors(String type, String val) {
 		try {
 			Connection con = DataBaseConnection.getConnection();

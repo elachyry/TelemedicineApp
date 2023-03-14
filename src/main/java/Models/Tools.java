@@ -197,4 +197,22 @@ public class Tools {
         return new String(bytes);
     }
 
+    
+    public static String generateGoogleMeetLink() {
+        String baseUrl = "https://meet.google.com/";
+        String randomString1 = getRandomString(3);
+        String randomString2 = getRandomString(4);
+        String randomString3 = getRandomString(3);
+        return baseUrl + randomString1 + "-" + randomString2 +"-"+randomString3;
+    }
+
+    private static String getRandomString(int length) {
+        String characters = "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder sb = new StringBuilder(length);
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            sb.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return sb.toString();
+    }
 }

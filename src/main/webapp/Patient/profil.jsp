@@ -45,7 +45,7 @@
 	rel="stylesheet">
 
 <!-- Template Stylesheet -->
-<link href="<%=request.getContextPath()%>/assets/Patient/css/style.css"
+<link href="<%=request.getContextPath()%>/assets/Doctor/css/style.css"
 	rel="stylesheet">
 	
     
@@ -100,10 +100,10 @@
 						class="nav-item nav-link "><i
 						class="fa fa-tachometer-alt me-2"></i>Home</a> <a
 						href="<%=request.getContextPath()%>/Patient/appointment.jsp"
-						class="nav-item nav-link "><i class="fa fa-commenting  me-2"></i>Consultations</a>
-					<a href="<%=request.getContextPath()%>/Patientr/patients.jsp"
-						class="nav-item nav-link"><i class="fa fa-user-plus me-2"
-						aria-hidden="true"></i>Patients</a>  <a
+
+						class="nav-item nav-link "><i class="fa fa-medkit  me-2"></i>Appointments</a>
+					  <a
+
 						href="<%=request.getContextPath()%>/Patient/profil.jsp"
 						class="nav-item nav-link active"><i class="fa fa-user-md me-2"
 						aria-hidden="true"></i>Profil</a>
@@ -178,7 +178,7 @@
 							</label>
 							
 								<h5 class="my-3" name="dctname"><%=session.getAttribute("fullname")%></h5>
-								<p class="text-muted mb-1"><%=session.getAttribute("username")%></p>
+								<p class="text-muted mb-1">PATIENT</p>
 
 							</div>
 							<div class="col-lg-8" style="margin-left: 190px;">

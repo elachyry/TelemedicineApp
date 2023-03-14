@@ -18,16 +18,23 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/servlet-api.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="https://jakarta.ee/specifications/servlet/5.0/apidocs/"/>
 		</attributes>
 	</classpathentry>
+=======
+>>>>>>> 4f4036492bea48b47be06019d8189d7cb9951c9f
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="C:/apache-tomcat-10.1.5/lib/servlet-api.jar"/>
+>>>>>>> 4f4036492bea48b47be06019d8189d7cb9951c9f
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
