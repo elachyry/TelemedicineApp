@@ -66,15 +66,16 @@ public class Login extends HttpServlet {
 
 						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Doctor/index.jsp");
 					  }else {
-						  request.setAttribute("status", "failed");
-						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Login/DoctorLogin.jsp");
+						  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Login/DoctorLogin.jsp?status=failed");
 					  }
 					  }else if(profil.equals("patient")) {
 						  statement = connection.prepareStatement("SELECT * FROM `patient` WHERE Username = ? AND Password = ?");
 						  statement.setString(1,username);
 						  statement.setString(2,Tools.encryptPassword(password) );
 						  ResultSet rs = statement.executeQuery();
+						  String status = null;
 						  if(rs.next()) {
+							  status = "success";
 							  HttpSession session =(HttpSession) request.getSession();
 							  session.setAttribute("Id", rs.getInt("id"));
 							  session.setAttribute("fullname", rs.getString("First_Name")+' '+rs.getString("Last_Name"));
@@ -89,8 +90,10 @@ public class Login extends HttpServlet {
 							  session.setAttribute("Sex", rs.getString("Sex"));
 							  session.setAttribute("Password", Tools.decryptPassword(rs.getString("Password")));
 							  session.setAttribute("Social_Account", rs.getString("Social_Account"));
-							  
-							  dispatcher = (RequestDispatcher) request.getRequestDispatcher("/Patient/index.jsp");
+							 
+							  response.sendRedirect("/telemedicine/Patient/index.jsp");
+						  }else {
+							  response.sendRedirect("/telemedicine/Login/PatientLogin.jsp?status=failed");
 						  }
 						  
 					  }
