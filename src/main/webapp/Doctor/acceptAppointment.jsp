@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.PreparedStatement" import="java.sql.ResultSet"%>
@@ -221,7 +225,7 @@ if (session.getAttribute("Id") == null) {
 
 											</div>
 
-											
+
 											<div class="row" style="margin-top: 15px;!important">
 												<div class="col-md-6">
 													<div class="form-group row">
@@ -349,6 +353,34 @@ if (session.getAttribute("Id") == null) {
 
 	<!-- Template Javascript -->
 	<script src="<%=request.getContextPath()%>/assets/Doctor/js/main.js"></script>
+
+
+
+	<%
+	String status = "";
+	if (request.getParameter("status") != null) {
+		status = request.getParameter("status");
+	}
+	System.out.println(request.getParameter("test"));
+	System.out.println(status);
+	if (status.equals("successUpdate")) {
+	%>
+	<script>
+		swal({
+			title : "Success!",
+			text : "You have updated the Appointment successfully!",
+			icon : "success",
+			button : "Okay!",
+		}).then(function() {
+			window.location.replace("/telemedicine/AllAppointments");
+		});
+	</script>
+	<%
+	}
+	%>
+
+
+
 </body>
 
 </html>
