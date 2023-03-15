@@ -38,20 +38,17 @@
 							action="<%= request.getContextPath() %>/PatientRegister"
 							class="register-form" id="register-form">
 							<div class="form-group">
-								<label for="name"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
+								<label for="name"></label> <input
 									type="text" name="firstName" id="name" placeholder="First Name"
 									required />
 							</div>
 							<div class="form-group">
-								<label for="name"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
+								<label for="name"></label> <input
 									type="text" name="lastName" id="name" placeholder="Last Name"
 									required />
 							</div>
 							<div class="form-group">
-								<label for="name"><i
-									class="zmdi zmdi-account material-icons-name"></i></label>
+								<label for="name"></label>
 								<div class="col-sm-9">
 									<input type="date" class="form-control"
 										placeholder="dd/mm/yyyy" name="BirthDay" required="required" />
@@ -59,20 +56,17 @@
 							</div>
 
 							<div class="form-group">
-								<label for="email"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
+								<label for="email"></label> <input
 									type="email" name="email" id="email" placeholder="Your Email"
 									required />
 							</div>
 							<div class="form-group">
-								<label for="contact"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
+								<label for="contact"></label> <input
 									type="text" name="phoneNumber" id="contact"
 									placeholder="Phone Number" required />
 							</div>
 							<div class="form-group" style="border-bottom: 1px solid;">
-								<label for="name"><i
-									class="zmdi zmdi-account material-icons-name"></i></label>
+								<label for="name"></label>
 								<div class="col-md-9">
 									<select class="form-control" name="sex"
 										style="width: 300px; height: 30px; margin-left: 20px; padding-left: 10px; border: none;">
@@ -82,14 +76,12 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="social"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
+								<label for="social"></label> <input
 									type="text" name="socialAccount" id="socia"
 									placeholder="Social Account" required />
 							</div>
 							<div class="form-group">
-								<label for="adress"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
+								<label for="adress"></label> <input
 									type="text" name="address" id="adress" placeholder="Your Adress"
 									required />
 							</div>
@@ -133,7 +125,9 @@
 	<script type="text/javascript">
     	var status = document.getElementById("status").value;
     	if(status=="success"){
-    		swal("Congrats","Account Created Successfully","success");
+    		swal("Congrats","Account Created Successfully","success").then(function() {
+    			window.location.replace("/telemedicine/Login/PatientLogin.jsp");
+    		});;
     	}
     	
     	passwordnote = document.getElementById("passwordnote");

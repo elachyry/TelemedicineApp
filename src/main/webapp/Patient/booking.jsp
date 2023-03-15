@@ -56,7 +56,7 @@
 </head>
 
 <body>
-	<input type="hidden" id="status" value="<%= request.getAttribute("status") %>" />
+	
 
 	<div class="container-xxl position-relative bg-white d-flex p-0">
 		<!-- Spinner Start -->
@@ -169,7 +169,7 @@
                             <div class="d-flex flex-wrap " >
                              <% for(int i = 0; i < d.getWorkingDays().length;i++){ %>
                              <label class="form-check-label mx-3" > 
-                               <!-- <input type="checkbox" class="form-check-input" name="workingDays" value="<%=d.getWorkingDays()[i] %>"> -->  <%=d.getWorkingDays()[i] %>
+                               <%=d.getWorkingDays()[i] %>
                             </label>
                             <%} %>
                              </div>
@@ -194,17 +194,30 @@
                         <div class="col-sm-9 d-flex flex-wrap ">
 						<% for(int i = 0; i < d.getWorkingDays().length;i++){ %>
                            <label class="form-check-label mx-3"> 
-                           		<input type="checkbox" class="form-check-input" name="workingHours" value="<%=d.getWorkingHours()[i] %>"> <%=d.getWorkingHours()[i] %>
+                           <%=d.getWorkingHours()[i] %>
                            </label>
                         <%} %>
                        
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3 mt-2">
+                            <p class="subtitles mb-0">Pick a time</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="d-flex flex-wrap " >
+                            <input type="time" name="time" id="time" style="text-align: center;" class="form-control-plaintext inp" required>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
+            
 
         </div>
-		<input type="hidden" name="Id" value="<%= request.getParameter("itemId") %>">
         <input class="btn btn-primary" type="submit" value="Make an appoinement">
         
     </div>
@@ -252,14 +265,6 @@
 
 	<!-- Template Javascript -->
 	<script src="<%= request.getContextPath() %>/assets/Patient/js/main.js"></script>
-	<script type="text/javascript">
-    	var status = document.getElementById("status").value;
-    	if(status=="success"){
-    		swal("Congrats","Your profil is updated successfully","success");
-    	}
-        
-        
-    </script>
 </body>
 
 </html>
