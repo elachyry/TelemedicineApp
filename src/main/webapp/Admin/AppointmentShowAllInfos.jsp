@@ -79,6 +79,7 @@
 									</center>
 									<br> <br>
 									
+									
 									<div class="row">
 
 
@@ -167,6 +168,19 @@
 										<h3>Patient Section</h3>
 									</center>
 									<br> <br>
+									
+									<div class="row">
+
+										<div class="col-lg-12">
+											<center>
+												<img src="<%=rs2.getString(2)%>"
+													class="rounded-circle mx-auto d-block" alt="patient image" width="200px" height="200px">
+											</center>
+										</div>
+
+
+									</div>
+									<br><br>
 
 									<div class="row">
 
@@ -315,6 +329,20 @@
 										<h3>Doctor Section</h3>
 									</center>
 									<br> <br>
+									
+									<div class="row">
+
+										<div class="col-lg-12">
+											<center>
+												<img src="<%=rs3.getString(2)%>"
+													class="rounded-circle mx-auto d-block" alt="patient image" width="200px" height="200px">
+											</center>
+										</div>
+
+
+									</div>
+									
+									<br><br>
 
 									<div class="row">
 

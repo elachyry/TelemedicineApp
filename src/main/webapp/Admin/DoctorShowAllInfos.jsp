@@ -75,7 +75,7 @@ if (session.getAttribute("EmailAdmin") == null) {
 										<div class="col-lg-12">
 											<center>
 												<img src="<%=rs.getString(2)%>"
-													class="rounded-circle mx-auto d-block" alt="doctor image">
+													class="rounded-circle mx-auto d-block" alt="doctor image" width="200px" height="200px">
 											</center>
 										</div>
 

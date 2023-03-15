@@ -215,7 +215,7 @@ var myChart = new Chart(ctx, {
 	      labels: ["Pending", "Accepted", "Cancelled", "Finished", "Denied",],
 	      datasets: [{
 	        label: "Population (millions)",
-	        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+	        backgroundColor: ["#3e95cd", "green", "#eed202","#3cba9f","red"],
 	        data: [<%=pending%>, <%=accepted%>,<%=cancelled%>, <%=finished%>, <%=denied%>]
 	      }]
 	    },
